@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Photon.Pun;
+using Photon.Realtime;
 
-public class WeaponButton : Photon.MonoBehaviour {
+public class WeaponButton : MonoBehaviourPunCallbacks {
     public Text name;
     public Text cost;
     public Text description;
-    public WeaponItem wItem;
-    
+    public WeaponItem wItem;    
 
     void Start() {
         if (wItem == null) {

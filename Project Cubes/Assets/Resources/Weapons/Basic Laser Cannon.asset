@@ -15,8 +15,9 @@ MonoBehaviour:
   cost: 10
   description: If you need some enemies destroyed then try using some lasers!
   shotDelay: 0
-  particlesColor: {r: 0, g: 1, b: 0.9478698, a: 1}
+  particlesColor: {r: 0, g: 1, b: 0.9411765, a: 1}
   icon: {fileID: 21300000, guid: 8f65e2bfced6b4781859766e951f066d, type: 3}
+  auto: 0
   weaponRechargeTime: 1.3
   weaponHasRecharge: 1
   projectile: {fileID: 0}

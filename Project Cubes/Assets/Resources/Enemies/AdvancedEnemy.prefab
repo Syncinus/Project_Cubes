@@ -182,9 +182,11 @@ MonoBehaviour:
   typeOfEnemy: 0
   target: {fileID: 0}
   trueTarget: {fileID: 0}
-  weapon: {fileID: 0}
+  color: {r: 0, g: 0.078431375, b: 1, a: 1}
+  weapon: {fileID: 11400000, guid: 69e1518580db3c24ba5c5654c8453265, type: 2}
   enemyMode: 0
   BeamPossible: 0
+  createdParticles: 0
   damage: 1
   fireRate: 100
   range: 10
@@ -193,6 +195,9 @@ MonoBehaviour:
   dead: 0
   targetChangeable: 0
   playerDistanceCheckReady: 0
+  wType: 0
+  lineRenderer: {fileID: 0}
+  particlesColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &114127452763466312
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -4,8 +4,10 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Networking;
 using EZCameraShake;
+using Photon.Pun;
+using Photon.Realtime;
 
-public class DestroyableObject : Photon.MonoBehaviour, IPunObservable {
+public class DestroyableObject : MonoBehaviourPunCallbacks {
 
 	public float maxHealth = 50f;
 	public float health;
@@ -89,15 +91,15 @@ public class DestroyableObject : Photon.MonoBehaviour, IPunObservable {
     
 	public void TakeDamage (float amount, Vector3 point) {
 		//health -= amount;
-		if (photonView != null && PhotonNetwork.connected == true && this.GetComponent<EnemyAI>() == null) {
-		    photonView.RPC("PunTakeDamage", PhotonTargets.All, amount, point);
+		if (photonView != null && this.GetComponent<EnemyAI>() == null) {
+		    photonView.RPC("PunTakeDamage", RpcTarget.All, amount, point);
 		} else {
             AntiNetworkTakeDamage(amount, point);
 		}
 	}
 
 	public void RPCRespawn() {
-		photonView.RPC ("Respawn", PhotonTargets.All, 10);
+		photonView.RPC ("Respawn", RpcTarget.All, 10);
 	}
 
 	[PunRPC] public void Respawn(int rpcallower) {
@@ -107,7 +109,7 @@ public class DestroyableObject : Photon.MonoBehaviour, IPunObservable {
         this.GetComponent<ShootShots>().ableToPlaySound = true;
 		explosionPossible = true;
 		isAlive = true;
-		if (photonView.isMine == true) {
+		if (photonView.IsMine == true) {
 			Transform cam = Camera.main.transform;
 			if (cam != null) {
 			    cam.transform.SetParent(this.transform);
@@ -147,7 +149,7 @@ public class DestroyableObject : Photon.MonoBehaviour, IPunObservable {
 			if (this.GetComponent<EnemyAI>() == null) {
 			    EndWithoutView(point);
 			} else {
-				photonView.RPC("End", PhotonTargets.All, point);
+				photonView.RPC("End", RpcTarget.All, point);
 			}
 		}
 	}
@@ -160,7 +162,7 @@ public class DestroyableObject : Photon.MonoBehaviour, IPunObservable {
 		if (health <= 0f) {
 			//Break (point);
 			if (photonView != null) {
-			    photonView.RPC("End", PhotonTargets.All, point);
+			    photonView.RPC("End", RpcTarget.All, point);
 			}
 		}
 	}
@@ -169,7 +171,7 @@ public class DestroyableObject : Photon.MonoBehaviour, IPunObservable {
         PrepareDeath();
         RunExplosionAnimation(point);
 		if (this.GetComponent<EnemyAI>() != null) {
-		    photonView.RPC("SetAliveness", PhotonTargets.All, false);
+		    photonView.RPC("SetAliveness", RpcTarget.All, false);
 			isAlive = false;
 			this.transform.GetComponent<EnemyAI>().Die();
 		} else {
@@ -193,19 +195,19 @@ public class DestroyableObject : Photon.MonoBehaviour, IPunObservable {
         RunExplosionAnimation(point);
         if (this.GetComponent<EnemyAI>() != null)
         {
-            photonView.RPC("SetAliveness", PhotonTargets.All, false);
+            photonView.RPC("SetAliveness", RpcTarget.All, false);
             isAlive = false;
             this.transform.GetComponent<EnemyAI>().Die();
         }
         else
         {
-            if (photonView.isMine == true && PhotonNetwork.connected == true)
+            if (photonView.IsMine == true)
             {
                 isAlive = false;
 
                 if (this.GetComponent<PlayerCube>() == null)
                 {
-                    PhotonNetwork.DestroyPlayerObjects(PhotonNetwork.player);
+                    PhotonNetwork.DestroyPlayerObjects(PhotonNetwork.LocalPlayer);
                 } else
                 {
                     //StartCoroutine(ShakeCamera(5f, 3f, 0.1f, 1.5f));
@@ -236,7 +238,7 @@ public class DestroyableObject : Photon.MonoBehaviour, IPunObservable {
 
 	public void PrepareDeath() {
 		if (this.GetComponent<PlayerCube>() != null) {
-			if (photonView.isMine == true) {
+			if (photonView.IsMine == true) {
 				   Transform cam = Camera.main.transform;
 				   if (cam != null) {
 					    cam.transform.SetParent(this.transform.parent);
@@ -328,7 +330,7 @@ public class DestroyableObject : Photon.MonoBehaviour, IPunObservable {
 		if (brokenModel == true) {
 			
 			if (this.gameObject.GetComponent<PlayerCube> () != null) {
-				if (!photonView.isMine == false) {
+				if (!photonView.IsMine == false) {
 				   Transform cam = Camera.main.transform;
 				   if (cam != null) {
 					cam.transform.SetParent(this.transform.parent);
@@ -403,8 +405,8 @@ public class DestroyableObject : Photon.MonoBehaviour, IPunObservable {
 		#endif
 	}
 
-	void IPunObservable.OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info) {
-		if (stream.isWriting) {
+	public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info) {
+		if (stream.IsWriting) {
 			stream.SendNext(health);
 			stream.SendNext(isAlive);
 

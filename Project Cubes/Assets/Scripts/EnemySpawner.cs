@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System;
 using UnityEngine;
+using Photon.Pun;
+using Photon.Realtime;
 
-public class EnemySpawner : Photon.MonoBehaviour, IPunObservable {
+public class EnemySpawner : MonoBehaviourPunCallbacks {
     public static EnemySpawner instance;
 
     void Awake() {
@@ -52,20 +54,8 @@ public class EnemySpawner : Photon.MonoBehaviour, IPunObservable {
     public GameObject enemy;
     private bool foundPlayer = false;
 
-
-    void OnMasterClientSwitched(PhotonPlayer newMasterClient)
-    {
-        foreach (PhotonPlayer player in PhotonNetwork.playerList)
-        {
-            if (newMasterClient == player)
-            {
-                Start();
-            }
-        }
-    }
-
     public void Start() {
-        if (PhotonNetwork.isMasterClient != true)
+        if (PhotonNetwork.IsMasterClient != true)
         {
             return;
         }
@@ -83,14 +73,14 @@ public class EnemySpawner : Photon.MonoBehaviour, IPunObservable {
 
             //if (gameStarted == false)
             //{
-            photonView.RPC("NextWave", PhotonTargets.AllBuffered, "STARTING ENEMY WAVES!");
+            photonView.RPC("NextWave", RpcTarget.AllBuffered, "STARTING ENEMY WAVES!");
             //    gameStarted = true;
             //}
         }
     }
 
     public void FixedUpdate() {
-        if (PhotonNetwork.isMasterClient != true)
+        if (PhotonNetwork.IsMasterClient != true)
         {
             return;
         }
@@ -103,7 +93,7 @@ public class EnemySpawner : Photon.MonoBehaviour, IPunObservable {
                 player = FindObjectOfType<PlayerCube>();
                 playerT = player.transform;
 
-                photonView.RPC("NextWave", PhotonTargets.AllBuffered, "STARTING ENEMY WAVES!");
+                photonView.RPC("NextWave", RpcTarget.AllBuffered, "STARTING ENEMY WAVES!");
                 foundPlayer = true;
             }
         }
@@ -231,12 +221,12 @@ public class EnemySpawner : Photon.MonoBehaviour, IPunObservable {
 
     public void PreformNextWave()
     {
-        photonView.RPC("NextWave", PhotonTargets.AllBuffered, "STARTING NEXT WAVE");  
+        photonView.RPC("NextWave", RpcTarget.AllBuffered, "STARTING NEXT WAVE");  
     }
 
-    void IPunObservable.OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
-        if (stream.isWriting)
+        if (stream.IsWriting)
         {
             stream.SendNext(currentWave);
             stream.SendNext(currentWaveNumber);

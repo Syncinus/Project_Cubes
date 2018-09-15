@@ -2,8 +2,10 @@
 using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
+using Photon.Realtime;
 
-public class Bullet : Photon.MonoBehaviour {
+public class Bullet : MonoBehaviourPunCallbacks {
 
     private GameObject finder;
     private string objName;

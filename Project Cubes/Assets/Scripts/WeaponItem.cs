@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Rendering.PostProcessing;
 
 [CreateAssetMenu(fileName = "New Weapon", menuName = "Items/Weapon")]
 public class WeaponItem : ScriptableObject {
@@ -28,7 +27,6 @@ public class WeaponItem : ScriptableObject {
     public WeaponType type;
 	public WeaponRarity rarity;
     public AudioClip sound;
-    public PostProcessProfile profile;
     public float soundRefreshTime;
 
 	public void Equip() {

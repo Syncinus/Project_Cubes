@@ -228,19 +228,22 @@ MonoBehaviour:
   typeOfEnemy: 4
   target: {fileID: 0}
   trueTarget: {fileID: 0}
+  color: {r: 0, g: 0, b: 0, a: 1}
+  weapon: {fileID: 11400000, guid: 56fa3068b5a7c6d4f8639813d5633565, type: 2}
   enemyMode: 1
   BeamPossible: 0
+  createdParticles: 0
   damage: 3
   fireRate: 100
   range: 10
   attackDistance: 3
   ScoreGiven: 100
-  freezePointsEnabled: 0
-  freezePoints: []
-  blast: {fileID: 198638200746192368}
   dead: 0
   targetChangeable: 0
   playerDistanceCheckReady: 0
+  wType: 0
+  lineRenderer: {fileID: 0}
+  particlesColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &114224856634417360
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -442,6 +445,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnRefreshTime: 2
   spawnTrys: 1
+  isTerrorizer: 0
+  isTerrorizerChild: 0
+  terrorizer: {fileID: 0}
   enemiesToSpawn:
   - prefab: {fileID: 1154457951630078, guid: 2ea9a80a197c38548bace4d958e1c455, type: 2}
     chance: 50

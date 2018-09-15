@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using StateSystems;
+using Photon.Pun;
+using Photon.Realtime;
 
 public class TerrorizerAI : BossAI {
 

@@ -415,19 +415,22 @@ MonoBehaviour:
   typeOfEnemy: 3
   target: {fileID: 0}
   trueTarget: {fileID: 0}
+  color: {r: 1, g: 0.5686275, b: 0, a: 1}
+  weapon: {fileID: 11400000, guid: 69e1518580db3c24ba5c5654c8453265, type: 2}
   enemyMode: 0
   BeamPossible: 1
+  createdParticles: 0
   damage: 4
   fireRate: 100
   range: 10
   attackDistance: 7.5
   ScoreGiven: 10
-  freezePointsEnabled: 0
-  freezePoints: []
-  blast: {fileID: 198118329969146132}
   dead: 0
   targetChangeable: 0
   playerDistanceCheckReady: 0
+  wType: 0
+  lineRenderer: {fileID: 0}
+  particlesColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!198 &198118329969146132
 ParticleSystem:
   m_ObjectHideFlags: 1

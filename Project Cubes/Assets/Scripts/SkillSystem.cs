@@ -4,8 +4,11 @@ using System;
 using System.Linq;
 using UnityEngine;
 using EZCameraShake;
+using Photon.Pun;
+using Photon.Realtime;
 
-public class SkillSystem : Photon.MonoBehaviour {
+
+public class SkillSystem : MonoBehaviourPunCallbacks {
 	public bool superChargeModeReady = true;
 	public float superchargeRecharge = 25f;
 	public bool shockwaveReady = true;
@@ -20,7 +23,7 @@ public class SkillSystem : Photon.MonoBehaviour {
     }
 
     public void FixedUpdate() {
-        if (photonView.isMine != true)
+        if (photonView.IsMine != true)
         {
             return;
         }
@@ -53,7 +56,7 @@ public class SkillSystem : Photon.MonoBehaviour {
 
 
 	public void Shockwave() {
-        if (photonView.isMine != true)
+        if (photonView.IsMine != true)
         {
             return;
         }
@@ -80,7 +83,7 @@ public class SkillSystem : Photon.MonoBehaviour {
 	}
 
 	public void BeamSuperchargeMode() {
-        if (photonView.isMine != true)
+        if (photonView.IsMine != true)
         {
             return;
         }

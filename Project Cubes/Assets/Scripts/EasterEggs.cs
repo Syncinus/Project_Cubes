@@ -1,8 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
+using Photon.Realtime;
 
-public class EasterEggs : Photon.MonoBehaviour
+public class EasterEggs : MonoBehaviourPunCallbacks
 {
     private KeyCode[] boxBlasterSequence = new KeyCode[] { KeyCode.Keypad1  , KeyCode.Keypad7, KeyCode.Keypad9, KeyCode.Keypad3, KeyCode.Keypad2, KeyCode.Keypad4, KeyCode.Keypad8, KeyCode.Keypad6, KeyCode.Keypad5 };
     private KeyCode[] scoreBlaster = new KeyCode[] { KeyCode.S, KeyCode.C, KeyCode.O, KeyCode.R, KeyCode.E };
@@ -22,7 +24,7 @@ public class EasterEggs : Photon.MonoBehaviour
                 PlayerCube[] cubes = FindObjectsOfType<PlayerCube>();
                 foreach (PlayerCube cube in cubes)
                 {
-                    if (cube.GetComponent<PhotonView>().isMine == true)
+                    if (cube.GetComponent<PhotonView>().IsMine == true)
                     {
                         Inventory.instance.ForceAdd(boxBlaster);
                         Debug.Log("CONGRATULATIONS! YOU GOT THE BOX BLASTER!");
@@ -41,7 +43,7 @@ public class EasterEggs : Photon.MonoBehaviour
                 PlayerCube[] cubes = FindObjectsOfType<PlayerCube>();
                 foreach (PlayerCube cube in cubes)
                 {
-                    if (cube.GetComponent<PhotonView>().isMine == true)
+                    if (cube.GetComponent<PhotonView>().IsMine == true)
                     {
                         Debug.Log("SCORE BLASTER!!!");
                         StartCoroutine(ScoreBlaster());

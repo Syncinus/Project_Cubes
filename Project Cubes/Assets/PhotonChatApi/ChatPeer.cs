@@ -4,18 +4,18 @@
 // <copyright company="Exit Games GmbH">Photon Chat Api - Copyright (C) 2014 Exit Games GmbH</copyright>
 // ----------------------------------------------------------------------------------------------------------------------
 
-#if UNITY_4_7 || UNITY_5 || UNITY_5_0 || UNITY_5_1 || UNITY_5_3_OR_NEWER
-#define UNITY
+#if UNITY_4_7 || UNITY_5 || UNITY_5_3_OR_NEWER
+#define SUPPORTED_UNITY
 #endif
 
-namespace ExitGames.Client.Photon.Chat
+namespace Photon.Chat
 {
     using System;
     using System.Diagnostics;
     using System.Collections.Generic;
     using ExitGames.Client.Photon;
 
-    #if UNITY || NETFX_CORE
+    #if SUPPORTED_UNITY || NETFX_CORE
     using Hashtable = ExitGames.Client.Photon.Hashtable;
     using SupportClass = ExitGames.Client.Photon.SupportClass;
     #endif
@@ -40,14 +40,16 @@ namespace ExitGames.Client.Photon.Chat
 
         virtual internal bool IsProtocolSecure { get { return this.UsedProtocol == ConnectionProtocol.WebSocketSecure; } }
 
-
+        /// <summary> Chat Peer constructor. </summary>
+        /// <param name="listener">Chat listener implementation.</param>
+        /// <param name="protocol">Protocol to be used by the peer.</param>
         public ChatPeer(IPhotonPeerListener listener, ConnectionProtocol protocol) : base(listener, protocol)
         {
             this.ConfigUnitySockets();
         }
 
 
-        [Conditional("UNITY")]
+        [Conditional("SUPPORTED_UNITY")]
         private void ConfigUnitySockets()
         {
             #pragma warning disable 0162    // the library variant defines if we should use PUN's SocketUdp variant (at all)
@@ -55,7 +57,7 @@ namespace ExitGames.Client.Photon.Chat
             {
                 #if !UNITY_EDITOR && (UNITY_PS3 || UNITY_ANDROID)
                 this.SocketImplementationConfig[ConnectionProtocol.Udp] = typeof(SocketUdpNativeDynamic);
-                #elif !UNITY_EDITOR && UNITY_IPHONE
+                #elif !UNITY_EDITOR && UNITY_IOS
                 this.SocketImplementationConfig[ConnectionProtocol.Udp] = typeof(SocketUdpNativeStatic);
                 #elif !UNITY_EDITOR && (UNITY_WINRT)
                 // this automatically uses a separate assembly-file with Win8-style Socket usage (not possible in Editor)
@@ -64,7 +66,7 @@ namespace ExitGames.Client.Photon.Chat
                 this.SocketImplementationConfig[ConnectionProtocol.Udp] = udpSocket;
                 if (udpSocket == null)
                 {
-                    #if UNITY
+                    #if SUPPORTED_UNITY
                     UnityEngine.Debug.Log("Could not find a suitable C# socket class. This Photon3Unity3D.dll only supports native socket plugins.");
                     #endif
                 }
@@ -121,7 +123,9 @@ namespace ExitGames.Client.Photon.Chat
                     throw new ArgumentOutOfRangeException();
             }
         }
-
+        
+        /// <summary> Connects to NameServer. </summary>
+        /// <returns>If the connection attempt could be sent.</returns>
         public bool Connect()
         {
             if (this.DebugOut >= DebugLevel.INFO)
@@ -132,6 +136,8 @@ namespace ExitGames.Client.Photon.Chat
             return this.Connect(this.NameServerAddress, "NameServer");
         }
 
+        /// <summary> Authenticates on NameServer. </summary>
+        /// <returns>If the authentication operation request could be sent.</returns>
         public bool AuthenticateOnNameServer(string appId, string appVersion, string region, AuthenticationValues authValues)
         {
             if (this.DebugOut >= DebugLevel.INFO)
@@ -173,7 +179,7 @@ namespace ExitGames.Client.Photon.Chat
                 }
             }
 
-            return this.OpCustom((byte)ChatOperationCode.Authenticate, opParameters, true, (byte)0, this.IsEncryptionAvailable);
+            return this.SendOperation(ChatOperationCode.Authenticate, opParameters, new SendOptions() { Reliability = true, Encrypt = this.IsEncryptionAvailable });
         }
     }
 
@@ -220,7 +226,7 @@ namespace ExitGames.Client.Photon.Chat
     /// values to Photon which will verify them before granting access or disconnecting the client.
     ///
     /// The Photon Cloud Dashboard will let you enable this feature and set important server values for it.
-    /// https://www.photonengine.com/dashboard
+    /// https://dashboard.photonengine.com
     /// </remarks>
     public class AuthenticationValues
     {
@@ -283,26 +289,29 @@ namespace ExitGames.Client.Photon.Chat
             string ampersand = string.IsNullOrEmpty(this.AuthGetParameters) ? "" : "&";
             this.AuthGetParameters = string.Format("{0}{1}{2}={3}", this.AuthGetParameters, ampersand, System.Uri.EscapeDataString(key), System.Uri.EscapeDataString(value));
         }
-
+        /// <summary>
+        /// Transform this object into string.
+        /// </summary>
+        /// <returns>string representation of this object.</returns>
         public override string ToString()
         {
             return string.Format("AuthenticationValues UserId: {0}, GetParameters: {1} Token available: {2}", UserId, this.AuthGetParameters, Token != null);
         }
     }
 
-
+    /// <summary>Class for constants. Codes for parameters of Operations and Events.</summary>
     public class ParameterCode
     {
+        /// <summary>(224) Your application's ID: a name on your own Photon or a GUID on the Photon Cloud</summary>
         public const byte ApplicationId = 224;
         /// <summary>(221) Internally used to establish encryption</summary>
         public const byte Secret = 221;
+        /// <summary>(220) Version of your application</summary>
         public const byte AppVersion = 220;
         /// <summary>(217) This key's (byte) value defines the target custom authentication type/service the client connects with. Used in OpAuthenticate</summary>
         public const byte ClientAuthenticationType = 217;
-
         /// <summary>(216) This key's (string) value provides parameters sent to the custom authentication type/service the client connects with. Used in OpAuthenticate</summary>
         public const byte ClientAuthenticationParams = 216;
-
         /// <summary>(214) This key's (string or byte[]) value provides parameters sent to the custom authentication service setup in Photon Dashboard. Used in OpAuthenticate</summary>
         public const byte ClientAuthenticationData = 214;
         /// <summary>(210) Used for region values in OpAuth and OpGetRegions.</summary>
@@ -312,6 +321,7 @@ namespace ExitGames.Client.Photon.Chat
         /// <summary>(225) User's ID</summary>
         public const byte UserId = 225;
     }
+
     /// <summary>
     /// ErrorCode defines the default codes associated with Photon client/server communication.
     /// </summary>
@@ -327,7 +337,7 @@ namespace ExitGames.Client.Photon.Chat
         /// </summary>
         /// <remarks>
         /// Before you call any operations on the Cloud servers, the automated client workflow must complete its authorization.
-        /// In PUN, wait until State is: JoinedLobby (with AutoJoinLobby = true) or ConnectedToMaster (AutoJoinLobby = false)
+        /// In PUN, wait until State is: JoinedLobby or ConnectedToMaster
         /// </remarks>
         public const int OperationNotAllowedInCurrentState = -3;
 

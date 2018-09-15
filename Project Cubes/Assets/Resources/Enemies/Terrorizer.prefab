@@ -465,8 +465,11 @@ MonoBehaviour:
   typeOfEnemy: 4
   target: {fileID: 0}
   trueTarget: {fileID: 0}
+  color: {r: 1, g: 0, b: 0.627451, a: 1}
+  weapon: {fileID: 11400000, guid: 4258d4af02d520847abae55589b3ab9a, type: 2}
   enemyMode: 0
   BeamPossible: 0
+  createdParticles: 0
   damage: 5
   fireRate: 10
   range: 10
@@ -475,6 +478,9 @@ MonoBehaviour:
   dead: 0
   targetChangeable: 0
   playerDistanceCheckReady: 0
+  wType: 0
+  lineRenderer: {fileID: 0}
+  particlesColor: {r: 0, g: 0, b: 0, a: 0}
   switchState: 0
   orderlyStates: 0
   functionial: 1

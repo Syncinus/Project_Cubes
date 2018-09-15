@@ -1,13 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.Rendering.PostProcessing;
-using UnityEngine.AI;
 using EZCameraShake;
+using Photon.Pun;
+using Photon.Realtime;
 
-public class ShootShots : Photon.MonoBehaviour {
+public class ShootShots : MonoBehaviourPunCallbacks {
 
 	public bool particlesOn = true;
 	public float damage = 10f;
@@ -22,6 +21,7 @@ public class ShootShots : Photon.MonoBehaviour {
 	public bool beamHyperMode = false;
 	private bool ableToShoot = true;
 	private float lastTimeFired = 0f;
+
 	private float timeOfLastFire;
 	public ParticleSystem blast;
 	public ParticleSystem beam;
@@ -41,6 +41,7 @@ public class ShootShots : Photon.MonoBehaviour {
 	private float nextTimeToFire = 0f;
     private bool finishedGrowingLine = false;
     [HideInInspector] public bool ableToPlaySound = true;
+    [HideInInspector] public bool ableToFire = true;
     private bool createdParticles;
     private WeaponItem weapon;
     private LineRenderer lineRenderer;
@@ -56,7 +57,7 @@ public class ShootShots : Photon.MonoBehaviour {
 
     public void Start()
     {
-        if (photonView.isMine != true)
+        if (photonView.IsMine != true)
         {
             return;
         }
@@ -68,7 +69,7 @@ public class ShootShots : Photon.MonoBehaviour {
 
     public void FixedUpdate()
     {
-        if (photonView.isMine != true)
+        if (photonView.IsMine != true)
         {
             return;
         }
@@ -98,7 +99,7 @@ public class ShootShots : Photon.MonoBehaviour {
 
     public void Update()
     {
-        if (photonView.isMine != true)
+        if (photonView.IsMine != true)
         {
             return;
         }
@@ -123,14 +124,14 @@ public class ShootShots : Photon.MonoBehaviour {
 
         if (this.GetComponent<LineRenderer>().enabled == true)
         {
-            photonView.RPC("SetLinePositions", PhotonTargets.AllBuffered, this.transform.position, this.transform.position + (this.transform.forward * range));
+            photonView.RPC("SetLinePositions", RpcTarget.AllBuffered, this.transform.position, this.transform.position + (this.transform.forward * range));
 
             if (cube.weapon.type == WeaponType.Laser)
             {
                 RaycastHit hit;
                 if (Physics.Raycast(this.transform.position, this.transform.forward, out hit, range, ~(1 << LayerMask.NameToLayer("Pieces"))))
                 {
-                    photonView.RPC("SetLinePositions", PhotonTargets.AllBuffered, this.transform.position, hit.point);
+                    photonView.RPC("SetLinePositions", RpcTarget.AllBuffered, this.transform.position, hit.point);
                 }
             }
 
@@ -141,7 +142,7 @@ public class ShootShots : Photon.MonoBehaviour {
 
 
                     //StartCoroutine(DisableLineRenderer(cube.weapon.lineWidth));
-                    photonView.RPC("disableLineRenderer", PhotonTargets.AllBuffered, cube.weapon.lineWidth);
+                    photonView.RPC("disableLineRenderer", RpcTarget.AllBuffered, cube.weapon.lineWidth);
 
                     //StartCoroutine(disableLine());
                 }
@@ -149,71 +150,68 @@ public class ShootShots : Photon.MonoBehaviour {
 
             if (cube.weapon.type != WeaponType.Rail && cube.weapon.type != WeaponType.Laser)
             {
-                photonView.RPC("disableLineRenderer", PhotonTargets.AllBuffered, cube.weapon.lineWidth);
+                photonView.RPC("disableLineRenderer", RpcTarget.AllBuffered, cube.weapon.lineWidth);
             }
         }
 
 
-        if (beamHyperMode == false)
-        {
-
-
-            if (cube.weapon.auto == true)
+        if (ableToFire == true) {
+            if (beamHyperMode == false)
             {
-                if (Input.GetKey(KeyCode.Space) && Time.time >= nextTimeToFire && ableToShoot == true || Input.GetMouseButton(0) && Time.time >= nextTimeToFire && ableToShoot == true)
-                {
-                    if (cube.weapon.weaponHasRecharge == false)
-                    {
-                        nextTimeToFire = Time.time + 1f / fireRate;
-                        if (cube.weapon.type == WeaponType.Laser || cube.weapon.type == WeaponType.Rail)
-                        {
-                            nextTimeToFire += 0.05f;
-                        }
-                        lastTimeFired = Time.time;
-                        timeOfLastFire = Time.time;
-                    }
-                    else
-                    {
-                        nextTimeToFire = cube.weapon.weaponRechargeTime;
-                        if (cube.weapon.type == WeaponType.Laser || cube.weapon.type == WeaponType.Rail)
-                        {
-                            nextTimeToFire += 0.05f;
-                        }
-                        ableToShoot = false;
-                        //lastTimeFired = Time.time;
-                        //timeOfLastFire = Time.time;
-                    }
 
-                    Shoot(false);
+                if (cube.weapon.auto == true)
+                {
+                    if (Input.GetKey(KeyCode.Space) && Time.time >= nextTimeToFire && ableToShoot == true || Input.GetMouseButton(0) && Time.time >= nextTimeToFire && ableToShoot == true)
+                    {
+                        if (cube.weapon.weaponHasRecharge == false)
+                        {
+                            nextTimeToFire = Time.time + 1f / fireRate;
+                            lastTimeFired = Time.time;
+                            timeOfLastFire = Time.time;
+                        }
+                        else
+                        {
+                            nextTimeToFire = cube.weapon.weaponRechargeTime;
+                            if (cube.weapon.type == WeaponType.Laser || cube.weapon.type == WeaponType.Rail)
+                            {
+                                nextTimeToFire += 0.05f;
+                            }
+                            ableToShoot = false;
+                            //lastTimeFired = Time.time;
+                            //timeOfLastFire = Time.time;
+                        }
+
+                        Shoot(false);
+                    }
                 }
-            }
-            else
-            {
-                if (Input.GetKeyDown(KeyCode.Space) && Time.time >= nextTimeToFire && ableToShoot == true || Input.GetMouseButtonDown(0) && Time.time >= nextTimeToFire && ableToShoot == true)
+                else
                 {
-                    if (cube.weapon.weaponHasRecharge == false)
+                    if (Input.GetKeyDown(KeyCode.Space) && Time.time >= nextTimeToFire && ableToShoot == true || Input.GetMouseButtonDown(0) && Time.time >= nextTimeToFire && ableToShoot == true)
                     {
-                        nextTimeToFire = Time.time + 1f / fireRate;
-                        if (cube.weapon.type == WeaponType.Laser || cube.weapon.type == WeaponType.Rail)
+                        if (cube.weapon.weaponHasRecharge == false)
                         {
-                            nextTimeToFire += 0.05f;
+                            nextTimeToFire = Time.time + 1f / fireRate;
+                            if (cube.weapon.type == WeaponType.Laser || cube.weapon.type == WeaponType.Rail)
+                            {
+                                nextTimeToFire += 0.05f;
+                            }
+                            lastTimeFired = Time.time;
+                            timeOfLastFire = Time.time;
                         }
-                        lastTimeFired = Time.time;
-                        timeOfLastFire = Time.time;
-                    }
-                    else
-                    {
-                        nextTimeToFire = cube.weapon.weaponRechargeTime;
-                        if (cube.weapon.type == WeaponType.Laser || cube.weapon.type == WeaponType.Rail)
+                        else
                         {
-                            nextTimeToFire += 0.05f;
+                            nextTimeToFire = cube.weapon.weaponRechargeTime;
+                            if (cube.weapon.type == WeaponType.Laser || cube.weapon.type == WeaponType.Rail)
+                            {
+                                nextTimeToFire += 0.05f;
+                            }
+                            ableToShoot = false;
+                            //lastTimeFired = Time.time;
+                            //timeOfLastFire = Time.time;
                         }
-                        ableToShoot = false;
-                        //lastTimeFired = Time.time;
-                        //timeOfLastFire = Time.time;
-                    }
 
-                    Shoot(false);
+                        Shoot(false);
+                    }
                 }
             }
 
@@ -340,7 +338,7 @@ public class ShootShots : Photon.MonoBehaviour {
 
     public void Shoot(bool beamMode)
     {
-        if (photonView.isMine != true)
+        if (photonView.IsMine != true)
         {
             return;
         }
@@ -362,7 +360,7 @@ public class ShootShots : Photon.MonoBehaviour {
         line.startColor = new Color(color.x, color.y, color.z);
         line.endColor = new Color(color.x, color.y, color.z);
         //line.material = new Material(Shader.Find("Particles/Additive"));
-        line.SetVertexCount(2);
+        line.positionCount = 2;
     }
 
     [PunRPC] public void SetLinePositions(Vector3 startPos, Vector3 endPos)
@@ -376,7 +374,7 @@ public class ShootShots : Photon.MonoBehaviour {
 
     public IEnumerator shoot(bool beamMode)
     {
-        if (photonView.isMine != true)
+        if (photonView.IsMine != true)
         {
             yield return null;
         }
@@ -391,29 +389,30 @@ public class ShootShots : Photon.MonoBehaviour {
             if (cube.weapon.hasParticles == true)
             {
                 Vector3 fakeColor = new Vector3(ColorOfParticles.r, ColorOfParticles.g, ColorOfParticles.b);
-                if (beamMode == false)
-                {
-                    photonView.RPC("PlayParticles", PhotonTargets.AllBuffered, false, fakeColor);
-                }
                 if (beamMode == true)
+                {
+                    photonView.RPC("PlayParticles", RpcTarget.AllBuffered, true, fakeColor);
+                }
+                if (beamMode == false)
                 {
                     if (cube.weapon.hasParticles == true)
                     {
-                        if (createdParticles == true)
+                        if (createdParticles == false)
                         {
                             GameObject particles = PhotonNetwork.Instantiate("Particles/" + cube.weapon.particles.name, new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z) + this.transform.forward, this.transform.rotation, 0);
                             particles.transform.SetParent(this.transform);
                             particles.transform.localPosition = this.transform.position + this.transform.forward;
                             psystem = particles.GetComponent<ParticleSystem>();
+                            createdParticles = true;
                         }
-                        photonView.RPC("PlayParticles", PhotonTargets.AllBuffered, true, fakeColor);
+                        photonView.RPC("PlayParticles", RpcTarget.AllBuffered, false, fakeColor);
                     }
                 }
             }
 
             if (cube.weapon.sound != null)
             {
-                Debug.Log("Sound!");
+               //Debug.Log("Sound!");
                if (ableToPlaySound == true) {
                     if (cube.weapon.name == "Box Blaster")
                     {
@@ -554,17 +553,13 @@ public class ShootShots : Photon.MonoBehaviour {
                     List<RaycastHit> hits;
                     yield return new WaitForSeconds(cube.weapon.shotDelay);
 
-
-         
-
-
-                    hits = (Physics.RaycastAll(this.transform.position, this.transform.forward, range)).ToList();
+                    hits = (Physics.SphereCastAll(this.transform.position, cube.weapon.lineWidth, this.transform.forward, range)).ToList();
 
                     Color pColor = cube.weapon.particlesColor;
                     Vector3 fakeColor = new Vector3(pColor.r, pColor.g, pColor.b);
-                    photonView.RPC("SetUpLine", PhotonTargets.AllBuffered, fakeColor);
-                    photonView.RPC("SetLinePositions", PhotonTargets.AllBuffered, this.transform.position, this.transform.position + (this.transform.forward * range));
-                    photonView.RPC("growLineRenderer", PhotonTargets.AllBuffered, cube.weapon.lineWidth, cube.weapon.lineWidth);
+                    photonView.RPC("SetUpLine", RpcTarget.AllBuffered, fakeColor);
+                    photonView.RPC("SetLinePositions", RpcTarget.AllBuffered, this.transform.position, this.transform.position + (this.transform.forward * range));
+                    photonView.RPC("growLineRenderer", RpcTarget.AllBuffered, cube.weapon.lineWidth, cube.weapon.lineWidth);
 
                     if (cube.weapon.shakesCamera == true)
                     {
@@ -656,16 +651,16 @@ public class ShootShots : Photon.MonoBehaviour {
 
                     Color pColorx = cube.weapon.particlesColor;
                     Vector3 fakeColorx = new Vector3(pColorx.r, pColorx.g, pColorx.b);
-                    photonView.RPC("SetUpLine", PhotonTargets.AllBuffered, fakeColorx);
-                    photonView.RPC("SetLinePositions", PhotonTargets.AllBuffered, this.transform.position, this.transform.position + (this.transform.forward * range));
-                    photonView.RPC("growLineRenderer", PhotonTargets.AllBuffered, cube.weapon.lineWidth, cube.weapon.lineWidth);
+                    photonView.RPC("SetUpLine", RpcTarget.AllBuffered, fakeColorx);
+                    photonView.RPC("SetLinePositions", RpcTarget.AllBuffered, this.transform.position, this.transform.position + (this.transform.forward * range));
+                    photonView.RPC("growLineRenderer", RpcTarget.AllBuffered, cube.weapon.lineWidth, cube.weapon.lineWidth);
 
                     if (cube.weapon.shakesCamera == true)
                     {
                         StartCoroutine(ShakeCamera());
                     }
-
-                    if (Physics.Raycast(shooter.transform.position, shooter.transform.forward, out hit, properRange, ~(1 << LayerMask.NameToLayer("Pieces"))))
+                    
+                    if (Physics.SphereCast(shooter.transform.position, cube.weapon.lineWidth, shooter.transform.forward, out hit, properRange, ~(1 << LayerMask.NameToLayer("Pieces"))))
                     {
                         if (hit.transform.name == "Piece (1)" || hit.transform.name == "Piece (2)" || hit.transform.name == "Piece (3)" || hit.transform.name == "Piece (4)")
                             Debug.Log(hit.transform.name);
@@ -688,7 +683,7 @@ public class ShootShots : Photon.MonoBehaviour {
                             }
                         }
 
-                        photonView.RPC("SetLinePositions", PhotonTargets.All, this.transform.position, hit.point);
+                        photonView.RPC("SetLinePositions", RpcTarget.AllBuffered, this.transform.position, hit.point);
 
 
                         DestroyableObject target = hit.transform.GetComponent<DestroyableObject>();

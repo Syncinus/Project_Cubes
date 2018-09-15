@@ -4,8 +4,11 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 using System.Linq;
+using Photon.Pun;
+using Photon.Realtime;
 
-public class PlayerCube : Photon.PunBehaviour {
+
+public class PlayerCube : MonoBehaviourPunCallbacks {
 
 	public Rigidbody rigid;
 	public float smooth = 1.0f;
@@ -30,7 +33,7 @@ public class PlayerCube : Photon.PunBehaviour {
 
 
 	public void Start() {
-		if (photonView.isMine != true && PhotonNetwork.connected == true) {
+		if (photonView.IsMine != true) {
 			return;
 		}
 
@@ -51,7 +54,7 @@ public class PlayerCube : Photon.PunBehaviour {
 
     public void Update()
     {
-        if (photonView.isMine != true)
+        if (photonView.IsMine != true)
         {
             return;
         }
@@ -144,7 +147,7 @@ public class PlayerCube : Photon.PunBehaviour {
         //armor.transform.localPosition = new Vector3 (0f, 0f, 0f);
         //}
 
-        if (photonView.isMine != true && PhotonNetwork.connected == true) {
+        if (photonView.IsMine != true) {
             return;
 		}
 

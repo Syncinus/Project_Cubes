@@ -1,8 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
+using Photon.Realtime;
 
-public class SpawnSystem : Photon.MonoBehaviour {
+public class SpawnSystem : MonoBehaviourPunCallbacks {
 
 	GameMapGenerator map;
 	EnemySpawner eSpawner;

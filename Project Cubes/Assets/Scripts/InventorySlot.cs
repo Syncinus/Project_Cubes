@@ -14,6 +14,8 @@ public class InventorySlot : MonoBehaviour, IPointerClickHandler {
 	public WeaponItem item;
     public int Count;
 
+    public float startingY;
+
 	public void AddItem(WeaponItem newItem) {
 		item = newItem;
 

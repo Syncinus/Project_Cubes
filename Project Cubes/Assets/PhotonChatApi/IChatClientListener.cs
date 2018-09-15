@@ -4,8 +4,11 @@
 // <copyright company="Exit Games GmbH">Photon Chat Api - Copyright (C) 2014 Exit Games GmbH</copyright>
 // ----------------------------------------------------------------------------------------------------------------------
 
-namespace ExitGames.Client.Photon.Chat
+
+namespace Photon.Chat
 {
+    using ExitGames.Client.Photon;
+
     /// <summary>
     /// Callback interface for Chat client side. Contains callback methods to notify your app about updates.
     /// Must be provided to new ChatClient in constructor

@@ -4,9 +4,9 @@
 // <copyright company="Exit Games GmbH">Photon Chat Api - Copyright (C) 2014 Exit Games GmbH</copyright>
 // ----------------------------------------------------------------------------------------------------------------------
 
-namespace ExitGames.Client.Photon.Chat
+namespace Photon.Chat
 {
-    /// <summary>Enumaration of causes for Disconnects (used in LoadBalancingClient.DisconnectedCause).</summary>
+    /// <summary>Enumaration of causes for Disconnects (used in <see cref="ChatClient.DisconnectedCause"/>).</summary>
     /// <remarks>Read the individual descriptions to find out what to do about this type of disconnect.</remarks>
     public enum ChatDisconnectCause
     {
@@ -26,7 +26,7 @@ namespace ExitGames.Client.Photon.Chat
         InvalidAuthentication,
         /// <summary>OnOperationResponse: Authenticate (temporarily) failed when using a Photon Cloud subscription without CCU Burst. Update your subscription.</summary>
         MaxCcuReached,
-        /// <summary>OnOperationResponse: Authenticate when the app's Photon Cloud subscription is locked to some (other) region(s). Update your subscription or master server address.</summary>
+        /// <summary>OnOperationResponse: Authenticate when the app's Photon Cloud subscription is locked to some (other) region(s). Update your subscription or change region.</summary>
         InvalidRegion,
         /// <summary>OnOperationResponse: Operation that's (currently) not available for this client (not authorized usually). Only tracked for op Authenticate.</summary>
         OperationNotAllowedInCurrentState,

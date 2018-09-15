@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+using Photon.Pun;
+using Photon.Realtime;
 
-public class UpgradeSystem : Photon.MonoBehaviour {
+public class UpgradeSystem : MonoBehaviourPunCallbacks {
 
     public PlayerCube cubeToUpgrade;
     public Text SpeedUpgradeText;
