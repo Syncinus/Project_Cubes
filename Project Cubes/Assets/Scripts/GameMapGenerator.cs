@@ -143,19 +143,25 @@ public class GameMapGenerator : MonoBehaviour {
 			if (randomCoord != currentMap.mapCentre && MapIsFullyAccessable (obstacleMap, currentObstacleCount)) {
 				float obstacleHeight = Mathf.Lerp (currentMap.minObstacleHeight, currentMap.maxObstacleHeight, (float)prng.NextDouble ());
 				Vector3 obstaclePosition = CoordToPosition (randomCoord.x, randomCoord.y);
+                Transform obstacleTile = GetTileFromPosition(obstaclePosition).Find("Octagon");
 
-				Transform newObstacle = Instantiate (obstaclePrefab, obstaclePosition + Vector3.up * obstacleHeight / 2, Quaternion.identity) as Transform;
+				Transform newObstacle = Instantiate (obstaclePrefab, obstaclePosition + Vector3.up * obstacleHeight / 2f, Quaternion.identity) as Transform;
 				newObstacle.SetParent (mapHolder);
-				newObstacle.localScale = new Vector3 ((0.9f - outlinePercent) * tileSize, obstacleHeight, (0.9f - outlinePercent) * tileSize);
+				newObstacle.localScale = new Vector3 ((1.01f - outlinePercent) * tileSize, obstacleHeight, (1.01f - outlinePercent) * tileSize);
 
 
-				Renderer obstacleRenderer = newObstacle.GetComponent<Renderer> ();
+				Renderer obstacleRenderer = newObstacle.transform.Find("Octagon").GetComponent<Renderer> ();
+                Renderer tileRenderer = obstacleTile.GetComponent<Renderer>();
+
 				Material obstacleMaterial = new Material (obstacleRenderer.sharedMaterial);
 				float colorPercent = randomCoord.y / (float) currentMap.mapSize.y;
+ 
 				obstacleMaterial.color = Color.Lerp (currentMap.foregroundColor, currentMap.backgroundColor, colorPercent);
                 
 				obstacleRenderer.sharedMaterial = obstacleMaterial;
+                tileRenderer.sharedMaterial = obstacleMaterial;
 
+                /*
                 foreach (Transform line in newObstacle)
                 {
                     Renderer lineRenderer = line.GetComponent<Renderer>();
@@ -165,6 +171,7 @@ public class GameMapGenerator : MonoBehaviour {
 
                     lineRenderer.sharedMaterial = lineMaterial;
                 }
+                */
 
                 allOpenCoords.Remove (randomCoord);
                 grid[randomCoord.x, randomCoord.y].walkable = false;

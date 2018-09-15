@@ -182,6 +182,7 @@ MonoBehaviour:
   typeOfEnemy: 0
   target: {fileID: 0}
   trueTarget: {fileID: 0}
+  weapon: {fileID: 0}
   enemyMode: 0
   BeamPossible: 0
   damage: 1
@@ -189,9 +190,6 @@ MonoBehaviour:
   range: 10
   attackDistance: 7.5
   ScoreGiven: 1
-  freezePointsEnabled: 0
-  freezePoints: []
-  blast: {fileID: 198825489363406882}
   dead: 0
   targetChangeable: 0
   playerDistanceCheckReady: 0

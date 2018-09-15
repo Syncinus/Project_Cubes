@@ -175,7 +175,7 @@ public class EnemySpawner : Photon.MonoBehaviour, IPunObservable {
 
 		Transform spawnTile = map.GetRandomOpenTile ();
 
-		Material tileMat = spawnTile.GetComponent<Renderer> ().material;
+		Material tileMat = spawnTile.transform.Find("Octagon").GetComponent<Renderer> ().material;
 
         Color initialColor = tileMat.color;
 		Color flashColor = Color.red;

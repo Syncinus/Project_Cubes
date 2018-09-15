@@ -9,10 +9,9 @@ public class EnemyAI : MonoBehaviour
 {
 
     #region Depracted
-    [HideInInspector] public EnemyType typeOfEnemy;
-    [HideInInspector] public enum EnemyType { Blue, Green, Yellow, Orange, Black };
+    [HideInInspector] [System.Obsolete] public EnemyType typeOfEnemy;
+    [HideInInspector] [System.Obsolete] public enum EnemyType { Blue, Green, Yellow, Orange, Black };
     #endregion
-
 
     public IAstarAI ai;
     AIDestinationSetter setter;
@@ -23,7 +22,6 @@ public class EnemyAI : MonoBehaviour
     public enum Mode  { Assault, Avoid }
 
     public WeaponItem weapon;
-
 
     public Mode enemyMode = Mode.Assault;
     public bool BeamPossible = false;
@@ -50,10 +48,7 @@ public class EnemyAI : MonoBehaviour
     public void Die()
     {
         dead = true;
-        if (OnDeath != null)
-        {
-            OnDeath();
-        }
+        OnDeath?.Invoke();
         ScoreSystem.Score += ScoreGiven;
         GameObject.Destroy(this.gameObject);
     }
@@ -87,7 +82,9 @@ public class EnemyAI : MonoBehaviour
 
         if (weapon != null)
         {
-
+            damage = weapon.damage;
+            fireRate = weapon.firerate;
+            range = weapon.range;
         }
 
 
@@ -219,29 +216,35 @@ public class EnemyAI : MonoBehaviour
             this.transform.Find("Beam").GetComponent<ParticleSystem>().Play();
         }
 
-        if (Physics.Raycast(this.transform.position, this.transform.forward, out hit, range))
+        if (weapon == null)
         {
-            DestroyableObject desObj = hit.transform.GetComponent<DestroyableObject>();
-            Rigidbody hitRigid = hit.transform.GetComponent<Rigidbody>();
-
-            if (hit.transform.GetComponent<EnemyAI>() == null)
+            if (Physics.Raycast(this.transform.position, this.transform.forward, out hit, range))
             {
+                DestroyableObject desObj = hit.transform.GetComponent<DestroyableObject>();
+                Rigidbody hitRigid = hit.transform.GetComponent<Rigidbody>();
 
-                if (desObj != null)
+                if (hit.transform.GetComponent<EnemyAI>() == null)
                 {
-                    if (beam == false)
+
+                    if (desObj != null)
                     {
-                        desObj.TakeDamage(damage, hit.point);
-                    } else
-                    {
-                        desObj.TakeDamage(1000f, hit.point);
-                    }
-                    if (hitRigid != null)
-                    {
-                        hitRigid.AddForce(-hit.point * 10);
+                        if (beam == false)
+                        {
+                            desObj.TakeDamage(damage, hit.point);
+                        }
+                        else
+                        {
+                            desObj.TakeDamage(1000f, hit.point);
+                        }
+                        if (hitRigid != null)
+                        {
+                            hitRigid.AddForce(-hit.point * 10);
+                        }
                     }
                 }
             }
+        } else
+        {
         }
     }
 

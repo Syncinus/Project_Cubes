@@ -133,6 +133,7 @@ public class ShootShots : Photon.MonoBehaviour {
                     photonView.RPC("SetLinePositions", PhotonTargets.AllBuffered, this.transform.position, hit.point);
                 }
             }
+
             if (cube.weapon.weaponHasRecharge == true)
             {
                 if (lastTimeFired >= timeOfLastFire + (cube.weapon.weaponRechargeTime / 2) && finishedGrowingLine == true)
@@ -140,10 +141,15 @@ public class ShootShots : Photon.MonoBehaviour {
 
 
                     //StartCoroutine(DisableLineRenderer(cube.weapon.lineWidth));
-                    photonView.RPC("disableLineRenderer", PhotonTargets.All, cube.weapon.lineWidth);
+                    photonView.RPC("disableLineRenderer", PhotonTargets.AllBuffered, cube.weapon.lineWidth);
 
                     //StartCoroutine(disableLine());
                 }
+            }
+
+            if (cube.weapon.type != WeaponType.Rail && cube.weapon.type != WeaponType.Laser)
+            {
+                photonView.RPC("disableLineRenderer", PhotonTargets.AllBuffered, cube.weapon.lineWidth);
             }
         }
 
@@ -407,6 +413,7 @@ public class ShootShots : Photon.MonoBehaviour {
 
             if (cube.weapon.sound != null)
             {
+                Debug.Log("Sound!");
                if (ableToPlaySound == true) {
                     if (cube.weapon.name == "Box Blaster")
                     {
@@ -471,6 +478,8 @@ public class ShootShots : Photon.MonoBehaviour {
                         GameObject impact = Instantiate(impactEffect, originPoint, Quaternion.LookRotation(hit.normal));
                         var main = impact.GetComponent<ParticleSystem>().main;
                         main.startColor = cube.weapon.particlesColor;
+
+                        impact.transform.Find("Light").GetComponent<Light>().color = cube.weapon.particlesColor;
                         impact.transform.SetParent(GameObject.Find("TempStorage").transform);
 
 

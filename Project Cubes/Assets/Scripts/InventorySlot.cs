@@ -8,8 +8,11 @@ using UnityEngine.Events;
 public class InventorySlot : MonoBehaviour, IPointerClickHandler {
 
 	public Image icon;
+
+    public Text countText;
 	
 	public WeaponItem item;
+    public int Count;
 
 	public void AddItem(WeaponItem newItem) {
 		item = newItem;

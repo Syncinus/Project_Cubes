@@ -129,6 +129,7 @@ GameObject:
   - component: {fileID: 114591341815395534}
   - component: {fileID: 114942571160186518}
   - component: {fileID: 120823622573371638}
+  - component: {fileID: 114576965075254964}
   m_Layer: 9
   m_Name: PlayerCube
   m_TagString: Untagged
@@ -486,11 +487,23 @@ MonoBehaviour:
   - 270
   - 315
   weapon: {fileID: 11400000, guid: 69e1518580db3c24ba5c5654c8453265, type: 2}
+  ableToMove: 1
   timeScinceLastTimeTakingDamage: 0
   moving: 0
   rotation: 0
   proxyCube: {fileID: 1001599491668214}
   realPosition: {x: 0, y: 0, z: 0}
+--- !u!114 &114576965075254964
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1960394249213178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21a9d28361981cd43bb4e7851998f8bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114591341815395534
 MonoBehaviour:
   m_ObjectHideFlags: 1
