@@ -78,6 +78,7 @@ public class EnemyAI : MonoBehaviourPunCallbacks
             lineRenderer = this.gameObject.AddComponent<LineRenderer>();
         }
         lineRenderer.enabled = false;
+        lineRenderer.material = Resources.Load<Material>("Materials/LineMaterial");
         //this.GetComponent<Renderer>().material.color = color;
         oldTarget = target;
         StartCoroutine(UpdatePath());

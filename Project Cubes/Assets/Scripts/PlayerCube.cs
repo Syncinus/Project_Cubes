@@ -58,7 +58,7 @@ public class PlayerCube : MonoBehaviourPunCallbacks {
         {
             return;
         }
-
+        
         if (Input.GetKeyDown(KeyCode.K))
         {
             this.GetComponent<DestroyableObject>().TakeDamage(30000, this.transform.position);

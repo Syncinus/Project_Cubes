@@ -26,7 +26,7 @@ MonoBehaviour:
     diffuseGlobalDimmer: 1
     specularGlobalDimmer: 1
     enableForwardRenderingOnly: 0
-    enableDepthPrepassWithDeferredRendering: 0
+    enableDepthPrepassWithDeferredRendering: 1
     enableTransparentPrepass: 1
     enableMotionVectors: 1
     enableObjectMotionVectors: 1
@@ -39,7 +39,7 @@ MonoBehaviour:
     enableAsyncCompute: 1
     enableOpaqueObjects: 1
     enableTransparentObjects: 1
-    enableMSAA: 0
+    enableMSAA: 1
     enableShadowMask: 1
     lightLoopSettings:
       enableTileAndCluster: 1
@@ -55,7 +55,7 @@ MonoBehaviour:
     supportSSAO: 1
     supportSubsurfaceScattering: 1
     supportOnlyForward: 0
-    increaseSssSampleCount: 0
+    increaseSssSampleCount: 1
     supportVolumetrics: 1
     increaseResolutionOfVolumetrics: 1
     supportRuntimeDebugDisplay: 1
@@ -64,7 +64,7 @@ MonoBehaviour:
     supportMSAA: 0
     msaaSampleCount: 1
     supportMotionVectors: 1
-    supportStereo: 0
+    supportStereo: 1
     lightLoopSettings:
       cookieSize: 128
       cookieTexArraySize: 16
@@ -91,4 +91,5 @@ MonoBehaviour:
       atlasWidth: 4096
       atlasHeight: 4096
   allowShaderVariantStripping: 1
-  diffusionProfileSettings: {fileID: 0}
+  diffusionProfileSettings: {fileID: 11400000, guid: 089b315910ceac742afba27acf96f05b,
+    type: 2}

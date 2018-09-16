@@ -3,7 +3,7 @@
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -23,10 +23,13 @@ MonoBehaviour:
   - {fileID: 114958247219231614}
   - {fileID: 114693596258104532}
   - {fileID: 114876954208142270}
+  - {fileID: 114279708853644944}
+  - {fileID: 114584092381644700}
+  - {fileID: 114800632703156492}
 --- !u!114 &114087508483150070
 MonoBehaviour:
   m_ObjectHideFlags: 3
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -51,7 +54,7 @@ MonoBehaviour:
 --- !u!114 &114126291372143750
 MonoBehaviour:
   m_ObjectHideFlags: 3
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -72,7 +75,7 @@ MonoBehaviour:
 --- !u!114 &114204029384973898
 MonoBehaviour:
   m_ObjectHideFlags: 3
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -104,7 +107,7 @@ MonoBehaviour:
     value: 0.5
   color:
     overrideState: 1
-    value: {r: 4, g: 4, b: 4, a: 1}
+    value: {r: 1.5157166, g: 0.7727183, b: 0.7727183, a: 1}
   fastMode:
     overrideState: 0
     value: 0
@@ -115,10 +118,37 @@ MonoBehaviour:
   dirtIntensity:
     overrideState: 1
     value: 1
+--- !u!114 &114279708853644944
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68966c50a26529148a161de977c30b30, type: 3}
+  m_Name: Streak
+  m_EditorClassIdentifier: 
+  active: 0
+  enabled:
+    overrideState: 1
+    value: 1
+  threshold:
+    overrideState: 1
+    value: 1
+  stretch:
+    overrideState: 1
+    value: 0.75
+  intensity:
+    overrideState: 1
+    value: 0.15
+  tint:
+    overrideState: 1
+    value: {r: 1, g: 0.50980395, b: 0.50980395, a: 1}
 --- !u!114 &114452271117359290
 MonoBehaviour:
   m_ObjectHideFlags: 3
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -163,10 +193,64 @@ MonoBehaviour:
   quality:
     overrideState: 0
     value: 2
+--- !u!114 &114584092381644700
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94488653724e0384d94b7a5e7bc68a14, type: 3}
+  m_Name: Isoline
+  m_EditorClassIdentifier: 
+  active: 1
+  enabled:
+    overrideState: 1
+    value: 1
+  baseAxis:
+    overrideState: 1
+    value: {x: 0, y: 0, z: 0}
+  lineInterval:
+    overrideState: 1
+    value: 1
+  lineOffset:
+    overrideState: 0
+    value: 0
+  lineScroll:
+    overrideState: 0
+    value: 1
+  lineColor:
+    overrideState: 1
+    value: {r: 1.5, g: 0.2, b: 0.2, a: 1}
+  lineWidth:
+    overrideState: 1
+    value: 1.5
+  sourceContribution:
+    overrideState: 1
+    value: 0
+  backgroundColor:
+    overrideState: 1
+    value: {r: 0, g: 0, b: 0, a: 0}
+  modulationStrength:
+    overrideState: 1
+    value: 1
+  modulationFrequency:
+    overrideState: 1
+    value: 0.3
+  modulationWidth:
+    overrideState: 1
+    value: 0.3
+  modulationOffset:
+    overrideState: 0
+    value: 0
+  modulationScroll:
+    overrideState: 0
+    value: 1
 --- !u!114 &114604690230926320
 MonoBehaviour:
   m_ObjectHideFlags: 3
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -183,7 +267,7 @@ MonoBehaviour:
     value: 0
   color:
     overrideState: 1
-    value: {r: 0, g: 0, b: 0, a: 1}
+    value: {r: 0.11764706, g: 0, b: 0, a: 1}
   center:
     overrideState: 1
     value: {x: 0.5, y: 0.5}
@@ -209,7 +293,7 @@ MonoBehaviour:
 --- !u!114 &114693596258104532
 MonoBehaviour:
   m_ObjectHideFlags: 3
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -242,10 +326,62 @@ MonoBehaviour:
   speedDown:
     overrideState: 0
     value: 1
+--- !u!114 &114800632703156492
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc9ba51565624d441a5a5234bb0e6647, type: 3}
+  m_Name: Overlay
+  m_EditorClassIdentifier: 
+  active: 1
+  enabled:
+    overrideState: 1
+    value: 1
+  gradient:
+    overrideState: 1
+    value:
+      serializedVersion: 2
+      key0: {r: 0, g: 0, b: 0, a: 1}
+      key1: {r: 1, g: 1, b: 1, a: 1}
+      key2: {r: 0, g: 0, b: 0, a: 0}
+      key3: {r: 0, g: 0, b: 0, a: 0}
+      key4: {r: 0, g: 0, b: 0, a: 0}
+      key5: {r: 0, g: 0, b: 0, a: 0}
+      key6: {r: 0, g: 0, b: 0, a: 0}
+      key7: {r: 0, g: 0, b: 0, a: 0}
+      ctime0: 0
+      ctime1: 65535
+      ctime2: 0
+      ctime3: 0
+      ctime4: 0
+      ctime5: 0
+      ctime6: 0
+      ctime7: 0
+      atime0: 0
+      atime1: 65535
+      atime2: 0
+      atime3: 0
+      atime4: 0
+      atime5: 0
+      atime6: 0
+      atime7: 0
+      m_Mode: 0
+      m_NumColorKeys: 2
+      m_NumAlphaKeys: 2
+  opacity:
+    overrideState: 1
+    value: 0.1
+  angle:
+    overrideState: 1
+    value: 3
 --- !u!114 &114843410768362488
 MonoBehaviour:
   m_ObjectHideFlags: 3
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -278,7 +414,7 @@ MonoBehaviour:
 --- !u!114 &114860535153449452
 MonoBehaviour:
   m_ObjectHideFlags: 3
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -314,7 +450,7 @@ MonoBehaviour:
 --- !u!114 &114876954208142270
 MonoBehaviour:
   m_ObjectHideFlags: 3
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -1624,7 +1760,7 @@ MonoBehaviour:
 --- !u!114 &114937050253650448
 MonoBehaviour:
   m_ObjectHideFlags: 3
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -1651,7 +1787,7 @@ MonoBehaviour:
 --- !u!114 &114958247219231614
 MonoBehaviour:
   m_ObjectHideFlags: 3
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1

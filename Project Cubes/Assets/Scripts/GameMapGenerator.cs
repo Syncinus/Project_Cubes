@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System.Linq;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -38,6 +39,7 @@ public class GameMapGenerator : MonoBehaviour {
 	public float tileSize;
 
 	List<Coord> allTileCoords;
+    List<GameObject> staticBatchingTiles;
 	Queue<Coord> shuffledTileCoords;
 	Queue<Coord> shuffledOpenTileCoords;
 	Transform[,] tileMap;
@@ -97,6 +99,7 @@ public class GameMapGenerator : MonoBehaviour {
 		//GetComponent<Rigidbody> ()?.AddForce (Vector3.zero);
 		
 		allTileCoords = new List<Coord> ();
+        staticBatchingTiles = new List<GameObject>();
 		for (int x = 0; x < currentMap.mapSize.x; x++) {
 			for (int y = 0; y < currentMap.mapSize.y; y++) {
                 //Vector3 worldPoint = worldBottomLeft + Vector3.right * (x * nodeDiameter + tileSize) + Vector3.forward * (y * nodeDiameter + tileSize);
@@ -121,6 +124,7 @@ public class GameMapGenerator : MonoBehaviour {
 			for (int y = 0; y < currentMap.mapSize.y; y++) {
 				Vector3 tilePosition = CoordToPosition (x, y);
 				Transform newTile = Instantiate (tilePrefab, tilePosition, Quaternion.Euler (Vector3.right * 90)) as Transform;
+                staticBatchingTiles.Add(newTile.gameObject);
 				newTile.localScale = Vector3.one * (1 - outlinePercent) * tileSize;
 				newTile.SetParent (mapHolder);
 				tileMap [x, y] = newTile;
@@ -147,7 +151,7 @@ public class GameMapGenerator : MonoBehaviour {
 
 				Transform newObstacle = Instantiate (obstaclePrefab, obstaclePosition + Vector3.up * obstacleHeight / 2f, Quaternion.identity) as Transform;
 				newObstacle.SetParent (mapHolder);
-				newObstacle.localScale = new Vector3 ((1.01f - outlinePercent) * tileSize, obstacleHeight, (1.02f - outlinePercent) * tileSize);
+				newObstacle.localScale = new Vector3 ((1.01f - outlinePercent) * tileSize, obstacleHeight, (1.01f - outlinePercent) * tileSize);
 
 
 				Renderer obstacleRenderer = newObstacle.transform.Find("Octagon").GetComponent<Renderer> ();
@@ -202,6 +206,8 @@ public class GameMapGenerator : MonoBehaviour {
 
         //navmeshFloor.localScale = new Vector3 (maxMapSize.x, maxMapSize.y) * tileSize;
         this.GetComponent<AstarPath>().enabled = true;
+        //GameObject[] staticBatchingObjects = staticBatchingTiles.ToArray();
+        StaticBatchingUtility.Combine(mapHolder.gameObject);
         //AstarPath.active.Scan();
 	}
 
