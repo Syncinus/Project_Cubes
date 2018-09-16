@@ -147,7 +147,7 @@ public class GameMapGenerator : MonoBehaviour {
 
 				Transform newObstacle = Instantiate (obstaclePrefab, obstaclePosition + Vector3.up * obstacleHeight / 2f, Quaternion.identity) as Transform;
 				newObstacle.SetParent (mapHolder);
-				newObstacle.localScale = new Vector3 ((1.01f - outlinePercent) * tileSize, obstacleHeight, (1.01f - outlinePercent) * tileSize);
+				newObstacle.localScale = new Vector3 ((1.01f - outlinePercent) * tileSize, obstacleHeight, (1.02f - outlinePercent) * tileSize);
 
 
 				Renderer obstacleRenderer = newObstacle.transform.Find("Octagon").GetComponent<Renderer> ();
@@ -202,7 +202,7 @@ public class GameMapGenerator : MonoBehaviour {
 
         //navmeshFloor.localScale = new Vector3 (maxMapSize.x, maxMapSize.y) * tileSize;
         this.GetComponent<AstarPath>().enabled = true;
-        AstarPath.active.Scan();
+        //AstarPath.active.Scan();
 	}
 
     public List<Node> GetNeighbors(Node node)
