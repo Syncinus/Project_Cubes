@@ -24,7 +24,6 @@ MonoBehaviour:
   - {fileID: 114693596258104532}
   - {fileID: 114876954208142270}
   - {fileID: 114279708853644944}
-  - {fileID: 114584092381644700}
   - {fileID: 114800632703156492}
 --- !u!114 &114087508483150070
 MonoBehaviour:
@@ -193,60 +192,6 @@ MonoBehaviour:
   quality:
     overrideState: 0
     value: 2
---- !u!114 &114584092381644700
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94488653724e0384d94b7a5e7bc68a14, type: 3}
-  m_Name: Isoline
-  m_EditorClassIdentifier: 
-  active: 1
-  enabled:
-    overrideState: 1
-    value: 1
-  baseAxis:
-    overrideState: 1
-    value: {x: 0, y: 0, z: 0}
-  lineInterval:
-    overrideState: 1
-    value: 1
-  lineOffset:
-    overrideState: 0
-    value: 0
-  lineScroll:
-    overrideState: 0
-    value: 1
-  lineColor:
-    overrideState: 1
-    value: {r: 1.5, g: 0.2, b: 0.2, a: 1}
-  lineWidth:
-    overrideState: 1
-    value: 1.5
-  sourceContribution:
-    overrideState: 1
-    value: 0
-  backgroundColor:
-    overrideState: 1
-    value: {r: 0, g: 0, b: 0, a: 0}
-  modulationStrength:
-    overrideState: 1
-    value: 1
-  modulationFrequency:
-    overrideState: 1
-    value: 0.3
-  modulationWidth:
-    overrideState: 1
-    value: 0.3
-  modulationOffset:
-    overrideState: 0
-    value: 0
-  modulationScroll:
-    overrideState: 0
-    value: 1
 --- !u!114 &114604690230926320
 MonoBehaviour:
   m_ObjectHideFlags: 3

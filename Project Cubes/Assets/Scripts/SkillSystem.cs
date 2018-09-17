@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.Rendering.PostProcessing;
 using System;
 using System.Linq;
 using UnityEngine;
@@ -16,6 +17,8 @@ public class SkillSystem : MonoBehaviourPunCallbacks {
 	public float shockwaveDamage = 5000f;
     private GameObject cameraHolderForShaking;
 	public ParticleSystem shockwaveParticles;
+
+    Kino.PostProcessing.Isoline line;
 
     public void Start()
     {
@@ -60,27 +63,61 @@ public class SkillSystem : MonoBehaviourPunCallbacks {
         {
             return;
         }
-        if (shockwaveReady == true) {
-			shockwaveParticles.Play ();
-            StartCoroutine(ShakeCamera(4f, 4f, 0.1f, 2.0f));
-			RaycastHit[] hits = Physics.SphereCastAll (this.transform.position, 10f, this.transform.position, 10f);
-
-			foreach (RaycastHit hit in hits) {
-				if (hit.transform.GetComponent<PlayerCube> () == null) {
-					DestroyableObject des = hit.transform.GetComponent<DestroyableObject> ();
-					if (des != null) {
-						des.TakeDamage (shockwaveDamage, -hit.point);
-						Rigidbody rigidb = hit.transform.GetComponent<Rigidbody> ();
-						if (rigidb != null) {
-							rigidb.AddForce (-hit.normal * 500f);
-						}
-					}
-				}
-			}
-			shockwaveReady = false;
-			Invoke ("RechargeShockwave", shockwaveRecharge);
-		}
+        StartCoroutine(shockwave());
 	}
+
+    IEnumerator shockwave()
+    {
+        if (shockwaveReady == true)
+        {
+            //shockwaveParticles.Play ();
+
+            Camera.main.GetComponent<SonarFxSwitcher>().Toggle();
+
+            yield return new WaitForSeconds(10f);
+
+            PostProcessVolume volume = Camera.main.GetComponent<PostProcessVolume>();
+            PostProcessProfile profile = volume.profile;
+            profile.TryGetSettings(out line);
+
+            line.enabled.value = true;
+            line.active = true;
+
+            yield return new WaitForSeconds(2f);
+
+            line.enabled.value = false;
+            line.active = false;
+
+            yield return new WaitForSeconds(0.1f);
+
+            shakeCamera(4f, 4f, 0.1f, 2.0f);
+            RaycastHit[] hits = Physics.SphereCastAll(this.transform.position, 100f, Vector3.zero, 10f);
+
+            foreach (RaycastHit hit in hits)
+            {
+                if (hit.transform.GetComponent<PlayerCube>() == null)
+                {
+                    DestroyableObject des = hit.transform.GetComponent<DestroyableObject>();
+                    if (des != null)
+                    {
+                        des.TakeDamage(shockwaveDamage, -hit.point);
+                        Rigidbody rigidb = hit.transform.GetComponent<Rigidbody>();
+                        if (rigidb != null)
+                        {
+                            rigidb.AddForce(-hit.normal * 500f);
+                        }
+                    }
+                }
+            }
+            shockwaveReady = false;
+            Invoke("RechargeShockwave", shockwaveRecharge);
+        }
+    }
+
+    public void shakeCamera(float magnitude, float roughness, float startFadeIn, float endFadeOut)
+    {
+        StartCoroutine(ShakeCamera(magnitude, roughness, startFadeIn, endFadeOut));
+    }
 
 	public void BeamSuperchargeMode() {
         if (photonView.IsMine != true)

@@ -56,7 +56,6 @@ public class SonarFxSwitcher : MonoBehaviour
             parameter = Mathf.Max(0.0f, parameter - switchSpeed * Time.deltaTime);
             if (parameter == 0.0f) fx.enabled = false;
         }
-
         if (parameter > 0.0f)
         {
             fx.baseColor = baseAlbedo.Evaluate(parameter);
