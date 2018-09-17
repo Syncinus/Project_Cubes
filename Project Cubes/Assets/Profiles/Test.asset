@@ -51,10 +51,10 @@ MonoBehaviour:
     value: 0.05
   backgroundColor:
     overrideState: 1
-    value: {r: 0, g: 0, b: 0, a: 0}
+    value: {r: 0, g: 0, b: 0, a: 0.57254905}
   modulationStrength:
     overrideState: 1
-    value: 0.2
+    value: 0.4
   modulationFrequency:
     overrideState: 1
     value: 0.1
@@ -66,4 +66,4 @@ MonoBehaviour:
     value: 0
   modulationScroll:
     overrideState: 1
-    value: 0.2
+    value: 1

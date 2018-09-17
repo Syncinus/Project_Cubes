@@ -6,6 +6,7 @@ using System;
 using System.Linq;
 using Photon.Pun;
 using Photon.Realtime;
+using EZCameraShake;
 
 
 public class PlayerCube : MonoBehaviourPunCallbacks {
@@ -145,6 +146,11 @@ public class PlayerCube : MonoBehaviourPunCallbacks {
         //foreach (Transform armor in this.transform.Find("ArmorHolder").transform)
         //{
         //armor.transform.localPosition = new Vector3 (0f, 0f, 0f);
+        //}
+
+        //if (Camera.main.GetComponent<CameraShaker>().enabled != true)
+        //{
+        //    this.transform.Find("ShakePosition").position = Camera.main.transform.position;
         //}
 
         if (photonView.IsMine != true) {

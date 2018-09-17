@@ -21,7 +21,7 @@ public class EnemySpawner : MonoBehaviourPunCallbacks {
 	public EnemyAI enemy;
 	public EnemyAI greenEnemy;
 	public EnemyAI yellowEnemy;
-	public EnemyAI orangeEnemy;
+	public EnemyAI orangeEnemy; 
 	public EnemyAI blackEnemy;
 
 

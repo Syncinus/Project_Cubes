@@ -305,98 +305,119 @@ public class DestroyableObject : MonoBehaviourPunCallbacks {
 				}
 		}
 	}
-	
 
 
-	
 
-	public void Break(Vector3 point) {
-		//Destroy (gameObject);
-		if (this.GetComponent<EnemyAI> () != null) {
-			EnemyAI ai = this.GetComponent<EnemyAI> ();
-			if (ai.typeOfEnemy == EnemyAI.EnemyType.Blue) {
-				ScoreSystem.Score += 1;
-			}
-			if (ai.typeOfEnemy == EnemyAI.EnemyType.Green) {
-				ScoreSystem.Score += 3;
-			}
-			if (ai.typeOfEnemy == EnemyAI.EnemyType.Yellow) {
-				ScoreSystem.Score += 6;
-			}
-			if (ai.typeOfEnemy == EnemyAI.EnemyType.Orange) {
-				ScoreSystem.Score += 10;
-			}
-		}
-		if (brokenModel == true) {
-			
-			if (this.gameObject.GetComponent<PlayerCube> () != null) {
-				if (!photonView.IsMine == false) {
-				   Transform cam = Camera.main.transform;
-				   if (cam != null) {
-					cam.transform.SetParent(this.transform.parent);
-				   }
-				}
-			}
 
-			float heightLevel = this.transform.localScale.y;
 
-			for (float x = 0.25f; x <= heightLevel; x += 0.25f) {
-				GameObject brokenCube = (GameObject)GameObject.Instantiate (brokenVersion, new Vector3(this.transform.position.x, this.transform.position.y + 0.25f, this.transform.position.z), this.transform.rotation) as GameObject;
-				brokenCube.transform.SetParent (partStorage);
-				brokenModelSpawned = brokenCube;
-				Rigidbody rigidThing = brokenCube.AddComponent<Rigidbody> ();
-				rigidThing.AddForce ((point - rigidThing.transform.position).normalized * 10f, ForceMode.Force);
-				//rigidThing.AddExplosionForce (100f, brokenCube.transform.position, 10f, 3.0f, ForceMode.Force);
-				Transform[] allChildren = brokenCube.GetComponentsInChildren<Transform> ();
-				foreach (Transform child in allChildren) {
-					if (child.GetComponent<Rigidbody> () != null) {
-						Rigidbody rigid = child.GetComponent<Rigidbody> ();
-						Light lit = child.gameObject.AddComponent<Light> ();
-						lit.range = 5.0f;
-						//rigid.AddForceAtPosition(40f * rigidThing.transform.forward, point, ForceMode.Force);
-						var dir = point - child.position;
-						dir = dir.normalized;
-						rigid.AddForce(-dir * 15f, ForceMode.Impulse);
-						rigid.AddExplosionForce (30f, child.position, 10f, 2.0f, ForceMode.Force);
-					}
-				}
-				RaycastHit[] hits = Physics.SphereCastAll (brokenCube.transform.position, 10f, brokenCube.transform.position, 20f);
-				foreach (RaycastHit hit in hits) {
-					//Debug.Log (hit.transform.name);
-					Rigidbody rigidb = hit.transform.GetComponent<Rigidbody> ();
-					if (rigidb != null) {
-						//rigidb.AddForce (-hit.normal * 500f);
-					}
-				}
-			}
-		}
-			
- 
-	
-        if (this.transform != null && this.gameObject != null && this.transform.parent != null) {
-		   if (this.transform.GetComponent<EnemyAI> () != null) {
-			 this.transform.GetComponent<EnemyAI> ().Die ();
-		   }
-		
+    public void Break(Vector3 point)
+    {
+        //Destroy (gameObject);
+        if (this.GetComponent<EnemyAI>() != null)
+        {
+            EnemyAI ai = this.GetComponent<EnemyAI>();
+            if (ai.typeOfEnemy == EnemyAI.EnemyType.Blue)
+            {
+                ScoreSystem.Score += 1;
+            }
+            if (ai.typeOfEnemy == EnemyAI.EnemyType.Green)
+            {
+                ScoreSystem.Score += 3;
+            }
+            if (ai.typeOfEnemy == EnemyAI.EnemyType.Yellow)
+            {
+                ScoreSystem.Score += 6;
+            }
+            if (ai.typeOfEnemy == EnemyAI.EnemyType.Orange)
+            {
+                ScoreSystem.Score += 10;
+            }
+        }
+        if (brokenModel == true)
+        {
 
-	        this.gameObject.SetActive (false);
-		}
-		this.enabled = false;
-		if (this.GetComponent<PlayerCube>() != null) {
-                    this.gameObject.SetActive(false);
-				} else {
-					Destroy(this.gameObject);
-		}
-	}
+            if (this.gameObject.GetComponent<PlayerCube>() != null)
+            {
+                if (!photonView.IsMine == false)
+                {
+                    Transform cam = Camera.main.transform;
+                    if (cam != null)
+                    {
+                        cam.transform.SetParent(this.transform.parent);
+                    }
+                }
+            }
 
-	public void DestroyModel() {
-		if (this.GetComponent<PlayerCube>() != null) {
-                    this.gameObject.SetActive(false);
-				} else {
-					Destroy(this.gameObject);
-		}
-	}
+            float heightLevel = this.transform.localScale.y;
 
+            for (float x = 0.25f; x <= heightLevel; x += 0.25f)
+            {
+                GameObject brokenCube = (GameObject)GameObject.Instantiate(brokenVersion, new Vector3(this.transform.position.x, this.transform.position.y + 0.25f, this.transform.position.z), this.transform.rotation) as GameObject;
+                brokenCube.transform.SetParent(partStorage);
+                brokenModelSpawned = brokenCube;
+                Rigidbody rigidThing = brokenCube.AddComponent<Rigidbody>();
+                rigidThing.AddForce((point - rigidThing.transform.position).normalized * 10f, ForceMode.Force);
+                //rigidThing.AddExplosionForce (100f, brokenCube.transform.position, 10f, 3.0f, ForceMode.Force);
+                Transform[] allChildren = brokenCube.GetComponentsInChildren<Transform>();
+                foreach (Transform child in allChildren)
+                {
+                    if (child.GetComponent<Rigidbody>() != null)
+                    {
+                        Rigidbody rigid = child.GetComponent<Rigidbody>();
+                        Light lit = child.gameObject.AddComponent<Light>();
+                        lit.range = 5.0f;
+                        //rigid.AddForceAtPosition(40f * rigidThing.transform.forward, point, ForceMode.Force);
+                        var dir = point - child.position;
+                        dir = dir.normalized;
+                        rigid.AddForce(-dir * 15f, ForceMode.Impulse);
+                        rigid.AddExplosionForce(30f, child.position, 10f, 2.0f, ForceMode.Force);
+                    }
+                }
+                RaycastHit[] hits = Physics.SphereCastAll(brokenCube.transform.position, 10f, brokenCube.transform.position, 20f);
+                foreach (RaycastHit hit in hits)
+                {
+                    //Debug.Log (hit.transform.name);
+                    Rigidbody rigidb = hit.transform.GetComponent<Rigidbody>();
+                    if (rigidb != null)
+                    {
+                        //rigidb.AddForce (-hit.normal * 500f);
+                    }
+                }
+            }
+        }
+
+
+
+        if (this.transform != null && this.gameObject != null && this.transform.parent != null)
+        {
+            if (this.transform.GetComponent<EnemyAI>() != null)
+            {
+                this.transform.GetComponent<EnemyAI>().Die();
+            }
+            this.gameObject.SetActive(false);
+        }
+        this.enabled = false;
+        if (this.GetComponent<PlayerCube>() != null)
+        {
+            this.gameObject.SetActive(false);
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+    }
+
+    public void DestroyModel()
+    {
+        if (this.GetComponent<PlayerCube>() != null)
+        {
+            this.gameObject.SetActive(false);
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+    }
 
 
 	public void DisableEditor() {

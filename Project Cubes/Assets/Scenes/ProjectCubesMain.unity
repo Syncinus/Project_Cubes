@@ -16122,12 +16122,105 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 577433003}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 749e6e993a811824fab9b8060ee190c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waves: []
+  waves:
+  - enemies:
+    - enemyPrefab: {fileID: 1154457951630078, guid: 2ea9a80a197c38548bace4d958e1c455,
+        type: 2}
+      enemyCount: 10
+    timeBetweenSpawns: 1
+  - enemies:
+    - enemyPrefab: {fileID: 1154457951630078, guid: 2ea9a80a197c38548bace4d958e1c455,
+        type: 2}
+      enemyCount: 15
+    timeBetweenSpawns: 3
+  - enemies:
+    - enemyPrefab: {fileID: 1154457951630078, guid: 2ea9a80a197c38548bace4d958e1c455,
+        type: 2}
+      enemyCount: 10
+    - enemyPrefab: {fileID: 1793906249003176, guid: 3b785cad3aa83e648939001b29da4193,
+        type: 2}
+      enemyCount: 5
+    timeBetweenSpawns: 0.4
+  - enemies:
+    - enemyPrefab: {fileID: 1793906249003176, guid: 3b785cad3aa83e648939001b29da4193,
+        type: 2}
+      enemyCount: 10
+    timeBetweenSpawns: 1
+  - enemies:
+    - enemyPrefab: {fileID: 1154457951630078, guid: 2ea9a80a197c38548bace4d958e1c455,
+        type: 2}
+      enemyCount: 5
+    - enemyPrefab: {fileID: 1793906249003176, guid: 3b785cad3aa83e648939001b29da4193,
+        type: 2}
+      enemyCount: 5
+    - enemyPrefab: {fileID: 1505074746341626, guid: 32d1000192728a444b4538a1d78ea226,
+        type: 2}
+      enemyCount: 1
+    timeBetweenSpawns: 0.6
+  - enemies:
+    - enemyPrefab: {fileID: 1505074746341626, guid: 32d1000192728a444b4538a1d78ea226,
+        type: 2}
+      enemyCount: 5
+    timeBetweenSpawns: 1.4
+  - enemies:
+    - enemyPrefab: {fileID: 1793906249003176, guid: 3b785cad3aa83e648939001b29da4193,
+        type: 2}
+      enemyCount: 10
+    - enemyPrefab: {fileID: 1576534828243208, guid: 6c43a1ee9374ac344b1a0ffffcbbdd01,
+        type: 2}
+      enemyCount: 1
+    timeBetweenSpawns: 0.6
+  - enemies:
+    - enemyPrefab: {fileID: 1576534828243208, guid: 6c43a1ee9374ac344b1a0ffffcbbdd01,
+        type: 2}
+      enemyCount: 5
+    - enemyPrefab: {fileID: 1505074746341626, guid: 32d1000192728a444b4538a1d78ea226,
+        type: 2}
+      enemyCount: 5
+    timeBetweenSpawns: 0.8
+  - enemies:
+    - enemyPrefab: {fileID: 1576534828243208, guid: 6c43a1ee9374ac344b1a0ffffcbbdd01,
+        type: 2}
+      enemyCount: 10
+    timeBetweenSpawns: 0.6
+  - enemies:
+    - enemyPrefab: {fileID: 1471666036181088, guid: 5305288d4732f364ab029df550c8b41d,
+        type: 2}
+      enemyCount: 1
+    timeBetweenSpawns: 0.2
+  - enemies:
+    - enemyPrefab: {fileID: 1795543699395596, guid: 0d655e96f6773aa48ae6a40fa4ebac7d,
+        type: 2}
+      enemyCount: 5
+    timeBetweenSpawns: 0.6
+  - enemies:
+    - enemyPrefab: {fileID: 1089240784502132, guid: a7ab76e9ff3a2c24191c6b211758cfa2,
+        type: 2}
+      enemyCount: 5
+    - enemyPrefab: {fileID: 1795543699395596, guid: 0d655e96f6773aa48ae6a40fa4ebac7d,
+        type: 2}
+      enemyCount: 5
+    timeBetweenSpawns: 0.6
+  - enemies:
+    - enemyPrefab: {fileID: 1229065043962634, guid: b528c96906c2b204fa66977289f65b26,
+        type: 2}
+      enemyCount: 10
+    timeBetweenSpawns: 0.6
+  - enemies:
+    - enemyPrefab: {fileID: 1398627314337838, guid: a350a0a9529e56145b897f677da3dbf9,
+        type: 2}
+      enemyCount: 5
+    timeBetweenSpawns: 0.6
+  - enemies:
+    - enemyPrefab: {fileID: 1471666036181088, guid: 5305288d4732f364ab029df550c8b41d,
+        type: 2}
+      enemyCount: 3
+    timeBetweenSpawns: 0.2
   enemyTypesToSpawn: []
   enemyObjects: []
   spawnParticles: {fileID: 1808388575}
@@ -16196,7 +16289,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 1
   data:
-    dataString: UEsDBBQAAAgIAACIn+uODp2YbwIAAFIFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQGFVNtu2zAM/ZVAz9vgpLdkb1uSdhvQNqg37GHugyLTsRBZMnRpkhb595KyWzsehgEGJByShzwk5RcmtatBeGNvrMxvTQ7s84jRnX0YMR5tD9xLg/AYEelMBd5K8UVvFPkmCAYtC2OrZb6BuXHeIVxw5QBN1niK1gi9jNi+DTi05zOdoyPeBGgP9n9eQQvFqxryVD5D5zxO3tzxFh01Cml9JsRulJKuLYP5Qx1VpnUJFkhnLjmqivlJZAlyU/ph7H1ROPBtTZYfFtJicxpS9tX4kpgq7rZNYU9chZg/OZ/GmhrW2387FNZU395SN5p8KcX2gR8EdwR6G2CALk5LD3rH1ZavFfwuQd+ZG2uCzrvQ4GCy6M3nXd28BLHt/JpiB2Co/x7QuBvQMerfz5Ws1oR8umyAVJnY8BnFgMXRfMeC41q4lglRKuKXg59809+f1nAtrfNoahNqqm5tgiVXtowtIzHBz43VEOG25ho0V/6wQho/HOLA1ks7sFxzeiFt8tb29gAGIRHu/JNkYFqZXTcsBz9CVa+M1D4FbkXZ43Ol2d2CK++DV1JDp4gMd9jEudG6WUB3aqSoNNiCi16Uh70PFhbc8/gIsCRckryfEPsZI3RQitYxiiDuPyiCvkfqcckxrYowuzM6vp+T85H2YBNkfrrm7Ory4uzyTOST8dX5tJiuPwpxNZ4UMz4V57OLZJaw+AqkxpZztWp61k4KF6g/Ho07T5QrK6vmAVu+u5HPlem1QurCpMIC6PvTaAcWE+DfIV/mEiWm4L3Uce3YS8aUEVvIs3eiLDZ1ufeWZx1Lxmr5ZDwhGZvHv1fGjuz4ClBLAwQUAAAICAAAiJ/rS9LxMG0AAAB4AAAACQAkAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAatWKkstKs7Mz1OyUjDRM9QzNNNRUEovSizIKAaKGII4pZkpIHa0krmZqbGZcXKKkaG5iUWaRZJucrK5oVGaZaJFsomlqYGlgVIsUH1JZUGqX2JuKkRPQGJJRlpmXkpmXrqee1FmijvIaKXYWgBQSwECLQAUAAAICAAAiJ/rjg6dmG8CAABSBQAACwAkAAAAAAAAAAAAAAAAAAAAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwECLQAUAAAICAAAiJ/rS9LxMG0AAAB4AAAACQAkAAAAAAAAAAAAAAC8AgAAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsFBgAAAAACAAIAuAAAAHQDAAAAAA==
+    dataString: UEsDBBQAAAgIAACIn+tTj6azeQIAAFQFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQGFVMlu2zAQ/RWD57aQt8TurZWdtAWSGHGLHqocaGpkEaZIgUtsJ/C/Z0gxlqwcCgig9Gbhe7PolXBpamBW6VvN8zuVA/k6IP6dfBoQGmyP1HKF8BARblQFVnP2TW6F900QdJIXSlfLfAupMtYgXFBhAE1aWR8tEXodkEMMOMbzxZ+DE74xkBb0/7ycZIJWNeRr/gKt8zB5d8e34ChRSPQZ+exKCG4iDWKPdVCZ0to4FIEOOacoKxDwKkvg29LGj3PwQ1EYsJGUpscF11idJiv5rmzpM1XU7Bpmz1S4QCCZzAKpJuvdB4fhZDyeBo9Cq+rH+e6gypac7R7pkVHjQasd9NDFJXcn91Ts6EbA3xLkvbrVysm80xJnYLTofJ/1pSWwXXtHQ7cHuvpjj4Ztj06hAodU8GrjkS9XDbAWKtR87mNAY3d+IuMwGSZmQtST+GPgN912Rygabrg2Fk3xQunZbZTT3pUsQ828GGdTpSUEOHKuQVJhjytMY/tt7Nk61/YsN9QvSbw82t53oBcS4NY/SXqmldq33TLwy1X1SnFp10A1Kzv5TKn2d2DKB2cFl9Aq8oZ7LGKqpGxG0FwafdTa6YKyTpSFg3UaFtTSsAdICaekOxoG6xkipBPCz2MQ4XP/QxH+efI1LileKwJM7pUMG3RxPvk52DqeXw46ub6ajq/GLB8NryezYrb5zNj1cFTM6YxN5tNknpCwBlxiyalYNTWLncIBkq0WiTPvM640r5oN1nR/y18q1akEl4VaMw0gH5rgs07QmB//D/ky56hwDdZyGaaOvGZEKLaDPDsnykJNlweradZmyUjNn5X1SEbS8P/KyImc3gBQSwMEFAAACAgAAIif60vS8TBtAAAAeAAAAAkAJABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQGrVipLLSrOzM9TslIw0TPUMzTTUVBKL0osyCgGihiCOKWZKSB2tJK5mamxmXFyipGhuYlFmkWSbnKyuaFRmmWiRbKJpamBpYFSLFB9SWVBql9ibipET0BiSUZaZl5KZl66nntRZoo7yGil2FoAUEsBAi0AFAAACAgAAIif61OPprN5AgAAVAUAAAsAJAAAAAAAAAAAAAAAAAAAAGdyYXBoMC5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsBAi0AFAAACAgAAIif60vS8TBtAAAAeAAAAAkAJAAAAAAAAAAAAAAAxgIAAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLBQYAAAAAAgACALgAAAB+AwAAAAA=
     upgradeData: 
     file_cachedStartup: {fileID: 0}
     data_cachedStartup: 
@@ -16504,20 +16597,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 183748dd497aa473a98ff0cd8cb67fc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 1
-  prev: {fileID: 0}
-  next: {fileID: 0}
-  coll: {fileID: 0}
-  coll2D: {fileID: 0}
-  tr: {fileID: 0}
-  updateError: 1
-  checkTime: 0.2
-  prevBounds:
-    m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 0, y: 0, z: 0}
-  prevRotation: {x: 0, y: 0, z: 0, w: 0}
-  prevEnabled: 0
-  lastCheckTime: -9999
 --- !u!114 &791610862
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28500,8 +28579,6 @@ GameObject:
   - component: {fileID: 1614193349}
   - component: {fileID: 1614193350}
   - component: {fileID: 1614193352}
-  - component: {fileID: 1614193353}
-  - component: {fileID: 1614193351}
   m_Layer: 13
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -28853,105 +28930,6 @@ MonoBehaviour:
   eyeFadeEnd: 1
   maxBlurRadius: 10
   BlurQuality: 3
---- !u!114 &1614193351
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1614193337}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ea49bb3111ed42e0a658dd6c82b1797, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  baseAlbedo:
-    serializedVersion: 2
-    key0: {r: 0.23584908, g: 0.23584908, b: 0.23584908, a: 1}
-    key1: {r: 1, g: 0, b: 0, a: 1}
-    key2: {r: 0, g: 0, b: 0, a: 0}
-    key3: {r: 0, g: 0, b: 0, a: 0}
-    key4: {r: 0, g: 0, b: 0, a: 0}
-    key5: {r: 0, g: 0, b: 0, a: 0}
-    key6: {r: 0, g: 0, b: 0, a: 0}
-    key7: {r: 0, g: 0, b: 0, a: 0}
-    ctime0: 0
-    ctime1: 65535
-    ctime2: 0
-    ctime3: 0
-    ctime4: 0
-    ctime5: 0
-    ctime6: 0
-    ctime7: 0
-    atime0: 0
-    atime1: 65535
-    atime2: 0
-    atime3: 0
-    atime4: 0
-    atime5: 0
-    atime6: 0
-    atime7: 0
-    m_Mode: 0
-    m_NumColorKeys: 2
-    m_NumAlphaKeys: 2
-  baseEmission:
-    serializedVersion: 2
-    key0: {r: 0, g: 0, b: 0, a: 1}
-    key1: {r: 1, g: 0, b: 0, a: 1}
-    key2: {r: 0, g: 0, b: 0, a: 0}
-    key3: {r: 0, g: 0, b: 0, a: 0}
-    key4: {r: 0, g: 0, b: 0, a: 0}
-    key5: {r: 0, g: 0, b: 0, a: 0}
-    key6: {r: 0, g: 0, b: 0, a: 0}
-    key7: {r: 0, g: 0, b: 0, a: 0}
-    ctime0: 0
-    ctime1: 65535
-    ctime2: 0
-    ctime3: 0
-    ctime4: 0
-    ctime5: 0
-    ctime6: 0
-    ctime7: 0
-    atime0: 0
-    atime1: 65535
-    atime2: 0
-    atime3: 0
-    atime4: 0
-    atime5: 0
-    atime6: 0
-    atime7: 0
-    m_Mode: 0
-    m_NumColorKeys: 2
-    m_NumAlphaKeys: 2
-  waveColor:
-    serializedVersion: 2
-    key0: {r: 0, g: 0, b: 0, a: 1}
-    key1: {r: 1, g: 0, b: 0, a: 1}
-    key2: {r: 1, g: 1, b: 1, a: 0}
-    key3: {r: 0, g: 0, b: 0, a: 0}
-    key4: {r: 0, g: 0, b: 0, a: 0}
-    key5: {r: 0, g: 0, b: 0, a: 0}
-    key6: {r: 0, g: 0, b: 0, a: 0}
-    key7: {r: 0, g: 0, b: 0, a: 0}
-    ctime0: 0
-    ctime1: 65535
-    ctime2: 65535
-    ctime3: 0
-    ctime4: 0
-    ctime5: 0
-    ctime6: 0
-    ctime7: 0
-    atime0: 0
-    atime1: 65535
-    atime2: 0
-    atime3: 0
-    atime4: 0
-    atime5: 0
-    atime6: 0
-    atime7: 0
-    m_Mode: 0
-    m_NumColorKeys: 2
-    m_NumAlphaKeys: 2
-  switchSpeed: 1
 --- !u!33 &1614193352
 MeshFilter:
   m_ObjectHideFlags: 8
@@ -28959,28 +28937,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1614193337}
   m_Mesh: {fileID: 43000011430290412, guid: 0900a5d741c5c9841a612681db77c73b, type: 2}
---- !u!114 &1614193353
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1614193337}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c725fe963b534280bc779c2e7f23fb5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _mode: 1
-  _direction: {x: 0, y: 0, z: 1}
-  _origin: {x: 0, y: 0, z: 0}
-  _baseColor: {r: 0.2, g: 0.2, b: 0.2, a: 0}
-  _waveColor: {r: 1, g: 0.2, b: 0.2, a: 1}
-  _waveAmplitude: 3
-  _waveExponent: 22
-  _waveInterval: 20
-  _waveSpeed: 10
-  _addColor: {r: 0, g: 0, b: 0, a: 1}
-  shader: {fileID: 4800000, guid: 6d12e7ab487bf49d18b89038af741a18, type: 3}
 --- !u!1 &1619160735
 GameObject:
   m_ObjectHideFlags: 0

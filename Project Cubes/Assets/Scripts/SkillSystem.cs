@@ -40,12 +40,12 @@ public class SkillSystem : MonoBehaviourPunCallbacks {
 
     public IEnumerator ShakeCamera(float magnitude, float roughness, float startFadeIn, float endFadeOut)
     {
-        Camera.main.transform.GetComponent<SmoothCameraAdvanced>().enabled = false;
-        Camera.main.transform.GetComponent<CameraShaker>().enabled = true;
         Vector3 camPosition = Camera.main.transform.localPosition;
         Quaternion camRotation = Camera.main.transform.localRotation;
         cameraHolderForShaking.transform.localPosition = camPosition;
         cameraHolderForShaking.transform.localRotation = camRotation;
+        Camera.main.transform.GetComponent<SmoothCameraAdvanced>().enabled = false;
+        Camera.main.transform.GetComponent<CameraShaker>().enabled = true;
         Camera.main.transform.SetParent(cameraHolderForShaking.transform);
         CameraShaker.Instance.ShakeOnce(magnitude, roughness, startFadeIn, endFadeOut);
         yield return new WaitForSeconds(endFadeOut + 0.1f);
@@ -72,10 +72,6 @@ public class SkillSystem : MonoBehaviourPunCallbacks {
         {
             //shockwaveParticles.Play ();
 
-            Camera.main.GetComponent<SonarFxSwitcher>().Toggle();
-
-            yield return new WaitForSeconds(10f);
-
             PostProcessVolume volume = Camera.main.GetComponent<PostProcessVolume>();
             PostProcessProfile profile = volume.profile;
             profile.TryGetSettings(out line);
@@ -83,15 +79,15 @@ public class SkillSystem : MonoBehaviourPunCallbacks {
             line.enabled.value = true;
             line.active = true;
 
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(2.9f);
 
             line.enabled.value = false;
             line.active = false;
 
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.3f);
 
-            shakeCamera(4f, 4f, 0.1f, 2.0f);
-            RaycastHit[] hits = Physics.SphereCastAll(this.transform.position, 100f, Vector3.zero, 10f);
+            //shakeCamera(4f, 4f, 0.1f, 2.0f);
+            RaycastHit[] hits = Physics.SphereCastAll(this.transform.position, 100f, Vector3.zero, 100f);
 
             foreach (RaycastHit hit in hits)
             {

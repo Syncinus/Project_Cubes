@@ -31,6 +31,8 @@ namespace EZCameraShake
             instanceList.Add(gameObject.name, this);
         }
 
+
+
         void Update()
         {
             posAddShake = Vector3.zero;
