@@ -68,21 +68,6 @@ public class DestroyableObject : MonoBehaviourPunCallbacks {
                     Invoke("RPCRespawn", 1f);
 				} else {
 					Destroy(this.gameObject);
-					EnemyAI ai = this.transform.GetComponent<EnemyAI> ();
-			        if (ai != null) {
-			            if (ai.typeOfEnemy == EnemyAI.EnemyType.Blue) {
-				            ScoreSystem.Score += 1;
-			            }
-			            if (ai.typeOfEnemy == EnemyAI.EnemyType.Green) {
-				            ScoreSystem.Score += 3;
-			            }
-			            if (ai.typeOfEnemy == EnemyAI.EnemyType.Yellow) {
-				            ScoreSystem.Score += 6;
-			            }
-			            if (ai.typeOfEnemy == EnemyAI.EnemyType.Orange) {
-				            ScoreSystem.Score += 10;
-			            }
-			        }
 				}
 			}
 		}
@@ -246,21 +231,7 @@ public class DestroyableObject : MonoBehaviourPunCallbacks {
 				   }
 			}
 			if (this.transform.GetComponent<EnemyAI>() != null) {
-				EnemyAI ai = this.transform.GetComponent<EnemyAI>();
-			    if (ai.typeOfEnemy == EnemyAI.EnemyType.Blue) {
-				    ScoreSystem.Score += 1;
-			    }
-			    if (ai.typeOfEnemy == EnemyAI.EnemyType.Green) {
-				    ScoreSystem.Score += 3;
-			    }
-			    if (ai.typeOfEnemy == EnemyAI.EnemyType.Yellow) {
-				    ScoreSystem.Score += 6;
-			    }
-			    if (ai.typeOfEnemy == EnemyAI.EnemyType.Orange) {
-				    ScoreSystem.Score += 10;
-			    }
                 this.transform.GetComponent<EnemyAI>().Die();
-				
 			}
 		}
 	}
@@ -313,26 +284,6 @@ public class DestroyableObject : MonoBehaviourPunCallbacks {
     public void Break(Vector3 point)
     {
         //Destroy (gameObject);
-        if (this.GetComponent<EnemyAI>() != null)
-        {
-            EnemyAI ai = this.GetComponent<EnemyAI>();
-            if (ai.typeOfEnemy == EnemyAI.EnemyType.Blue)
-            {
-                ScoreSystem.Score += 1;
-            }
-            if (ai.typeOfEnemy == EnemyAI.EnemyType.Green)
-            {
-                ScoreSystem.Score += 3;
-            }
-            if (ai.typeOfEnemy == EnemyAI.EnemyType.Yellow)
-            {
-                ScoreSystem.Score += 6;
-            }
-            if (ai.typeOfEnemy == EnemyAI.EnemyType.Orange)
-            {
-                ScoreSystem.Score += 10;
-            }
-        }
         if (brokenModel == true)
         {
 

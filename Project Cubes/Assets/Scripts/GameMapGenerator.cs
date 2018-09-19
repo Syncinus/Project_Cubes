@@ -207,7 +207,7 @@ public class GameMapGenerator : MonoBehaviour {
         //navmeshFloor.localScale = new Vector3 (maxMapSize.x, maxMapSize.y) * tileSize;
         this.GetComponent<AstarPath>().enabled = true;
         //GameObject[] staticBatchingObjects = staticBatchingTiles.ToArray();
-        StaticBatchingUtility.Combine(mapHolder.gameObject);
+        //StaticBatchingUtility.Combine(mapHolder.gameObject);
         //AstarPath.active.Scan();
 	}
 

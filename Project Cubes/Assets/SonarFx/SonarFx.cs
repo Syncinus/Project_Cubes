@@ -67,7 +67,7 @@ public class SonarFx : MonoBehaviour
     public Color addColor { get { return _addColor; } set { _addColor = value; } }
 
     // Reference to the shader.
-    [SerializeField] Shader shader;
+    [SerializeField] public Shader shader;
 
     // Private shader variables
     int baseColorID;
@@ -107,13 +107,13 @@ public class SonarFx : MonoBehaviour
 
         if (_mode == SonarMode.Directional)
         {
-            Shader.DisableKeyword("SONAR_SPHERICAL");
-            Shader.SetGlobalVector(waveVectorID, _direction.normalized);
+            //Shader.DisableKeyword("SONAR_SPHERICAL");
+            //Shader.SetGlobalVector(waveVectorID, _direction.normalized);
         }
         else
         {
-            Shader.EnableKeyword("SONAR_SPHERICAL");
-            Shader.SetGlobalVector(waveVectorID, _origin);
+            //Shader.EnableKeyword("SONAR_SPHERICAL");
+            //Shader.SetGlobalVector(waveVectorID, _origin);
         }
     }
 }

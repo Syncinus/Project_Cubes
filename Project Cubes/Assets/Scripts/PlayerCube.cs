@@ -32,8 +32,10 @@ public class PlayerCube : MonoBehaviourPunCallbacks {
 
     private EquipmentManager gunManager;
 
+    bool first = true;
 
-	public void Start() {
+
+    public void Start() {
 		if (photonView.IsMine != true) {
 			return;
 		}
@@ -92,20 +94,20 @@ public class PlayerCube : MonoBehaviourPunCallbacks {
         {
             if (way == "Forward")
             {
-                this.transform.Translate(Vector3.forward * speed * Time.fixedDeltaTime, Space.Self);
+                this.transform.Translate(Vector3.forward * speed * Time.deltaTime / Time.timeScale, Space.Self);
             }
             if (way == "Backward")
             {
-                this.transform.Translate(Vector3.back * speed * Time.fixedDeltaTime, Space.Self);
+                this.transform.Translate(Vector3.back * speed * Time.deltaTime / Time.timeScale, Space.Self);
             }
         }
         if (way == "Left")
         {
-            this.transform.rotation = Quaternion.Euler(this.transform.rotation.eulerAngles.x, (transform.rotation.eulerAngles.y + 75f * Time.deltaTime * Input.GetAxis("Horizontal")), transform.rotation.eulerAngles.z);
+            this.transform.rotation = Quaternion.Euler(this.transform.rotation.eulerAngles.x, (transform.rotation.eulerAngles.y + 75f * Time.fixedDeltaTime / Time.timeScale * Input.GetAxis("Horizontal")), transform.rotation.eulerAngles.z);
         }
         if (way == "Right")
         {
-            this.transform.rotation = Quaternion.Euler(this.transform.rotation.eulerAngles.x, (transform.rotation.eulerAngles.y + 75f * Time.deltaTime * Input.GetAxis("Horizontal")), transform.rotation.eulerAngles.z);
+            this.transform.rotation = Quaternion.Euler(this.transform.rotation.eulerAngles.x, (transform.rotation.eulerAngles.y + 75f * Time.fixedDeltaTime / Time.timeScale * Input.GetAxis("Horizontal")), transform.rotation.eulerAngles.z);
         }
         if (way == "Up")
         {
@@ -166,6 +168,7 @@ public class PlayerCube : MonoBehaviourPunCallbacks {
 		if (timeScinceLastTimeTakingDamage < 6f) {
 			timeScinceLastTimeTakingDamage += Time.deltaTime;
 		}
+
 		moving = false;
 		//transform.rotation = Quaternion.Euler (this.transform.rotation.eulerAngles.x, (transform.rotation.eulerAngles.y + 100f * Time.deltaTime * Input.GetAxis ("Horizontal")), transform.rotation.eulerAngles.z);
 		if (Input.GetKey (KeyCode.W)) {

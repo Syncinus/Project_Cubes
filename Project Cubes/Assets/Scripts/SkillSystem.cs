@@ -87,7 +87,8 @@ public class SkillSystem : MonoBehaviourPunCallbacks {
             yield return new WaitForSeconds(0.3f);
 
             //shakeCamera(4f, 4f, 0.1f, 2.0f);
-            RaycastHit[] hits = Physics.SphereCastAll(this.transform.position, 100f, Vector3.zero, 100f);
+
+            /* RaycastHit[] hits = Physics.SphereCastAll(this.transform.position, 100f, Vector3.zero, 100f);
 
             foreach (RaycastHit hit in hits)
             {
@@ -104,11 +105,42 @@ public class SkillSystem : MonoBehaviourPunCallbacks {
                         }
                     }
                 }
+            } */
+
+            Collider[] hitEnemies = Physics.OverlapSphere(Vector3.zero, 1000f);
+
+            foreach (Collider col in hitEnemies)
+            {
+                GameObject obj = col.gameObject;
+                DestroyableObject desObj = obj.GetComponent<DestroyableObject>();
+                if (desObj != null && desObj != this.GetComponent<DestroyableObject>())
+                {
+                    desObj.TakeDamage(5000f, obj.transform.position);
+                    Rigidbody rigidB = obj.transform.GetComponent<Rigidbody>();
+                    if (rigidB != null && rigidB != this.GetComponent<Rigidbody>())
+                    {
+                        rigidB.AddExplosionForce(100, obj.transform.position, 5, 3f);
+                    }
+                }
             }
+
             shockwaveReady = false;
+
             Invoke("RechargeShockwave", shockwaveRecharge);
         }
     }
+
+    public IEnumerator ChangeTimeScale(float slowdownFactor, float slowdownLength)
+    {
+        float originalTimeScale = Time.timeScale;
+        Time.timeScale = slowdownFactor;
+        Time.fixedDeltaTime = Time.timeScale * 0.02f;
+        yield return new WaitForSeconds(slowdownLength);
+        Time.timeScale = originalTimeScale;
+        Time.fixedDeltaTime = Time.timeScale * 0.02f;
+    }
+
+
 
     public void shakeCamera(float magnitude, float roughness, float startFadeIn, float endFadeOut)
     {
