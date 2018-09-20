@@ -7,7 +7,7 @@ power up, and become the strongest cube there is. Currently in active developmen
 Controls: <br>
 WASD: Move <br>
 Space/Left Click: Shoot or select from ui <br>
-Right Click/Shift: Shoot beam <br>
+Shift/Right Click: Shoot beam <br>
 I: Open inventory <br>
 O: Open shop <br>
 P: Open upgrades <br>
