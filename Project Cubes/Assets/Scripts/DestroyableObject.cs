@@ -247,7 +247,7 @@ public class DestroyableObject : MonoBehaviourPunCallbacks {
 				Renderer ccrend = colorChange.GetComponent<Renderer>();
 				Material ccmat = new Material(ccrend.sharedMaterial);
 
-                ccmat.color = this.GetComponent<Renderer>().sharedMaterial.color;
+                ccmat.SetColor("_BaseColor", this.GetComponent<Renderer>().sharedMaterial.GetColor("_BaseColor"));
 				ccrend.sharedMaterial = ccmat;
 			}
 		

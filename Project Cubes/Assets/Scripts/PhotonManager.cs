@@ -116,7 +116,7 @@ namespace Com.SwiftGames.ProjectCubes
         public override void OnJoinedRoom()
         {
             Debug.Log("PhotonManager: OnJoinedRoom() called by PUN. Now this client is in a room.");
-            PhotonNetwork.Instantiate("PlayerCube", new Vector3(0f, 0.5f, 0f), Quaternion.identity, 0);
+            PhotonNetwork.Instantiate("PlayerCube", new Vector3(0f, 1f, 0f), Quaternion.identity, 0);
             AstarPath.active.Scan();
         }
 

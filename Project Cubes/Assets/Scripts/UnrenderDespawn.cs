@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class UnrenderDespawn : MonoBehaviour {
 	void Start() {
-       Invoke("Despawn", 2f);
+       Invoke("Despawn", 4f);
 	}
 
-	void OnBecomeInvisible() {
-		this.gameObject.SetActive (false);
-	}
+	void OnBecameInvisible()
+    {
+        this.gameObject.SetActive(false);
+    }
 
 	void Despawn() {
 		GameObject.Destroy(this.gameObject);

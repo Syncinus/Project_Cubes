@@ -50,6 +50,7 @@ public class EnemyAI : MonoBehaviourPunCallbacks
 
     PlayerCube[] players;
     Transform oldTarget;
+    Transform particlesTransform;
     bool beamReady = true;
     bool finishedGrowingLine = false;
     float lastTimeFired;
@@ -67,6 +68,8 @@ public class EnemyAI : MonoBehaviourPunCallbacks
 
     private void Awake()
     {
+        this.gameObject.AddComponent<FallDissolve>();
+        this.gameObject.AddComponent<Hover>();
         ai = this.GetComponent<IAstarAI>();
         setter = this.GetComponent<AIDestinationSetter>();
         players = GameObject.FindObjectsOfType<PlayerCube>();
@@ -101,7 +104,13 @@ public class EnemyAI : MonoBehaviourPunCallbacks
 
     public void FixedUpdate()
     {
-
+        if (particlesTransform != null)
+        {
+            if (particlesTransform.gameObject.activeSelf == true && lastTimeFired > timeOfLastFire + 1.0f)
+            {
+                particlesTransform.gameObject.SetActive(false);
+            }
+        }
 
         if (lineRenderer.enabled == true)
         {
@@ -347,9 +356,12 @@ public class EnemyAI : MonoBehaviourPunCallbacks
                     {
                         if (createdParticles == false)
                         {
-                            GameObject particles = PhotonNetwork.Instantiate("Particles/" + weapon.particles.name, this.transform.position + this.transform.forward, this.transform.rotation, 0);
+                            GameObject particles = PhotonNetwork.Instantiate("Particles/" + weapon.particles.name, this.transform.position, this.transform.rotation, 0);
                             particles.transform.SetParent(this.transform);
-                            particles.transform.localPosition = this.transform.position + this.transform.forward;
+                            particles.transform.localPosition = Vector3.zero;
+                            particles.transform.localRotation = Quaternion.Euler(new Vector3(90f, 0f, 0f));
+                            particlesTransform = particles.transform;
+                            
                             createdParticles = true;
                         }
                         PlayParticles(false, particlesColor);

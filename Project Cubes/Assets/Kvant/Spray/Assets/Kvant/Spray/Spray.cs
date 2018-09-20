@@ -21,6 +21,8 @@ namespace Kvant
                 if (_bulkMesh == null || _bulkMesh.copyCount < 1) return 0;
                 return (_maxParticles / _bulkMesh.copyCount + 1) * _bulkMesh.copyCount;
             }
+
+            set { maxParticles = value; }
         }
 
         #endregion

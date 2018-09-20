@@ -3,7 +3,7 @@
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -21,7 +21,7 @@ MonoBehaviour:
   weaponRechargeTime: 0
   weaponHasRecharge: 0
   projectile: {fileID: 0}
-  particles: {fileID: 1142399870903172, guid: 12387a3fdb7e1a241bb184d201c7dbfb, type: 2}
+  particles: {fileID: 1784506465146280, guid: 9a4df70a9070ab54dae732623c01aee9, type: 2}
   lineWidth: 0
   hasParticles: 1
   shakesCamera: 0
@@ -33,5 +33,4 @@ MonoBehaviour:
   type: 0
   rarity: 2
   sound: {fileID: 0}
-  profile: {fileID: 0}
   soundRefreshTime: 0

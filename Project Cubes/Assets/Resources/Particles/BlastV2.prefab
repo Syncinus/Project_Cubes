@@ -111,13 +111,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 051131338091a4b3d861d193e64fb704, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxParticles: 1000
+  _maxParticles: 2000
   _emitterCenter: {x: 0, y: 0.25, z: 0}
   _emitterSize: {x: 0.7, y: 0.2, z: 0.7}
   _throttle: 1
-  _life: 0.9
+  _life: 0.3
   _lifeRandomness: 0.3
-  _initialVelocity: {x: 0, y: 3, z: 0}
+  _initialVelocity: {x: 0, y: 8, z: 0}
   _directionSpread: 0.12
   _speedRandomness: 0.1
   _acceleration: {x: 0, y: 3, z: 0}
@@ -129,8 +129,8 @@ MonoBehaviour:
   _noiseFrequency: 3
   _noiseMotion: 0.65
   _shapes:
-  - {fileID: 4300000, guid: 9693308a3efbb4f70b2e2ca1df26b2e9, type: 3}
-  _scale: 0.2
+  - {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  _scale: 0.02
   _scaleRandomness: 0.8
   _material: {fileID: 2100000, guid: b516e39e18a644c2a884db62ba4f7ee3, type: 2}
   _castShadows: 1
@@ -151,29 +151,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 051131338091a4b3d861d193e64fb704, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxParticles: 1000
+  _maxParticles: 2000
   _emitterCenter: {x: 0, y: 0.25, z: 0}
   _emitterSize: {x: 0.7, y: 0.2, z: 0.7}
   _throttle: 1
-  _life: 0.7
+  _life: 0.3
   _lifeRandomness: 0.3
-  _initialVelocity: {x: 0, y: 3, z: 0}
+  _initialVelocity: {x: 0, y: 8, z: 0}
   _directionSpread: 0.12
   _speedRandomness: 0.1
   _acceleration: {x: 0, y: 3, z: 0}
   _drag: 1
-  _spin: 0
-  _speedToSpin: 0
-  _spinRandomness: 0
+  _spin: 3
+  _speedToSpin: 2
+  _spinRandomness: 0.2
   _noiseAmplitude: 1
   _noiseFrequency: 3
-  _noiseMotion: 1
+  _noiseMotion: 0.65
   _shapes:
-  - {fileID: 4300000, guid: 9693308a3efbb4f70b2e2ca1df26b2e9, type: 3}
-  _scale: 0.2
+  - {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  _scale: 0.02
   _scaleRandomness: 0.8
   _material: {fileID: 2100000, guid: 4e7e239ddb586764ea254b37687454d4, type: 2}
-  _castShadows: 0
+  _castShadows: 1
   _receiveShadows: 0
   _randomSeed: 20
   _debug: 0

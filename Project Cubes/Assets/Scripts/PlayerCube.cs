@@ -40,6 +40,8 @@ public class PlayerCube : MonoBehaviourPunCallbacks {
 			return;
 		}
 
+        Hover hoverSystem = this.gameObject.AddComponent<Hover>();
+
         Camera.main.transform.GetComponent<SmoothCameraAdvanced>().target = this.transform;
         Camera.main.transform.SetParent(this.transform);
         Camera.main.transform.GetComponent<SmoothCameraAdvanced>().enabled = true;
@@ -61,7 +63,11 @@ public class PlayerCube : MonoBehaviourPunCallbacks {
         {
             return;
         }
+
+
+        this.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezeRotationX;
         
+
         if (Input.GetKeyDown(KeyCode.K))
         {
             this.GetComponent<DestroyableObject>().TakeDamage(30000, this.transform.position);

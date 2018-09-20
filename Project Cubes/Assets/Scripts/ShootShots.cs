@@ -61,7 +61,6 @@ public class ShootShots : MonoBehaviourPunCallbacks {
         {
             return;
         }
-
         psystem = blast.transform;
         createdParticles = false;
         StartCoroutine(WaitForDefaultWeapon());
@@ -75,10 +74,15 @@ public class ShootShots : MonoBehaviourPunCallbacks {
             return;
         }
 
-        if (psystem.gameObject.activeSelf == true && lastTimeFired > timeOfLastFire + 1.0f)
+
+        if (psystem != null)
         {
-            psystem.gameObject.SetActive(false);
+            if (psystem.gameObject.activeSelf == true && lastTimeFired > timeOfLastFire + 1.0f)
+            {
+                psystem.gameObject.SetActive(false);
+            }
         }
+
         ParticleSystem[] systems = this.transform.GetComponentsInChildren<ParticleSystem>();
         /*
         foreach (ParticleSystem system in systems)
@@ -124,6 +128,9 @@ public class ShootShots : MonoBehaviourPunCallbacks {
             ColorOfParticles = cube.weapon.particlesColor;
             var impactmain = impactEffect.GetComponent<ParticleSystem>().main;
             impactmain.startColor = cube.weapon.particlesColor;
+            GameObject oldParticles = psystem.gameObject;
+            psystem = blast.transform;
+            PhotonNetwork.Destroy(oldParticles);
             createdParticles = false;
             weapon = cube.weapon;
         }
@@ -257,7 +264,9 @@ public class ShootShots : MonoBehaviourPunCallbacks {
 			beam.Play();
 		} else {
 			Color color = new Color(fakeColor.x, fakeColor.y, fakeColor.z, 1);  
-            Kvant.Spray system = this.transform.Find(psystem.name).Find("SprayMain").GetComponent<Kvant.Spray>();
+            Kvant.Spray spray = this.transform.Find(psystem.name).Find("SprayMain").GetComponent<Kvant.Spray>();
+            spray.gameObject.SetActive(true);
+            spray.material.color = color;
             //main = system.main;
 			//main.startColor = color;
             //system.enabled = true;
@@ -377,8 +386,6 @@ public class ShootShots : MonoBehaviourPunCallbacks {
         line.SetPosition(1, endPos);
     }
 
-
-
     public IEnumerator shoot(bool beamMode)
     {
         if (photonView.IsMine != true)
@@ -400,7 +407,6 @@ public class ShootShots : MonoBehaviourPunCallbacks {
                 {
                     photonView.RPC("PlayParticles", RpcTarget.AllBuffered, true, fakeColor);
                 }
-
                 if (beamMode == false)
                 {
                     if (cube.weapon.hasParticles == true)
@@ -410,12 +416,12 @@ public class ShootShots : MonoBehaviourPunCallbacks {
                             GameObject particles = PhotonNetwork.Instantiate("Particles/" + cube.weapon.particles.name, new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z) + this.transform.forward, this.transform.rotation, 0);
                             particles.transform.SetParent(this.transform);
                             particles.transform.localPosition = Vector3.zero;
+                            particles.transform.localRotation = Quaternion.Euler(new Vector3(90f, 0f, 0f));
                             psystem = particles.transform;
                             createdParticles = true;
                         }
-
-                        psystem.gameObject.SetActive(true);
-                        //photonView.RPC("PlayParticles", RpcTarget.AllBuffered, false, fakeColor);
+                        //psystem.gameObject.SetActive(true);
+                        photonView.RPC("PlayParticles", RpcTarget.AllBuffered, false, fakeColor);
                     }
                 }
             }
@@ -573,7 +579,7 @@ public class ShootShots : MonoBehaviourPunCallbacks {
 
                     if (cube.weapon.shakesCamera == true)
                     {
-                        StartCoroutine(ShakeCamera());
+                        //StartCoroutine(ShakeCamera());
                     }
 
 
