@@ -33,11 +33,15 @@ public class EnemyAI : MonoBehaviourPunCallbacks
     public float damage = 5.0f;
     public float fireRate = 10.0f;
     public float range = 10.0f;
+    public float detectionRadius = 7.5f;
+    public float fieldOfView = 60f;
     private float lookAtDistance = 10f;
     public float attackDistance = 7.5f;
+
     public int ScoreGiven;
     float nextTimeToFire;
 
+    public bool wandering = true;
 
     public event System.Action OnDeath;
     public bool dead = false;
@@ -49,7 +53,6 @@ public class EnemyAI : MonoBehaviourPunCallbacks
     [HideInInspector] public Color particlesColor;
 
     PlayerCube[] players;
-    Transform oldTarget;
     Transform particlesTransform;
     bool beamReady = true;
     bool finishedGrowingLine = false;
@@ -67,9 +70,9 @@ public class EnemyAI : MonoBehaviourPunCallbacks
     }
 
     private void Awake()
-    {
+    {    
+        this.gameObject.AddComponent<InvalidDestroyer>();
         this.gameObject.AddComponent<FallDissolve>();
-        this.gameObject.AddComponent<Hover>();
         ai = this.GetComponent<IAstarAI>();
         setter = this.GetComponent<AIDestinationSetter>();
         players = GameObject.FindObjectsOfType<PlayerCube>();
@@ -83,7 +86,7 @@ public class EnemyAI : MonoBehaviourPunCallbacks
         lineRenderer.enabled = false;
         lineRenderer.material = Resources.Load<Material>("Materials/LineMaterial");
         //this.GetComponent<Renderer>().material.color = color;
-        oldTarget = target;
+        OldTarget = target;
         StartCoroutine(UpdatePath());
     }
 
@@ -264,9 +267,9 @@ public class EnemyAI : MonoBehaviourPunCallbacks
             Invoke("DistanceRefresh", 5f);
         }
 
-        if (target != oldTarget)
+        if (target != OldTarget)
         {
-            oldTarget = target;
+            OldTarget = target;
             targetChangeable = false;
             Invoke("TargetChangeRefresh", 5f);
         }
@@ -384,20 +387,20 @@ public class EnemyAI : MonoBehaviourPunCallbacks
                         if (hit.transform.name == "Piece (1)" || hit.transform.name == "Piece (2)" || hit.transform.name == "Piece (3)" || hit.transform.name == "Piece (4)")
                             Debug.Log(hit.transform.name);
 
-                        float radius = 0.25f;
-                        Vector3 originPoint;
-                        originPoint = hit.point;
-                        originPoint.x += UnityEngine.Random.Range(-radius, radius);
-                        originPoint.z += UnityEngine.Random.Range(-radius, radius);
-                        originPoint.y += UnityEngine.Random.Range(-radius, radius);
+                        //float radius = 0.25f;
+                        //Vector3 originPoint;
+                        //originPoint = hit.point;
+                        //originPoint.x += UnityEngine.Random.Range(-radius, radius);
+                        //originPoint.z += UnityEngine.Random.Range(-radius, radius);
+                        //originPoint.y += UnityEngine.Random.Range(-radius, radius);
 
-                        GameObject impactEffectItem = Resources.Load<GameObject>("Particles/ImpactEffect");
-                        GameObject impact = Instantiate(impactEffectItem, originPoint, Quaternion.LookRotation(hit.normal));
-                        var main = impact.GetComponent<ParticleSystem>().main;
-                        main.startColor = weapon.particlesColor;
+                        //GameObject impactEffectItem = Resources.Load<GameObject>("Particles/ImpactEffect");
+                        //GameObject impact = Instantiate(impactEffectItem, originPoint, Quaternion.LookRotation(hit.normal));
+                        //var main = impact.GetComponent<ParticleSystem>().main;
+                        //main.startColor = weapon.particlesColor;
 
-                        impact.transform.Find("Light").GetComponent<Light>().color = weapon.particlesColor;
-                        impact.transform.SetParent(GameObject.Find("TempStorage").transform);
+                        //impact.transform.Find("Light").GetComponent<Light>().color = weapon.particlesColor;
+                        //impact.transform.SetParent(GameObject.Find("TempStorage").transform);
 
                         DestroyableObject target = hit.transform.GetComponent<DestroyableObject>();
                         if (target != null)
@@ -654,11 +657,9 @@ public class EnemyAI : MonoBehaviourPunCallbacks
             this.transform.Find("Beam").GetComponent<ParticleSystem>().Play();
         } else
         {
-            ParticleSystem.MainModule main;
-            ParticleSystem system = GetComponentInChildren<ParticleSystem>();
-            main = system.main;
-            main.startColor = color;
-            system.Play();
+            Kvant.Stream stream = particlesTransform.GetComponent<Kvant.Stream>();
+            stream.gameObject.SetActive(true);
+            stream.color = color;
         }
     }
 
@@ -809,6 +810,13 @@ public class EnemyAI : MonoBehaviourPunCallbacks
     */
 
     private float nextRunawayTime;
+    private float nextStealthCheckTime;
+    private float nextSearchTime;
+
+    public Transform OldTarget { get; set; }
+
+
+    private bool hasDetectedPlayer = false;
 
     IEnumerator UpdatePath()
     {
@@ -823,7 +831,30 @@ public class EnemyAI : MonoBehaviourPunCallbacks
                 {
                     if (enemyMode == Mode.Assault)
                     {
-                        trueTarget = target;
+                        if (hasDetectedPlayer == false)
+                        {
+                            Vector3 targetDir = target.position - this.transform.position;
+                            float angle = Vector3.Angle(targetDir, this.transform.forward);
+
+                            if (angle >= fieldOfView)
+                            {
+                                Debug.Log("Seeing Player!");
+                            }
+                            
+
+                            if (Time.time > nextSearchTime && (ai.reachedEndOfPath || !ai.hasPath))
+                            {
+                                trueTarget = null;
+                                RandomPath path = RandomPath.Construct(this.transform.position, 20);
+
+                                path.spread = 5;
+                                this.GetComponent<Seeker>().StartPath(path);
+                            }
+                        }
+                        else
+                        {
+                            trueTarget = target;
+                        }
                     }
                     else if (enemyMode == Mode.Avoid)
                     {

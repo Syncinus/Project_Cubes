@@ -7,6 +7,10 @@ using System.Linq;
 using Photon.Pun;
 using Photon.Realtime;
 using EZCameraShake;
+using Unity.Jobs;
+using Unity.Collections;
+using UnityEngine.Jobs;
+using Unity.Jobs.LowLevel;
 
 
 public class PlayerCube : MonoBehaviourPunCallbacks {
@@ -29,10 +33,37 @@ public class PlayerCube : MonoBehaviourPunCallbacks {
 
 	private bool setCamera = false;
 	private Text healthText;
-
     private EquipmentManager gunManager;
 
     bool first = true;
+
+    [SerializeField]
+    private float _timeScale = 1;
+    public float timeScale
+    {
+        get { return _timeScale; }
+        set
+        {
+            if (!first)
+            {
+                this.GetComponent<Rigidbody>().mass *= timeScale;
+                this.GetComponent<Rigidbody>().velocity /= timeScale;
+                this.GetComponent<Rigidbody>().angularVelocity /= timeScale;
+            }
+            first = false;
+
+            _timeScale = Mathf.Abs(value);
+
+            this.GetComponent<Rigidbody>().mass /= timeScale;
+            this.GetComponent<Rigidbody>().velocity *= timeScale;
+            this.GetComponent<Rigidbody>().angularVelocity *= timeScale;
+        }
+    }
+
+    private void Awake()
+    {
+        timeScale = _timeScale;
+    }
 
 
     public void Start() {
@@ -40,12 +71,13 @@ public class PlayerCube : MonoBehaviourPunCallbacks {
 			return;
 		}
 
-        Hover hoverSystem = this.gameObject.AddComponent<Hover>();
-
+        //jobsTransform.Add(this.transform);        
+        
         Camera.main.transform.GetComponent<SmoothCameraAdvanced>().target = this.transform;
         Camera.main.transform.SetParent(this.transform);
         Camera.main.transform.GetComponent<SmoothCameraAdvanced>().enabled = true;
-       // Camera.main.transform.GetComponent<AlternateCameraScript>().target = this.transform;
+        
+        //Camera.main.transform.GetComponent<AlternateCameraScript>().target = this.transform;
 
 		this.transform.position = new Vector3(0f, 0.5f, 0f);
 		rigid = this.GetComponent<Rigidbody> ();
@@ -100,30 +132,57 @@ public class PlayerCube : MonoBehaviourPunCallbacks {
         {
             if (way == "Forward")
             {
-                this.transform.Translate(Vector3.forward * speed * Time.deltaTime / Time.timeScale, Space.Self);
+                this.transform.Translate(Vector3.forward * speed * Time.unscaledDeltaTime, Space.Self);
+
+                /*
+                moveHandle.Complete();
+
+                moveJob = new MovementJob()
+                {
+                    direction = this.transform.forward * speed * Time.deltaTime / Time.timeScale
+                };
+
+                moveHandle = moveJob.Schedule(jobsTransform);
+                */
+               
             }
             if (way == "Backward")
             {
-                this.transform.Translate(Vector3.back * speed * Time.deltaTime / Time.timeScale, Space.Self);
+                this.transform.Translate(Vector3.back * speed * Time.unscaledDeltaTime, Space.Self);
+
+                /*
+                moveHandle.Complete();
+
+                moveJob = new MovementJob()
+                {
+                    direction = (this.transform.forward * -1) * speed * Time.deltaTime / Time.timeScale
+                };
+
+                moveHandle = moveJob.Schedule(jobsTransform);
+                */
+
             }
         }
+
         if (way == "Left")
         {
-            this.transform.rotation = Quaternion.Euler(this.transform.rotation.eulerAngles.x, (transform.rotation.eulerAngles.y + 75f * Time.fixedDeltaTime / Time.timeScale * Input.GetAxis("Horizontal")), transform.rotation.eulerAngles.z);
+            this.transform.rotation = Quaternion.Euler(this.transform.rotation.eulerAngles.x, (transform.rotation.eulerAngles.y + 75f * Time.fixedUnscaledDeltaTime * Input.GetAxis("Horizontal")), transform.rotation.eulerAngles.z);
         }
+
         if (way == "Right")
         {
-            this.transform.rotation = Quaternion.Euler(this.transform.rotation.eulerAngles.x, (transform.rotation.eulerAngles.y + 75f * Time.fixedDeltaTime / Time.timeScale * Input.GetAxis("Horizontal")), transform.rotation.eulerAngles.z);
+            this.transform.rotation = Quaternion.Euler(this.transform.rotation.eulerAngles.x, (transform.rotation.eulerAngles.y + 75f * Time.fixedUnscaledDeltaTime * Input.GetAxis("Horizontal")), transform.rotation.eulerAngles.z);
         }
+
         if (way == "Up")
         {
-            this.GetComponent<Rigidbody>().AddForce(new Vector3(0, 5, 0), ForceMode.VelocityChange);
-            //this.GetComponent<Rigidbody>().velocity += new Vector3(0, 10, 0);
+            this.GetComponent<Rigidbody>().velocity = new Vector3(0, 1000f * Time.fixedUnscaledDeltaTime, 0f);
         }
 
+        JobHandle.ScheduleBatchedJobs();
     }
 
-	public void FixedUpdate() {
+    public void FixedUpdate() {
 
         /*
         Plane playerPlane = new Plane(Vector3.up, transform.position);

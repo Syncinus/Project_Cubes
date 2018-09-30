@@ -494,6 +494,7 @@ MonoBehaviour:
   rotation: 0
   proxyCube: {fileID: 1001599491668214}
   realPosition: {x: 0, y: 0, z: 0}
+  _timeScale: 1
 --- !u!114 &114576965075254964
 MonoBehaviour:
   m_ObjectHideFlags: 1

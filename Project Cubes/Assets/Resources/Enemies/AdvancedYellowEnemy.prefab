@@ -204,7 +204,9 @@ MonoBehaviour:
   fireRate: 100
   range: 10
   attackDistance: 7.5
+  detectionRadius: 20
   ScoreGiven: 7
+  wandering: 1
   dead: 0
   targetChangeable: 0
   playerDistanceCheckReady: 0

@@ -6,10 +6,12 @@ using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 
-public class EnemySpawner : MonoBehaviourPunCallbacks {
+public class EnemySpawner : MonoBehaviourPunCallbacks
+{
     public static EnemySpawner instance;
 
-    void Awake() {
+    void Awake()
+    {
         instance = this;
     }
 
@@ -23,8 +25,6 @@ public class EnemySpawner : MonoBehaviourPunCallbacks {
 	public EnemyAI yellowEnemy;
 	public EnemyAI orangeEnemy; 
 	public EnemyAI blackEnemy;
-
-
 	public GameObject enemyp;
 	public GameObject greenEnemyp;
 	public GameObject yellowEnemyp;
@@ -54,7 +54,8 @@ public class EnemySpawner : MonoBehaviourPunCallbacks {
     public GameObject enemy;
     private bool foundPlayer = false;
 
-    public void Start() {
+    public void Start()
+    {
         if (PhotonNetwork.IsMasterClient != true)
         {
             return;
@@ -79,7 +80,8 @@ public class EnemySpawner : MonoBehaviourPunCallbacks {
         }
     }
 
-    public void FixedUpdate() {
+    public void FixedUpdate()
+    {
         if (PhotonNetwork.IsMasterClient != true)
         {
             return;
@@ -97,7 +99,8 @@ public class EnemySpawner : MonoBehaviourPunCallbacks {
                 foundPlayer = true;
             }
         }
-        if (remainingEnemiesToSpawn > 0 && Time.time > nextSpawnTime) {
+        if (remainingEnemiesToSpawn > 0 && Time.time > nextSpawnTime)
+        {
             remainingEnemiesToSpawn--;
             nextSpawnTime = Time.time + currentWave.timeBetweenSpawns;
 
@@ -108,29 +111,24 @@ public class EnemySpawner : MonoBehaviourPunCallbacks {
                 StartCoroutine(SpawnEnemy(enemyToSpawn));
                 enemyObjects.RemoveAt(enemyObjectIndex);
             }
-            
+
         }
     }
 
-	/* 
+    /* 
 	public IEnumerator SpawnEnemyAtPosition(GameObject theEnemy, Vector3 position) {
 		float SpawnDelay = 1f;
 		float tileFlashSpeed = 5f;
-
 		Transform spawnTile = map.GetTileFromPosition (position);
-
 		Material tileMat = spawnTile.GetComponent<Renderer>().material;
 		Color initialColor = tileMat.color;
 		Color flashColor = Color.red;
 		float spawnTimer = 0f;
-
 		while (spawnTimer < SpawnDelay) {
 			tileMat.color = Color.Lerp (initialColor, flashColor, Mathf.PingPong (spawnTimer * tileFlashSpeed, 1));
-
 			spawnTimer += Time.deltaTime;
 			yield return null;
 		}
-
 		tileMat.color = initialColor;
 		GameObject spawnedEnemy = null;
 		if (type == EnemyType.Blue) {
@@ -148,7 +146,6 @@ public class EnemySpawner : MonoBehaviourPunCallbacks {
 		if (type == EnemyType.Black) {
 			spawnedEnemy = PhotonNetwork.Instantiate (blackEnemyp.name, spawnTile.position, Quaternion.identity, 0);
 		}
-
 		if (spawnedEnemy != null) {
 			spawnedEnemy.transform.SetParent (GameObject.Find ("EnemyStorage").transform);
 			GameObject particles = Instantiate (spawnParticles, spawnTile.position + Vector3.up, Quaternion.identity);
@@ -159,32 +156,33 @@ public class EnemySpawner : MonoBehaviourPunCallbacks {
 
 
 
-	IEnumerator SpawnEnemy(GameObject theEnemy) {
-		float SpawnDelay = 1f;
-		float tileFlashSpeed = 5f;
+    IEnumerator SpawnEnemy(GameObject theEnemy)
+    {
+        float SpawnDelay = 1f;
+        float tileFlashSpeed = 5f;
 
-		Transform spawnTile = map.GetRandomOpenTile ();
+        Transform spawnTile = map.GetRandomOpenTile();
 
-		Material tileMat = spawnTile.transform.Find("Octagon").GetComponent<Renderer> ().material;
+        Material tileMat = spawnTile.transform.Find("Octagon").GetComponent<Renderer>().material;
 
         Color initialColor = tileMat.color;
-		Color flashColor = Color.red;
-		//if (type == EnemyType.Black) {
-         //   flashColor = Color.green;
-		//} 
-		float spawnTimer = 0f;
+        Color flashColor = Color.red;
+        //if (type == EnemyType.Black) {
+        //   flashColor = Color.green;
+        //} 
+        float spawnTimer = 0f;
 
-		while (spawnTimer < SpawnDelay) {
-			tileMat.color = Color.Lerp (initialColor, flashColor, Mathf.PingPong (spawnTimer * tileFlashSpeed, 1));
+        while (spawnTimer < SpawnDelay)
+        {
+            tileMat.color = Color.Lerp(initialColor, flashColor, Mathf.PingPong(spawnTimer * tileFlashSpeed, 1));
 
-			spawnTimer += Time.deltaTime;
-			yield return null;
-		}
+            spawnTimer += Time.deltaTime;
+            yield return null;
+        }
 
-		tileMat.color = initialColor;
+        tileMat.color = initialColor;
         GameObject spawnedEnemy = PhotonNetwork.Instantiate("Enemies/" + theEnemy.name, new Vector3(spawnTile.position.x, spawnTile.position.y + 0.5f, spawnTile.position.z), Quaternion.identity, 0);
-		/* 
-
+        /* 
 		if (type == EnemyType.Blue) {
 		    spawnedEnemy = PhotonNetwork.Instantiate (enemyp.name, spawnTile.position, Quaternion.identity, 0);
 		}
@@ -202,26 +200,29 @@ public class EnemySpawner : MonoBehaviourPunCallbacks {
 		}
 		*/
 
-		if (spawnedEnemy != null) {
-			spawnedEnemy.transform.SetParent (GameObject.Find ("EnemyStorage").transform);
-			GameObject particles = Instantiate (spawnParticles, spawnTile.position + Vector3.up, Quaternion.identity);
+        if (spawnedEnemy != null)
+        {
+            spawnedEnemy.transform.SetParent(GameObject.Find("EnemyStorage").transform);
+            GameObject particles = Instantiate(spawnParticles, spawnTile.position + Vector3.up, Quaternion.identity);
             particles.AddComponent<UnrenderDespawn>();
-			particles.transform.SetParent (GameObject.Find ("TempStorage").transform);
+            particles.transform.SetParent(GameObject.Find("TempStorage").transform);
             spawnedEnemy.GetComponent<EnemyAI>().OnDeath += OnEnemyDeath;
-		}
-	}
+        }
+    }
 
-	public void OnEnemyDeath() {
-		remainingLivingEnemies--;
+    public void OnEnemyDeath()
+    {
+        remainingLivingEnemies--;
 
-		if (remainingLivingEnemies <= 0) {
-			Invoke ("PreformNextWave", 5f);
-		}
-	}
+        if (remainingLivingEnemies <= 0)
+        {
+            Invoke("PreformNextWave", 5f);
+        }
+    }
 
     public void PreformNextWave()
     {
-        photonView.RPC("NextWave", RpcTarget.AllBuffered, "STARTING NEXT WAVE");  
+        photonView.RPC("NextWave", RpcTarget.AllBuffered, "STARTING NEXT WAVE");
     }
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
@@ -247,91 +248,51 @@ public class EnemySpawner : MonoBehaviourPunCallbacks {
             //this.gameStarted = (bool)stream.ReceiveNext();
         }
     }
-    
 
-	[PunRPC] public void NextWave(string debugStatment) {
+
+    [PunRPC]
+    public void NextWave(string debugStatment)
+    {
         enemyTypesToSpawn.Clear();
-		enemyObjects.Clear();
-		currentWaveNumber++;
-		Debug.Log ("Starting Wave: " + currentWaveNumber);  
+        enemyObjects.Clear();
+        currentWaveNumber++;
+        Debug.Log("Starting Wave: " + currentWaveNumber);
         Debug.Log(debugStatment);
-		foreach (Transform temp in GameObject.Find("TempStorage").transform) {
-			Destroy (temp.gameObject);
-		}
-		if (currentWaveNumber - 1 < waves.Length) {
-			currentWave = waves [currentWaveNumber - 1];
+        foreach (Transform temp in GameObject.Find("TempStorage").transform)
+        {
+            Destroy(temp.gameObject);
+        }
+        if (currentWaveNumber - 1 < waves.Length)
+        {
+            currentWave = waves[currentWaveNumber - 1];
 
-            foreach (WaveEnemies wEnemies in currentWave.enemies) {
-				enemyTypesToSpawn.Add(wEnemies);
-				for (int i = 0; i < wEnemies.enemyCount; i++) {
-				    enemyObjects.Add(wEnemies.enemyPrefab);
-				}
-				Debug.Log(wEnemies.enemyCount.ToString());
-				remainingEnemiesToSpawn += wEnemies.enemyCount;
-			}
+            foreach (WaveEnemies wEnemies in currentWave.enemies)
+            {
+                enemyTypesToSpawn.Add(wEnemies);
+                for (int i = 0; i < wEnemies.enemyCount; i++)
+                {
+                    enemyObjects.Add(wEnemies.enemyPrefab);
+                }
+                Debug.Log(wEnemies.enemyCount.ToString());
+                remainingEnemiesToSpawn += wEnemies.enemyCount;
+            }
 
-			remainingLivingEnemies = remainingEnemiesToSpawn;
+            remainingLivingEnemies = remainingEnemiesToSpawn;
+        }
+    }
 
-			/* 
-			remainingEnemiesToSpawn = currentWave.enemyCount + currentWave.greenEnemyCount + currentWave.yellowEnemyCount + currentWave.orangeEnemyCount + currentWave.blackEnemyCount;
+    [System.Serializable]
+    public class Wave
+    {
+        public WaveEnemies[] enemies;
+        public float timeBetweenSpawns;
+    }
 
-			remainingBlueEnemiesToSpawn = currentWave.enemyCount;
-			remainingGreenEnemiesToSpawn = currentWave.greenEnemyCount;
-			remainingYellowEnemiesToSpawn = currentWave.yellowEnemyCount;
-			remainingOrangeEnemiesToSpawn = currentWave.orangeEnemyCount;
-			remainingBlackEnemiesToSpawn = currentWave.blackEnemyCount;
-
-			remainingLivingEnemies = remainingEnemiesToSpawn;
-
-			enemyTypesToSpawn = new List<EnemyType> ();
-
-			if (remainingBlueEnemiesToSpawn != 0) {
-				for (int i = 0; i < remainingBlueEnemiesToSpawn; i++) {
-					enemyTypesToSpawn.Add (EnemyType.Blue);
-				}
-			}
-
-			if (remainingGreenEnemiesToSpawn != 0) {
-				for (int i = 0; i < remainingGreenEnemiesToSpawn; i++) {
-					enemyTypesToSpawn.Add (EnemyType.Green);
-				}
-			}
-
-			if (remainingYellowEnemiesToSpawn != 0) {
-				for (int i = 0; i < remainingYellowEnemiesToSpawn; i++) {
-					enemyTypesToSpawn.Add (EnemyType.Yellow);
-				}
-			}
-
-			if (remainingOrangeEnemiesToSpawn != 0) {
-				for (int i = 0; i < remainingOrangeEnemiesToSpawn; i++) {
-					enemyTypesToSpawn.Add (EnemyType.Orange);
-				}
-			}
-
-			if (remainingBlackEnemiesToSpawn != 0) {
-				for (int i = 0; i < remainingBlackEnemiesToSpawn; i++) {
-					enemyTypesToSpawn.Add (EnemyType.Black);
-				}
-			}
-			*/
-
-           
-			//WaveEnemies[] enemyTypeSpawnArr = Utility.ShuffleArray (enemyTypesToSpawn.ToArray (), UnityEngine.Random.Range (1, 10));
-
-			//enemyTypesToSpawn = enemyTypeSpawnArr.ToList ();
-		}
-	}
-
-	[System.Serializable]
-	public class Wave {
-		public WaveEnemies[] enemies;
-		public float timeBetweenSpawns;
-	}
-
+    [System.Serializable]
+    public struct WaveEnemies
+    {
+        public GameObject enemyPrefab;
+        public int enemyCount;
+    }
 }
 
-[System.Serializable] public struct WaveEnemies {
-	public GameObject enemyPrefab;
-	public int enemyCount;
-}

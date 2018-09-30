@@ -68,7 +68,7 @@ MonoBehaviour:
     value: 0
   baseAxis:
     overrideState: 1
-    value: {x: 0, y: 0.2, z: 0}
+    value: {x: 0, y: 0.5, z: 0}
   lineInterval:
     overrideState: 1
     value: 0

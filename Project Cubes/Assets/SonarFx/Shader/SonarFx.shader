@@ -20,16 +20,18 @@
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
-Shader "Hidden/SonarFX"
+Shader "Sonar/SonarFX"
 {
     Properties
     {
-        _SonarBaseColor  ("Base Color",  Color)  = (0.1, 0.1, 0.1, 0)
-        _SonarWaveColor  ("Wave Color",  Color)  = (1.0, 0.1, 0.1, 0)
+        [HDR] _SonarBaseColor  ("Base Color",  Color)  = (0.1, 0.1, 0.1, 0)
+        [HDR] _SonarWaveColor  ("Wave Color",  Color)  = (1.0, 0.1, 0.1, 0)
         _SonarWaveParams ("Wave Params", Vector) = (1, 20, 20, 10)
         _SonarWaveVector ("Wave Vector", Vector) = (0, 0, 1, 0)
-        _SonarAddColor   ("Add Color",   Color)  = (0, 0, 0, 0)
+        [HDR] _SonarAddColor   ("Add Color",   Color)  = (0, 0, 0, 0)
     }
+
+
     SubShader
     {
         Tags { "RenderType" = "Opaque" }
@@ -79,5 +81,5 @@ Shader "Hidden/SonarFX"
 
         ENDCG
     } 
-    Fallback "Diffuse"
+    Fallback "HDRenderPipeline/Unlit"
 }

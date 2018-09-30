@@ -77,7 +77,7 @@ public class ShootShots : MonoBehaviourPunCallbacks {
 
         if (psystem != null)
         {
-            if (psystem.gameObject.activeSelf == true && lastTimeFired > timeOfLastFire + 1.0f)
+            if (psystem.gameObject.activeSelf == true && lastTimeFired > timeOfLastFire + 0.1f)
             {
                 psystem.gameObject.SetActive(false);
             }
@@ -263,13 +263,12 @@ public class ShootShots : MonoBehaviourPunCallbacks {
         if (usingbeam == true) {
 			beam.Play();
 		} else {
-			Color color = new Color(fakeColor.x, fakeColor.y, fakeColor.z, 1);  
-            Kvant.Spray spray = this.transform.Find(psystem.name).Find("SprayMain").GetComponent<Kvant.Spray>();
-            spray.gameObject.SetActive(true);
-            spray.material.color = color;
+			Color color = new Color(fakeColor.x, fakeColor.y, fakeColor.z, 1);
+            Kvant.Stream stream = psystem.GetComponent<Kvant.Stream>();
+            stream.gameObject.SetActive(true);
+            stream.color = color;
             //main = system.main;
 			//main.startColor = color;
-            //system.enabled = true;
 		}
 	}
 

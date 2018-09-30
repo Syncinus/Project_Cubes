@@ -36,6 +36,10 @@ public class SkillSystem : MonoBehaviourPunCallbacks {
 		if (Input.GetKeyDown (KeyCode.F2)) {
 			Shockwave ();
 		}
+        if (Input.GetKeyDown(KeyCode.F3))
+        {
+            FreezeTime();
+        }
 	}
 
     public IEnumerator ShakeCamera(float magnitude, float roughness, float startFadeIn, float endFadeOut)
@@ -70,12 +74,13 @@ public class SkillSystem : MonoBehaviourPunCallbacks {
     {
         if (shockwaveReady == true)
         {
-            //shockwaveParticles.Play ();
+            shockwaveParticles.Play ();
 
             PostProcessVolume volume = Camera.main.GetComponent<PostProcessVolume>();
             PostProcessProfile profile = volume.profile;
             profile.TryGetSettings(out line);
 
+            /*
             line.enabled.value = true;
             line.active = true;
 
@@ -85,6 +90,7 @@ public class SkillSystem : MonoBehaviourPunCallbacks {
             line.active = false;
 
             yield return new WaitForSeconds(0.3f);
+            */
 
             //shakeCamera(4f, 4f, 0.1f, 2.0f);
 
@@ -107,7 +113,9 @@ public class SkillSystem : MonoBehaviourPunCallbacks {
                 }
             } */
 
-            Collider[] hitEnemies = Physics.OverlapSphere(Vector3.zero, 1000f);
+            yield return new WaitForSeconds(0.01f);
+
+            Collider[] hitEnemies = Physics.OverlapSphere(this.transform.position, 20f);
 
             foreach (Collider col in hitEnemies)
             {
@@ -128,6 +136,11 @@ public class SkillSystem : MonoBehaviourPunCallbacks {
 
             Invoke("RechargeShockwave", shockwaveRecharge);
         }
+    }
+
+    public void FreezeTime()
+    {
+        StartCoroutine(ChangeTimeScale(0.01f, 5f));
     }
 
     public IEnumerator ChangeTimeScale(float slowdownFactor, float slowdownLength)

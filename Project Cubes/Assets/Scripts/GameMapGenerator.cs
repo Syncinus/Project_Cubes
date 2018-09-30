@@ -94,7 +94,6 @@ public class GameMapGenerator : MonoBehaviour {
 		tileMap = new Transform [currentMap.mapSize.x, currentMap.mapSize.y];
         //Vector3 worldBottomLeft = this.transform.position - Vector3.right * currentMap.mapSize.x / 2 - Vector3.forward * currentMap.mapSize.y / 2;
 		System.Random prng = new System.Random (currentMap.seed);
-		GetComponent<BoxCollider> ().size = new Vector3 (currentMap.mapSize.x * tileSize, 0.05f, currentMap.mapSize.y * tileSize);
         //Vector3 worldBottomLeft = this.transform.position - Vector3.right * currentMap.mapSize.x / 2 - Vector3.forward * currentMap.mapSize.y / 2;
 		//GetComponent<Rigidbody> ()?.AddForce (Vector3.zero);
 		
