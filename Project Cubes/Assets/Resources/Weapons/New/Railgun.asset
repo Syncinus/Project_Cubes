@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1643ffd4cc032e4cbeda84830cb223e, type: 3}
+  m_Name: Railgun
+  m_EditorClassIdentifier: 
+  gunName: Railgun
+  cost: 0
+  description: Rail all of the enemies.
+  shotDelay: 0.2
+  particlesColor: {r: 1, g: 0, b: 0, a: 1}
+  icon: {fileID: 21300000, guid: 8153546d15afd4dbeae0a3fbad5d2e67, type: 3}
+  auto: 0
+  weaponRechargeTime: 4
+  weaponHasRecharge: 1
+  projectile: {fileID: 0}
+  particles: {fileID: 1784506465146280, guid: 9a4df70a9070ab54dae732623c01aee9, type: 2}
+  lineWidth: 0.5
+  hasParticles: 1
+  shakesCamera: 0
+  shakeMagnitude: 0
+  shakeRoughness: 0
+  firerate: 1
+  damage: 5000
+  range: 100
+  type: 2
+  rarity: 4
+  sound: {fileID: 0}
+  soundRefreshTime: 0

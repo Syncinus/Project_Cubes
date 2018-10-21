@@ -18,9 +18,9 @@ public class ShootShots : MonoBehaviourPunCallbacks {
 	public float beamrange = 100f;
 	public float beamdamage = 1000f;
 	public float beamImpactForce = 50f;
+    public bool ableToShoot = true;
 	public bool beamHyperMode = false;
-	private bool ableToShoot = true;
-	private float lastTimeFired = 0f;
+    private float lastTimeFired = 0f;
 
 	private float timeOfLastFire;
 	public ParticleSystem blast;
@@ -37,11 +37,11 @@ public class ShootShots : MonoBehaviourPunCallbacks {
 	public GameObject shooter;
 	public Color ColorOfParticles;
     [HideInInspector] public Vector3 realPosition;
-    
-	private float nextTimeToFire = 0f;
+
+    private float nextTimeToFire = 0f;
     private bool finishedGrowingLine = false;
     [HideInInspector] public bool ableToPlaySound = true;
-    [HideInInspector] public bool ableToFire = true;
+    [System.Obsolete] public bool ableToFire = true;
     private bool createdParticles;
     private WeaponItem weapon;
     private LineRenderer lineRenderer;
@@ -63,7 +63,6 @@ public class ShootShots : MonoBehaviourPunCallbacks {
         }
         psystem = blast.transform;
         createdParticles = false;
-        StartCoroutine(WaitForDefaultWeapon());
     }
 
 
@@ -101,12 +100,6 @@ public class ShootShots : MonoBehaviourPunCallbacks {
         */
     }
 
-    IEnumerator WaitForDefaultWeapon()
-    {
-        yield return new WaitUntil(() => this.GetComponent<PlayerCube>().weapon != null);
-        weapon = this.GetComponent<PlayerCube>().weapon;
-    }
-
     public void Update()
     {
         if (photonView.IsMine != true)
@@ -116,7 +109,6 @@ public class ShootShots : MonoBehaviourPunCallbacks {
 
         PlayerCube cube = this.GetComponent<PlayerCube>();
         lastTimeFired += Time.deltaTime;
-
 
         if (cube.weapon != weapon && cube.weapon != null)
         {
@@ -130,11 +122,13 @@ public class ShootShots : MonoBehaviourPunCallbacks {
             impactmain.startColor = cube.weapon.particlesColor;
             GameObject oldParticles = psystem.gameObject;
             psystem = blast.transform;
-            PhotonNetwork.Destroy(oldParticles);
+            if (oldParticles.GetComponent<PhotonView>() != null)
+            {
+                PhotonNetwork.Destroy(oldParticles);
+            }
             createdParticles = false;
             weapon = cube.weapon;
         }
-
         if (this.GetComponent<LineRenderer>().enabled == true)
         {
             photonView.RPC("SetLinePositions", RpcTarget.AllBuffered, this.transform.position, this.transform.position + (this.transform.forward * range));
@@ -168,10 +162,9 @@ public class ShootShots : MonoBehaviourPunCallbacks {
         }
 
 
-        if (ableToFire == true) {
+        if (cube.weapon != null) {
             if (beamHyperMode == false)
             {
-
                 if (cube.weapon.auto == true)
                 {
                     if (Input.GetKey(KeyCode.Space) && Time.time >= nextTimeToFire && ableToShoot == true || Input.GetMouseButton(0) && Time.time >= nextTimeToFire && ableToShoot == true)
@@ -512,11 +505,11 @@ public class ShootShots : MonoBehaviourPunCallbacks {
                         {
                             if (beamMode == false)
                             {
-                                target.TakeDamage(damage, hit.point);
+                                target.TakeDamage(damage, hit.point, this.gameObject);
                             }
                             if (beamMode == true)
                             {
-                                target.TakeDamage(beamdamage, hit.point);
+                                target.TakeDamage(beamdamage, hit.point, this.gameObject);
                             }
                         }
 
@@ -585,72 +578,74 @@ public class ShootShots : MonoBehaviourPunCallbacks {
                     //StartCoroutine(disableLine());
                     foreach (RaycastHit Hit in hits)
                     {
-
-                        GameObject impact = Instantiate(impactEffect, Hit.point, Quaternion.LookRotation(Hit.point));
-                        impact.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
-                        impact.transform.SetParent(GameObject.Find("TempStorage").transform);
-
-
-                        if (Hit.transform.GetComponent<EnemyAI>())
+                        if (Hit.transform != this.transform)
                         {
+                            GameObject impact = Instantiate(impactEffect, Hit.point, Quaternion.LookRotation(Hit.point));
+                            impact.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
+                            impact.transform.SetParent(GameObject.Find("TempStorage").transform);
 
-                            EnemyAI ai = Hit.transform.GetComponent<EnemyAI>();
-                            if (ai.targetChangeable == true)
-                            {
-                                ai.target = shooter.transform;
-                            }
-                        }
 
-                        DestroyableObject target = Hit.transform.GetComponent<DestroyableObject>();
-                        if (target != null)
-                        {
-                            if (beamMode == false)
+                            if (Hit.transform.GetComponent<EnemyAI>())
                             {
-                                target.TakeDamage(damage, Hit.point);
-                            }
-                            if (beamMode == true)
-                            {
-                                target.TakeDamage(beamdamage, Hit.point);
-                            }
-                        }
 
-                        Rigidbody hitRigid = Hit.transform.GetComponent<Rigidbody>();
-                        Rigidbody rb = this.transform.GetComponent<Rigidbody>();
-                        if (hitRigid != null)
-                        {
-                            if (rb != null)
-                            {
-                                if (hitRigid == rb)
+                                EnemyAI ai = Hit.transform.GetComponent<EnemyAI>();
+                                if (ai.targetChangeable == true)
                                 {
-                                    yield return null;
+                                    ai.target = shooter.transform;
                                 }
                             }
 
-                            /*
-                            if (hit.transform.GetComponent<EnemyAI> ()) {
-                                hit.transform.gameObject.GetComponent<NavMeshAgent> ().enabled = false;
-                            }
-                            */
-                            if (beamMode == false)
+                            DestroyableObject target = Hit.transform.GetComponent<DestroyableObject>();
+                            if (target != null)
                             {
-                                hitRigid.AddExplosionForce(impactForce, Hit.point, 500f);
-                                hitRigid.AddForce(-Hit.point * 10000f);
-                            }
-
-                            if (beamMode == true)
-                            {
-                                hitRigid.AddForce(-Hit.normal * beamImpactForce);
-                            }
-
-                            /*
-                            if (hit.transform.GetComponent<EnemyAI> ()) {
-                                if (hitRigid != null) {
-                                    hitRigid.Sleep ();
+                                if (beamMode == false)
+                                {
+                                    target.TakeDamage(damage, Hit.point, this.gameObject);
                                 }
-                                hit.transform.gameObject.GetComponent<NavMeshAgent> ().enabled = true;
-                                hitRigid.WakeUp ();
+                                if (beamMode == true)
+                                {
+                                    target.TakeDamage(beamdamage, Hit.point, this.gameObject);
+                                }
                             }
-                            */
+
+                            Rigidbody hitRigid = Hit.transform.GetComponent<Rigidbody>();
+                            Rigidbody rb = this.transform.GetComponent<Rigidbody>();
+                            if (hitRigid != null)
+                            {
+                                if (rb != null)
+                                {
+                                    if (hitRigid == rb)
+                                    {
+                                        yield return null;
+                                    }
+                                }
+
+                                /*
+                                if (hit.transform.GetComponent<EnemyAI> ()) {
+                                    hit.transform.gameObject.GetComponent<NavMeshAgent> ().enabled = false;
+                                }
+                                */
+                                if (beamMode == false)
+                                {
+                                    hitRigid.AddExplosionForce(impactForce, Hit.point, 500f);
+                                    hitRigid.AddForce(-Hit.point * 10000f);
+                                }
+
+                                if (beamMode == true)
+                                {
+                                    hitRigid.AddForce(-Hit.normal * beamImpactForce);
+                                }
+
+                                /*
+                                if (hit.transform.GetComponent<EnemyAI> ()) {
+                                    if (hitRigid != null) {
+                                        hitRigid.Sleep ();
+                                    }
+                                    hit.transform.gameObject.GetComponent<NavMeshAgent> ().enabled = true;
+                                    hitRigid.WakeUp ();
+                                }
+                                */
+                            }
                         }
                     }
                        
@@ -706,11 +701,11 @@ public class ShootShots : MonoBehaviourPunCallbacks {
                         {
                             if (beamMode == false)
                             {
-                                target.TakeDamage(damage, hit.point);
+                                target.TakeDamage(damage, hit.point, this.gameObject);
                             }
                             if (beamMode == true)
                             {
-                                target.TakeDamage(beamdamage, hit.point);
+                                target.TakeDamage(beamdamage, hit.point, this.gameObject);
                             }
                         }
 
@@ -844,7 +839,7 @@ public class ShootShots : MonoBehaviourPunCallbacks {
         {
             ContactPoint point = collision.contacts[0];
             Vector3 hitpoint = point.point;
-            target.TakeDamage(damage, hitpoint);
+            target.TakeDamage(damage, hitpoint, this.gameObject);
         }
 
         Rigidbody hitRigid = Hit.transform.GetComponent<Rigidbody>();

@@ -295,7 +295,7 @@ public class TerrorizerAI : BossAI {
 
                         if (hit.transform.GetComponent<EnemyAI>() == null)
                         {
-                            obj.TakeDamage(1000f, hit.point);
+                            obj.TakeDamage(1000f, hit.point, this.gameObject);
 
                             if (hitRigid != null)
                             {
@@ -470,7 +470,7 @@ public class TerrorizerAI : BossAI {
 
                             if (hit.transform.GetComponent<EnemyAI>() == null)
                             {
-                                obj.TakeDamage(1000f, hit.point);
+                                obj.TakeDamage(1000f, hit.point, this.gameObject);
 
                                 if (hitRigid != null)
                                 {
@@ -873,7 +873,7 @@ public class TerrorizerAI : BossAI {
         {
             ContactPoint point = collision.contacts[0];
             Vector3 hitpoint = point.point;
-            hitDesObj.TakeDamage(DamageAmount, hitpoint);
+            hitDesObj.TakeDamage(DamageAmount, hitpoint, this.gameObject);
         }
 
         Rigidbody hitRigid = Hit.transform.GetComponent<Rigidbody>();

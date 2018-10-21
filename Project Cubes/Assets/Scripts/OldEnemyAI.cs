@@ -254,12 +254,12 @@ public class OldEnemyAI : MonoBehaviour {
             if (hit.transform.GetComponent<EnemyAI>() == null) {
 				if (beam == false) {
 					if (desObj != null) {
-						desObj.TakeDamage (damage, hit.point);
+						desObj.TakeDamage (damage, hit.point, this.gameObject);
 					}
 				}
 				if (beam == true) {
 					if (desObj != null) {
-					desObj.TakeDamage (1000f, hit.point);
+					desObj.TakeDamage (1000f, hit.point, this.gameObject);
 					}
 					if (hitRigid != null) {
 						hitRigid.AddForce(hit.point * 100);

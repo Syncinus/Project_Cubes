@@ -68,9 +68,12 @@
 -r:D:\Unity\Editor\Data\Managed/UnityEditor.dll
 -r:D:\Unity\Editor\Data\Managed/Unity.Locator.dll
 -r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/Cinemachine.dll"
+-r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/Unity.ProBuilder.AddOns.Editor.dll"
+-r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/Unity.ProGrids.dll"
 -r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/jp.keijiro.kino.post-processing.Editor.dll"
 -r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Editor.dll"
 -r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Runtime.dll"
+-r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/Unity.ProGrids.Editor.dll"
 -r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll"
 -r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll"
 -r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll"
@@ -95,6 +98,11 @@
 -r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Photon/PhotonLibs/Photon3Unity3D.dll"
 -r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Photon/PhotonLibs/WebSocket/websocket-sharp.dll"
 -r:C:/Users/nj7/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.analytics@2.0.16/UnityEngine.Analytics.dll
+-r:C:/Users/nj7/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.probuilder@3.0.9/ProBuilder/Classes/ProBuilderCore.dll
+-r:C:/Users/nj7/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.probuilder@3.0.9/ProBuilder/Classes/ProBuilderMeshOps.dll
+-r:C:/Users/nj7/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.probuilder@3.0.9/ProBuilder/Classes/ClassesLib/KdTreeLib.dll
+-r:C:/Users/nj7/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.probuilder@3.0.9/ProBuilder/Classes/ClassesLib/pb_Stl.dll
+-r:C:/Users/nj7/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.probuilder@3.0.9/ProBuilder/Classes/ClassesLib/Poly2Tri.dll
 -r:C:/Users/nj7/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.13/UnityEngine.StandardEvents.dll
 -r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\mscorlib.dll
 -r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\System.dll
@@ -650,6 +658,9 @@
 -i:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Scripts/EasterEggs.cs"
 -i:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Scripts/EnemyAI.cs"
 -i:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Scripts/EnemySpawner.cs"
+-i:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Scripts/Equipment/CubeEditingButton.cs"
+-i:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Scripts/Equipment/CubeEditingManager.cs"
+-i:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Scripts/Equipment/CubeSettings.cs"
 -i:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Scripts/EquipmentManager.cs"
 -i:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Scripts/FallDissolve.cs"
 -i:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Scripts/GameMapGenerator.cs"
@@ -674,6 +685,8 @@
 -i:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Scripts/SmoothDampScript.cs"
 -i:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Scripts/SmoothFollow.cs"
 -i:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Scripts/SpawnSystem.cs"
+-i:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Scripts/Stealth/LastPlayerSighting.cs"
+-i:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Scripts/TimeManager.cs"
 -i:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Scripts/UnrenderDespawn.cs"
 -i:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Scripts/UpgradeSystem.cs"
 -i:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Scripts/Utility.cs"

@@ -6,7 +6,8 @@ public class InvalidDestroyer : MonoBehaviour {
 
     private void FixedUpdate()
     {
-        if (Vector3.Distance(Vector3.zero, this.transform.position) > 200f) {
+        /*
+        if () {
             EnemyAI ai = this.GetComponent<EnemyAI>();
             DestroyableObject desObj = this.GetComponent<DestroyableObject>();
             if (ai != null)
@@ -20,5 +21,6 @@ public class InvalidDestroyer : MonoBehaviour {
 
             DestroyImmediate(this.gameObject);
         }
+        */
     }
 }

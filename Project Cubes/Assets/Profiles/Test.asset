@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Name: Test
   m_EditorClassIdentifier: 
   settings:
-  - {fileID: 114002605696171806}
---- !u!114 &114002605696171806
+  - {fileID: 114979937791555476}
+--- !u!114 &114979937791555476
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -21,49 +21,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94488653724e0384d94b7a5e7bc68a14, type: 3}
-  m_Name: Isoline
+  m_Script: {fileID: 11500000, guid: 68966c50a26529148a161de977c30b30, type: 3}
+  m_Name: Streak
   m_EditorClassIdentifier: 
   active: 1
   enabled:
     overrideState: 1
-    value: 0
-  baseAxis:
-    overrideState: 1
-    value: {x: 0, y: 0.2, z: 0}
-  lineInterval:
+    value: 1
+  threshold:
     overrideState: 1
     value: 1
-  lineOffset:
+  stretch:
     overrideState: 1
-    value: 0
-  lineScroll:
+    value: 0.75
+  intensity:
     overrideState: 1
-    value: 0.1
-  lineColor:
+    value: 0.2
+  tint:
     overrideState: 1
-    value: {r: 1.5, g: 0.2, b: 0.2, a: 1}
-  lineWidth:
-    overrideState: 1
-    value: 1
-  sourceContribution:
-    overrideState: 1
-    value: 0.05
-  backgroundColor:
-    overrideState: 1
-    value: {r: 0, g: 0, b: 0, a: 0.57254905}
-  modulationStrength:
-    overrideState: 1
-    value: 0.4
-  modulationFrequency:
-    overrideState: 1
-    value: 0.1
-  modulationWidth:
-    overrideState: 1
-    value: 0.1
-  modulationOffset:
-    overrideState: 1
-    value: 0
-  modulationScroll:
-    overrideState: 1
-    value: 1
+    value: {r: 1, g: 1, b: 1, a: 1}

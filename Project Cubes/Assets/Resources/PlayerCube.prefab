@@ -183,7 +183,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1960394249213178}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -1, y: 2.5, z: 0.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4773325373383224}
@@ -433,6 +433,7 @@ MonoBehaviour:
   beamrange: 100
   beamdamage: 5000
   beamImpactForce: 50
+  ableToShoot: 1
   beamHyperMode: 0
   blast: {fileID: 198270107399764736}
   beam: {fileID: 198612528012401866}
@@ -456,6 +457,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 30000
+  ScoreGiven: 1
   health: 30000
   isAlive: 1
   brokenVersion: {fileID: 1868017207626754, guid: ca5559b47b2347847b7cad14cdaa6e3d,
@@ -525,7 +527,7 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 114942571160186518}
   viewIdField: 0
-  InstantiationId: -1
+  InstantiationId: 2
   isRuntimeInstantiated: 0
 --- !u!114 &114815354436096720
 MonoBehaviour:

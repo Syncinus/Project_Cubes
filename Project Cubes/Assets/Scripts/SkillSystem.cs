@@ -123,7 +123,7 @@ public class SkillSystem : MonoBehaviourPunCallbacks {
                 DestroyableObject desObj = obj.GetComponent<DestroyableObject>();
                 if (desObj != null)
                 {
-                    desObj.TakeDamage(5000f, obj.transform.position);
+                    desObj.TakeDamage(5000f, obj.transform.position, this.gameObject);
                     Rigidbody rigidB = obj.transform.GetComponent<Rigidbody>();
                     if (rigidB != null && rigidB != this.GetComponent<Rigidbody>())
                     {

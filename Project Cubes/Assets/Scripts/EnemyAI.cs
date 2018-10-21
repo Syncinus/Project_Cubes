@@ -33,8 +33,8 @@ public class EnemyAI : MonoBehaviourPunCallbacks
     public float damage = 5.0f;
     public float fireRate = 10.0f;
     public float range = 10.0f;
-    public float detectionRadius = 7.5f;
-    public float fieldOfView = 60f;
+    public float detectionRadius = 15f;
+    public float stealthDetection = 10f;
     private float lookAtDistance = 10f;
     public float attackDistance = 7.5f;
 
@@ -60,6 +60,11 @@ public class EnemyAI : MonoBehaviourPunCallbacks
     float timeOfLastFire;
     bool ableToShoot = true;
 
+    public float fieldOfView = 60f;
+    public Vector3 personalLastSighting;
+
+    private Vector3 previousSighting;
+
 
     public void Die()
     {
@@ -70,7 +75,12 @@ public class EnemyAI : MonoBehaviourPunCallbacks
     }
 
     private void Awake()
-    {    
+    {
+
+        personalLastSighting = LastPlayerSighting.resetPosition;
+        previousSighting = LastPlayerSighting.resetPosition;
+
+
         this.gameObject.AddComponent<InvalidDestroyer>();
         this.gameObject.AddComponent<FallDissolve>();
         ai = this.GetComponent<IAstarAI>();
@@ -333,11 +343,11 @@ public class EnemyAI : MonoBehaviourPunCallbacks
                     {
                         if (beamMode == false)
                         {
-                            desObj.TakeDamage(damage, hit.point);
+                            desObj.TakeDamage(damage, hit.point, this.gameObject);
                         }
                         else
                         {
-                            desObj.TakeDamage(1000f, hit.point);
+                            desObj.TakeDamage(1000f, hit.point, this.gameObject);
                         }
                         if (hitRigid != null)
                         {
@@ -407,11 +417,11 @@ public class EnemyAI : MonoBehaviourPunCallbacks
                         {
                             if (beamMode == false)
                             {
-                                target.TakeDamage(damage, hit.point);
+                                target.TakeDamage(damage, hit.point, this.gameObject);
                             }
                             if (beamMode == true)
                             {
-                                target.TakeDamage(1000f, hit.point);
+                                target.TakeDamage(1000f, hit.point, this.gameObject);
                             }
                         }
 
@@ -495,11 +505,11 @@ public class EnemyAI : MonoBehaviourPunCallbacks
                         {
                             if (beamMode == false)
                             {
-                                target.TakeDamage(damage, hit.point);
+                                target.TakeDamage(damage, hit.point, this.gameObject);
                             }
                             if (beamMode == true)
                             {
-                                target.TakeDamage(1000f, hit.point);
+                                target.TakeDamage(1000f, hit.point, this.gameObject);
                             }
                         }
 
@@ -572,11 +582,11 @@ public class EnemyAI : MonoBehaviourPunCallbacks
                         {
                             if (beamMode == false)
                             {
-                                target.TakeDamage(damage, Hit.point);
+                                target.TakeDamage(damage, Hit.point, this.gameObject);
                             }
                             if (beamMode == true)
                             {
-                                target.TakeDamage(1000f, Hit.point);
+                                target.TakeDamage(1000f, Hit.point, this.gameObject);
                             }
                         }
 
@@ -673,7 +683,7 @@ public class EnemyAI : MonoBehaviourPunCallbacks
             {
                 ContactPoint point = collision.contacts[0];
                 Vector3 hitpoint = point.point;
-                target.TakeDamage(damage, hitpoint);
+                target.TakeDamage(damage, hitpoint, this.gameObject);
             }
 
             Rigidbody hitRigid = Hit.transform.GetComponent<Rigidbody>();
@@ -815,8 +825,34 @@ public class EnemyAI : MonoBehaviourPunCallbacks
 
     public Transform OldTarget { get; set; }
 
-
     private bool hasDetectedPlayer = false;
+
+    private void RunDetection(Collider other)
+    {
+        if (other.gameObject == target.gameObject)
+        {
+            hasDetectedPlayer = false;
+
+            Vector3 direction = other.transform.position - this.transform.position;
+            float angle = (Vector3.Angle(direction, this.transform.forward));
+
+            if (angle >= -(fieldOfView / 2) && angle <= (fieldOfView / 2))
+            {
+                RaycastHit hit;
+
+                Debug.DrawRay(this.transform.position, direction, Color.red);
+                if (Physics.Raycast(this.transform.position, direction, out hit, 20f, LayerMask.NameToLayer("Player")))
+                {
+                    if (hit.collider.transform == target)
+                    {
+                        hasDetectedPlayer = true;
+                        LastPlayerSighting.position = target.transform.position;
+                    }
+                }
+
+            }
+        }
+    }
 
     IEnumerator UpdatePath()
     {
@@ -833,14 +869,19 @@ public class EnemyAI : MonoBehaviourPunCallbacks
                     {
                         if (hasDetectedPlayer == false)
                         {
-                            Vector3 targetDir = target.position - this.transform.position;
-                            float angle = Vector3.Angle(targetDir, this.transform.forward);
-
-                            if (angle >= fieldOfView)
+                            if (LastPlayerSighting.position != previousSighting)
                             {
-                                Debug.Log("Seeing Player!");
+                                personalLastSighting = LastPlayerSighting.position;
                             }
-                            
+
+                            Collider[] colliders = Physics.OverlapSphere(this.transform.position, detectionRadius);
+
+                            foreach (Collider collider in colliders)
+                            {
+                                RunDetection(collider);
+                            }
+
+                            previousSighting = LastPlayerSighting.position;                      
 
                             if (Time.time > nextSearchTime && (ai.reachedEndOfPath || !ai.hasPath))
                             {

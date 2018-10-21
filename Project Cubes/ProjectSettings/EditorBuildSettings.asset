@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/PleaseNoMore.unity
+    path: Assets/Scenes/Game/ProjectCubesMain.unity
     guid: e4734b9c2a05d1e45abcffa2a5ecef03
+  - enabled: 1
+    path: Assets/Scenes/Game/CubeEditing.unity
+    guid: 23c6c04f152ee124ab845a9522172e84
   m_configObjects: {}

@@ -10,6 +10,7 @@ using Photon.Realtime;
 public class DestroyableObject : MonoBehaviourPunCallbacks {
 
 	public float maxHealth = 50f;
+    public float ScoreGiven = 1f;
 	public float health;
 	public bool isAlive = true;
 	public GameObject brokenVersion;
@@ -29,10 +30,6 @@ public class DestroyableObject : MonoBehaviourPunCallbacks {
 		health = maxHealth;
 	    photonView = PhotonView.Get(this);
     }
-
-    public void Update() {
-		//NO MORE SUICIDE KEY
-	}
 
 	public void FixedUpdate() {
 		if (health <= 0f) {
@@ -74,20 +71,20 @@ public class DestroyableObject : MonoBehaviourPunCallbacks {
 	}
 
     
-	public void TakeDamage (float amount, Vector3 point) {
+	public void TakeDamage (float amount, Vector3 point, GameObject attacker) {
 		//health -= amount;
 		if (photonView != null && this.GetComponent<EnemyAI>() == null) {
-		    photonView.RPC("PunTakeDamage", RpcTarget.All, amount, point);
+		    photonView.RPC("PunTakeDamage", RpcTarget.All, amount, point, attacker);
 		} else {
-            AntiNetworkTakeDamage(amount, point);
+            AntiNetworkTakeDamage(amount, point, attacker);
 		}
 	}
 
 	public void RPCRespawn() {
-		photonView.RPC ("Respawn", RpcTarget.All, 10);
+		photonView.RPC ("Respawn", RpcTarget.All);
 	}
 
-	[PunRPC] public void Respawn(int rpcallower) {
+	[PunRPC] public void Respawn() {
 		this.gameObject.SetActive(true);
 	    health = maxHealth;
 		this.transform.position = GameObject.Find("PlayerSpawn").transform.position;
@@ -125,21 +122,21 @@ public class DestroyableObject : MonoBehaviourPunCallbacks {
     }
 
 
-    public void AntiNetworkTakeDamage(float amount, Vector3 point) {
+    public void AntiNetworkTakeDamage(float amount, Vector3 point, GameObject attacker) {
 		health -= amount;
 		if (this.GetComponent<PlayerCube> () != null) {
 			this.GetComponent<PlayerCube> ().timeScinceLastTimeTakingDamage = 0;
 		}
 		if (health <= 0f) {
 			if (this.GetComponent<EnemyAI>() == null) {
-			    EndWithoutView(point);
+			    EndWithoutView(point, attacker);
 			} else {
-				photonView.RPC("End", RpcTarget.All, point);
+				photonView.RPC("End", RpcTarget.All, point, attacker);
 			}
 		}
 	}
 
-	[PunRPC] public void PunTakeDamage(float amount, Vector3 point) {
+	[PunRPC] public void PunTakeDamage(float amount, Vector3 point, GameObject attacker) {
 		health -= amount;
 		if (this.GetComponent<PlayerCube> () != null) {
 			this.GetComponent<PlayerCube> ().timeScinceLastTimeTakingDamage = 0;
@@ -147,34 +144,45 @@ public class DestroyableObject : MonoBehaviourPunCallbacks {
 		if (health <= 0f) {
 			//Break (point);
 			if (photonView != null) {
-			    photonView.RPC("End", RpcTarget.All, point);
+			    photonView.RPC("End", RpcTarget.All, point, attacker);
 			}
 		}
 	}
 
-	public void EndWithoutView(Vector3 point) {
+    public void EndWithoutView(Vector3 point, GameObject attacker)
+    {
         PrepareDeath();
         RunExplosionAnimation(point);
-		if (this.GetComponent<EnemyAI>() != null) {
-		    photonView.RPC("SetAliveness", RpcTarget.All, false);
-			isAlive = false;
-			this.transform.GetComponent<EnemyAI>().Die();
-		} else {
-			if (this.GetComponent<PlayerCube>() != null) {
-                    this.gameObject.SetActive(false);
-                    //(ShakeCamera(5f, 3f, 0.1f, 1.5f));
-            } else {
-					Destroy(this.gameObject);
-			}
-		}
-	}
+        if (this.GetComponent<EnemyAI>() != null)
+        {
+            photonView.RPC("SetAliveness", RpcTarget.All, false);
+            isAlive = false;
+            this.transform.GetComponent<EnemyAI>().Die();
+        }
+        else
+        {
+            if (this.GetComponent<PlayerCube>() != null)
+            {
+                this.gameObject.SetActive(false);
+                if (attacker.GetComponent<PlayerCube>() != null)
+                {
+                    attacker.GetComponent<PlayerCube>().AddScore(ScoreGiven);
+                }
+                //(ShakeCamera(5f, 3f, 0.1f, 1.5f));
+            }
+            else
+            {
+                Destroy(this.gameObject);
+            }
+        }
+    }
 
 	[PunRPC] public void SetAliveness(bool alive) {
 		isAlive = alive;
 	}
 
     [PunRPC]
-    public void End(Vector3 point)
+    public void End(Vector3 point, GameObject attacker)
     {
         PrepareDeath();
         RunExplosionAnimation(point);
@@ -193,6 +201,10 @@ public class DestroyableObject : MonoBehaviourPunCallbacks {
                 if (this.GetComponent<PlayerCube>() == null)
                 {
                     PhotonNetwork.DestroyPlayerObjects(PhotonNetwork.LocalPlayer);
+                    if (attacker.GetComponent<PlayerCube>() != null)
+                    {
+                        attacker.GetComponent<PlayerCube>().AddScore(ScoreGiven);
+                    }
                 } else
                 {
                     //StartCoroutine(ShakeCamera(5f, 3f, 0.1f, 1.5f));

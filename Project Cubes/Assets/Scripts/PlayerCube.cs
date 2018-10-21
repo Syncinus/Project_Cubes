@@ -33,7 +33,6 @@ public class PlayerCube : MonoBehaviourPunCallbacks {
 
 	private bool setCamera = false;
 	private Text healthText;
-    private EquipmentManager gunManager;
 
     bool first = true;
 
@@ -76,17 +75,23 @@ public class PlayerCube : MonoBehaviourPunCallbacks {
         Camera.main.transform.GetComponent<SmoothCameraAdvanced>().target = this.transform;
         Camera.main.transform.SetParent(this.transform);
         Camera.main.transform.GetComponent<SmoothCameraAdvanced>().enabled = true;
-        
+
         //Camera.main.transform.GetComponent<AlternateCameraScript>().target = this.transform;
 
+        this.GetComponent<DestroyableObject>().ScoreGiven = 10f;
 		this.transform.position = new Vector3(0f, 0.5f, 0f);
 		rigid = this.GetComponent<Rigidbody> ();
 		desObj = this.GetComponent<DestroyableObject> ();
 		GameObject canvas = GameObject.Find("Canvas");
 		healthText = canvas.transform.Find("Health").GetComponent<Text>();
 		StartCoroutine (Regenerate ());
-        gunManager = EquipmentManager.instance;
-        weapon = gunManager.currentGun;
+        weapon = CubeSettings.weapon;
+    }
+
+    public void AddScore(float score)
+    {
+        ScoreSystem.Score += score;
+        CubeSettings.Score += score;
     }
 
     public void Update()
@@ -98,16 +103,6 @@ public class PlayerCube : MonoBehaviourPunCallbacks {
 
 
         this.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezeRotationX;
-        
-
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            this.GetComponent<DestroyableObject>().TakeDamage(30000, this.transform.position);
-        }
-        if (weapon != gunManager.currentGun)
-        {
-            weapon = gunManager.currentGun;
-        }
 	}
 
 
@@ -225,7 +220,7 @@ public class PlayerCube : MonoBehaviourPunCallbacks {
 		}
 
 		healthText.text = "Health: " + this.GetComponent<DestroyableObject>().health;
-
+        
 
 		if (desObj.health > desObj.maxHealth) {
 			desObj.health = desObj.maxHealth;
