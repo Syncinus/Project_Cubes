@@ -43,4 +43,6 @@ MonoBehaviour:
   - SetAliveness
   - SetLinePositions
   - SetUpLine
+  - Disconnect
+  - EndGame
   DisableAutoOpenWizard: 1

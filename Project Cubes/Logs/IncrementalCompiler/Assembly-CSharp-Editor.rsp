@@ -6,6 +6,23 @@
 -nostdlib
 -unsafe
 -r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/Assembly-CSharp.dll"
+-r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/Cinemachine.dll"
+-r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/Unity.ProBuilder.AddOns.Editor.dll"
+-r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/Unity.ProGrids.dll"
+-r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/jp.keijiro.kino.post-processing.Editor.dll"
+-r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Editor.dll"
+-r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Runtime.dll"
+-r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/Unity.ProGrids.Editor.dll"
+-r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll"
+-r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll"
+-r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll"
+-r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/Unity.Postprocessing.Editor.dll"
+-r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/Unity.Postprocessing.Runtime.dll"
+-r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/com.unity.cinemachine.editor.dll"
+-r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/Unity.ShaderGraph.Editor.dll"
+-r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/jp.keijiro.kino.post-processing.Runtime.dll"
+-r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/Unity.TextMeshPro.dll"
+-r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/Unity.RenderPipelines.Core.IncludePaths.dll"
 -r:D:\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.dll
 -r:D:\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.AIModule.dll
 -r:D:\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.ARModule.dll
@@ -69,25 +86,6 @@
 -r:D:\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.XRModule.dll
 -r:D:\Unity\Editor\Data\Managed/UnityEditor.dll
 -r:D:\Unity\Editor\Data\Managed/Unity.Locator.dll
--r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/Cinemachine.dll"
--r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/Unity.ProBuilder.AddOns.Editor.dll"
--r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/Unity.ProGrids.dll"
--r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/jp.keijiro.kino.post-processing.Editor.dll"
--r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Editor.dll"
--r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Runtime.dll"
--r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/Unity.ProGrids.Editor.dll"
--r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll"
--r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll"
--r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll"
--r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/Unity.RenderPipelines.HighDefinition.Runtime.dll"
--r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/Unity.Postprocessing.Editor.dll"
--r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/Unity.Postprocessing.Runtime.dll"
--r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/com.unity.cinemachine.editor.dll"
--r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/Unity.ShaderGraph.Editor.dll"
--r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/Unity.RenderPipelines.HighDefinition.Editor.dll"
--r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/jp.keijiro.kino.post-processing.Runtime.dll"
--r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/Unity.TextMeshPro.dll"
--r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/Unity.RenderPipelines.Core.IncludePaths.dll"
 -r:D:/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll
 -r:D:/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/Editor/UnityEditor.UI.dll
 -r:D:/Unity/Editor/Data/UnityExtensions/Unity/TestRunner/Editor/UnityEditor.TestRunner.dll

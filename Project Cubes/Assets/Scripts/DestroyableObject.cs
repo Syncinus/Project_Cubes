@@ -88,7 +88,6 @@ public class DestroyableObject : MonoBehaviourPunCallbacks {
 		this.gameObject.SetActive(true);
 	    health = maxHealth;
 		this.transform.position = GameObject.Find("PlayerSpawn").transform.position;
-        this.GetComponent<ShootShots>().ableToPlaySound = true;
 		explosionPossible = true;
 		isAlive = true;
 		if (photonView.IsMine == true) {

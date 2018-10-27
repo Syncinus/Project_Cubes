@@ -40,12 +40,13 @@ public class ShootShots : MonoBehaviourPunCallbacks {
 
     private float nextTimeToFire = 0f;
     private bool finishedGrowingLine = false;
-    [HideInInspector] public bool ableToPlaySound = true;
     [System.Obsolete] public bool ableToFire = true;
     private bool createdParticles;
     private WeaponItem weapon;
     private LineRenderer lineRenderer;
     private PlayerCube ccCube;
+
+    private float soundRefresh;
 
     private void Awake()
     {
@@ -257,11 +258,11 @@ public class ShootShots : MonoBehaviourPunCallbacks {
 			beam.Play();
 		} else {
 			Color color = new Color(fakeColor.x, fakeColor.y, fakeColor.z, 1);
-            Kvant.Stream stream = psystem.GetComponent<Kvant.Stream>();
-            stream.gameObject.SetActive(true);
-            stream.color = color;
-            //main = system.main;
-			//main.startColor = color;
+            ParticleSystem particles = psystem.GetComponent<ParticleSystem>();
+            particles.gameObject.SetActive(true);
+            var main = particles.main;
+			main.startColor = color;
+            particles.Play();
 		}
 	}
 
@@ -353,13 +354,6 @@ public class ShootShots : MonoBehaviourPunCallbacks {
 
         StartCoroutine(shoot(beamMode));
     }
-
-    public IEnumerator ReEnableSoundPlay(float delay)
-    {
-        //source.Stop();
-        yield return new WaitForSeconds(delay);
-        ableToPlaySound = true;
-    }
     
     [PunRPC] public void SetUpLine(Vector3 color)
     {
@@ -418,24 +412,16 @@ public class ShootShots : MonoBehaviourPunCallbacks {
                 }
             }
 
-            if (cube.weapon.sound != null)
+            if (cube.weapon.sound != null && Time.time > soundRefresh)
             {
-               //Debug.Log("Sound!");
-               if (ableToPlaySound == true) {
-                    if (cube.weapon.name == "Box Blaster")
-                    {
-                        source.volume = 2f;
-                    } else
-                    {
-                        source.volume = 0.3f;
-                    }
-                    source.PlayOneShot(sound);
-                    if (cube.weapon.soundRefreshTime > 0)
-                    {
-                        ableToPlaySound = false;
-                        yield return StartCoroutine(ReEnableSoundPlay(cube.weapon.soundRefreshTime));
-                    }
-               }
+                Debug.Log("Sound!");
+
+                source.volume = 0.3f;
+                AudioClip sound = cube.weapon.sound;
+                source.clip = sound;
+                source.Play();
+
+                soundRefresh = Time.time + cube.weapon.soundRefreshTime;
             }
 
 

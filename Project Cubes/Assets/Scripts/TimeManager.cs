@@ -18,15 +18,15 @@ public class TimeManager : MonoBehaviourPunCallbacks {
     public void FixedUpdate()
     {
         CurrentTime += Time.deltaTime;
-        TimeText.text = "Current Time: " + Mathf.RoundToInt(CurrentTime).ToString() + " Seconds";
+        TimeText.text = "Current Time: " + Mathf.FloorToInt(CurrentTime).ToString() + " Seconds";
         if (CurrentTime >= TimeLimit)
         {
-            PhotonNetwork.RPC(this.photonView, "Disconnect", RpcTarget.All, false);
+            PhotonNetwork.RPC(this.photonView, "EndGame", RpcTarget.All, false);
         }
     }
 
-    [PunRPC] public void Disconnect()
+    [PunRPC] public void EndGame()
     {
-        PhotonNetwork.Disconnect();
+
     }
 }

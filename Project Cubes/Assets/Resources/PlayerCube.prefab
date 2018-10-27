@@ -443,7 +443,6 @@ MonoBehaviour:
   shooter: {fileID: 1960394249213178}
   ColorOfParticles: {r: 0, g: 0, b: 0, a: 0}
   realPosition: {x: 0, y: 0, z: 0}
-  ableToPlaySound: 1
   ableToFire: 0
 --- !u!114 &114456616867040010
 MonoBehaviour:

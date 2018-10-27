@@ -2,15 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using System;
 using System.Linq;
 using Photon.Pun;
-using Photon.Realtime;
-using EZCameraShake;
-using Unity.Jobs;
-using Unity.Collections;
-using UnityEngine.Jobs;
-using Unity.Jobs.LowLevel;
 
 
 public class PlayerCube : MonoBehaviourPunCallbacks {
@@ -174,7 +167,7 @@ public class PlayerCube : MonoBehaviourPunCallbacks {
             this.GetComponent<Rigidbody>().velocity = new Vector3(0, 1000f * Time.fixedUnscaledDeltaTime, 0f);
         }
 
-        JobHandle.ScheduleBatchedJobs();
+        //JobHandle.ScheduleBatchedJobs();
     }
 
     public void FixedUpdate() {
