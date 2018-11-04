@@ -23,6 +23,10 @@ public class CubeEditingManager : MonoBehaviour {
     public void Equip(WeaponItem item)
     {
         CubeSettings.weapon = item;
+        CubeSettings.weapon.Emmision = item.Emmision;
+        CubeSettings.weapon.Shooting = item.Shooting;
+        CubeSettings.weapon.Sound = item.Sound;
+        CubeSettings.weapon.Particles = item.Particles;
     }
 
     public void LoadGame()

@@ -5,36 +5,51 @@ using UnityEngine.UI;
 
 [CreateAssetMenu(fileName = "New Weapon", menuName = "Items/Weapon")]
 public class WeaponItem : ScriptableObject {
-    public string gunName;
-	public int cost = 50;
-	public string description;
-    public float shotDelay;
-	public Color particlesColor;
-	public Sprite icon;
-    public bool auto = false;
-	public float weaponRechargeTime = 0f;
-	public bool weaponHasRecharge = false;
-    public GameObject projectile;
-    public GameObject particles;
-    public float lineWidth;
-    public bool hasParticles = true;
-    public bool shakesCamera = false;
-    public float shakeMagnitude;
-    public float shakeRoughness;
-    public float firerate = 10f;
-	public float damage = 10;
-	public float range = 100;
-    public WeaponType type;
-	public WeaponRarity rarity;
-    public AudioClip sound;
-    public float soundRefreshTime;
+    public ShotMode Shooting;
+    public EmmisionMode Emmision;
+    public ParticleMode Particles;
+    public SoundMode Sound;
+
 
 	public void Equip() {
 		EquipmentManager.instance.Equip(this);
 		Inventory.instance.Remove(this);
 	}
-
 }
 
-public enum WeaponType{Mowing, Laser, Rail, Projectile, SeekingProjectile}
-public enum WeaponRarity{Basic, Advanced, Elite, Legendary, Ultimate}
+#region Modes
+[System.Serializable] public class EmmisionMode
+{
+    public EmmisionType Type;
+    public float EmmisionSize;
+    public float ShotOffset;
+}
+
+[System.Serializable] public class ShotMode
+{
+    public float Damage;
+    public float Range;
+    public float FireRate;
+    public float Recharge;
+    public float ShotCount;
+    public float Force;
+}
+
+[System.Serializable] public class ParticleMode
+{
+    public string Prefab;
+    public Vector3 Position;
+    public Color Coloring;
+    public string Type;
+}
+
+[System.Serializable] public class SoundMode
+{
+    public AudioClip Clip;
+    public float Refresh;
+    public float Volume;
+}
+
+#endregion
+
+public enum EmmisionType { Line, Tube }

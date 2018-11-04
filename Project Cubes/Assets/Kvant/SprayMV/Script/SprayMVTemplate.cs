@@ -52,7 +52,7 @@ namespace Kvant
 
         [SerializeField] int _instanceCount;
 
-        /// Tmplate mesh (read only)
+        /// Template mesh (read only)
         public Mesh mesh {
             get { return _mesh; }
         }
@@ -132,7 +132,7 @@ namespace Kvant
             _mesh.SetUVs(1, uv1_out);
             _mesh.SetIndices(idx_out.ToArray(), MeshTopology.Triangles, 0);
             _mesh.bounds = new Bounds(Vector3.zero, Vector3.one * 1000);
-            _mesh.Optimize();
+
             _mesh.UploadMeshData(true);
         }
 

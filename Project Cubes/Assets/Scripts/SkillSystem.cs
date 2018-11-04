@@ -22,7 +22,7 @@ public class SkillSystem : MonoBehaviourPunCallbacks {
 
     public void Start()
     {
-        cameraHolderForShaking = this.GetComponent<ShootShots>().cameraHolderForShaking;
+        //cameraHolderForShaking = this.GetComponent<ShootShots>().cameraHolderForShaking;
     }
 
     public void FixedUpdate() {
@@ -166,7 +166,7 @@ public class SkillSystem : MonoBehaviourPunCallbacks {
             return;
         }
         if (this.GetComponent<ShootShots> () != null && superChargeModeReady == true) {
-			this.GetComponent<ShootShots> ().beamHyperMode = true;
+			//this.GetComponent<ShootShots> ().beamHyperMode = true;
 			superChargeModeReady = false;
 			Invoke ("disableBeamSupercharge", 7.5f);
 		}
@@ -177,7 +177,7 @@ public class SkillSystem : MonoBehaviourPunCallbacks {
 	}
 
 	public void disableBeamSupercharge() {
-		this.GetComponent<ShootShots> ().beamHyperMode = false;
+		//this.GetComponent<ShootShots> ().beamHyperMode = false;
 		Invoke ("RechargeBeamSupercharge", superchargeRecharge);
 	}
 

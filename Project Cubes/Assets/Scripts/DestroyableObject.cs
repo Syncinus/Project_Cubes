@@ -101,26 +101,6 @@ public class DestroyableObject : MonoBehaviourPunCallbacks {
 	}
 
 
-    public IEnumerator ShakeCamera(float magnitude, float roughness, float startFadeIn, float endFadeOut)
-    {
-        GameObject cameraHolderForShaking = this.GetComponent<ShootShots>().cameraHolderForShaking;
-        Camera.main.transform.GetComponent<SmoothCameraAdvanced>().enabled = false;
-        Camera.main.transform.GetComponent<CameraShaker>().enabled = true;
-        Vector3 camPosition = Camera.main.transform.localPosition;
-        Quaternion camRotation = Camera.main.transform.localRotation;
-        cameraHolderForShaking.transform.localPosition = camPosition;
-        cameraHolderForShaking.transform.localRotation = camRotation;
-        Camera.main.transform.SetParent(cameraHolderForShaking.transform);
-        CameraShaker.Instance.ShakeOnce(magnitude, roughness, startFadeIn, endFadeOut);
-        yield return new WaitForSeconds(endFadeOut + 0.1f);
-        Camera.main.transform.GetComponent<CameraShaker>().enabled = false;
-        Camera.main.transform.SetParent(this.transform);
-        Camera.main.transform.localPosition = camPosition;
-        Camera.main.transform.localRotation = camRotation;
-        Camera.main.transform.GetComponent<SmoothCameraAdvanced>().enabled = true;
-    }
-
-
     public void AntiNetworkTakeDamage(float amount, Vector3 point, GameObject attacker) {
 		health -= amount;
 		if (this.GetComponent<PlayerCube> () != null) {
@@ -258,7 +238,7 @@ public class DestroyableObject : MonoBehaviourPunCallbacks {
 				Renderer ccrend = colorChange.GetComponent<Renderer>();
 				Material ccmat = new Material(ccrend.sharedMaterial);
 
-                ccmat.SetColor("_BaseColor", this.GetComponent<Renderer>().sharedMaterial.GetColor("_BaseColor"));
+                ccmat.color = this.GetComponent<Renderer>().sharedMaterial.color;
 				ccrend.sharedMaterial = ccmat;
 			}
 		

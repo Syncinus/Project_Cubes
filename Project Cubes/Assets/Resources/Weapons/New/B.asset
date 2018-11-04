@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1643ffd4cc032e4cbeda84830cb223e, type: 3}
+  m_Name: B
+  m_EditorClassIdentifier: 
+  gunName: 
+  cost: 50
+  description: 
+  shotDelay: 0
+  particlesColor: {r: 0, g: 0, b: 0, a: 0}
+  icon: {fileID: 0}
+  auto: 0
+  weaponRechargeTime: 0
+  weaponHasRecharge: 0
+  projectile: {fileID: 0}
+  particles: {fileID: 0}
+  lineWidth: 0
+  hasParticles: 1
+  shakesCamera: 0
+  shakeMagnitude: 0
+  shakeRoughness: 0
+  firerate: 10
+  damage: 10
+  range: 100
+  type: 0
+  rarity: 0
+  sound: {fileID: 0}
+  soundRefreshTime: 0
+  particleFade: 0

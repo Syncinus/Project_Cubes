@@ -185,7 +185,7 @@ namespace Kvant
         #region Render settings
 
         [SerializeField]
-        SprayMVTemplate _template;
+        public SprayMVTemplate _template;
 
         [SerializeField]
         float _scale = 1.0f;
@@ -229,11 +229,11 @@ namespace Kvant
         #region Private members
 
         // References to the built-in assets
-        [SerializeField] Shader _kernels;
-        [SerializeField] Material _defaultMaterial;
+        [SerializeField] public Shader _kernels;
+        [SerializeField] public Material _defaultMaterial;
 
         // Temporary objects for simulation
-        Material _material;
+        [HideInInspector] public Material _material;
         RenderTexture _positionBuffer1;
         RenderTexture _positionBuffer2;
         RenderTexture _velocityBuffer1;

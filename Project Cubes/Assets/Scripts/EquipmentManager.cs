@@ -36,7 +36,6 @@ public class EquipmentManager : MonoBehaviour {
 		    onWeaponChanged.Invoke(newItem, oldItem);
 
 			currentGun = newItem;
-			Debug.Log(newItem.gunName + " Was Equipped!");
-
+			//Debug.Log(newItem.gunName + " Was Equipped!");
 	}
 }

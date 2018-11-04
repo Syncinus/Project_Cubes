@@ -78,7 +78,10 @@ public class PlayerCube : MonoBehaviourPunCallbacks {
 		GameObject canvas = GameObject.Find("Canvas");
 		healthText = canvas.transform.Find("Health").GetComponent<Text>();
 		StartCoroutine (Regenerate ());
-        weapon = CubeSettings.weapon;
+        if (CubeSettings.weapon != null)
+        {
+            weapon = CubeSettings.weapon;
+        }
     }
 
     public void AddScore(float score)

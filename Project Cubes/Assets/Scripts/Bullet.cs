@@ -55,7 +55,7 @@ public class Bullet : MonoBehaviourPunCallbacks {
 
             if (shootingScript != null)
             {
-                shootingScript.OnBulletHit(obj, collision);
+                //shootingScript.OnBulletHit(obj, collision);
             }
             if (terrorizer != null)
             {

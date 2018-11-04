@@ -26,11 +26,11 @@ public class InventoryUI : MonoBehaviourPunCallbacks {
 
                 if (inventoryUI.activeSelf == true)
                 {
-                    GameObject.Find("PlayerCube(Clone)").transform.GetComponent<ShootShots>().ableToFire = false;
+                    //GameObject.Find("PlayerCube(Clone)").transform.GetComponent<ShootShots>().ableToFire = false;
                 }
                 else
                 {
-                    GameObject.Find("PlayerCube(Clone)").transform.GetComponent<ShootShots>().ableToFire = true;
+                    //GameObject.Find("PlayerCube(Clone)").transform.GetComponent<ShootShots>().ableToFire = true;
                 }
                 UpdateUI();
             }

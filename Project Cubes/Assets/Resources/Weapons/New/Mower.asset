@@ -11,26 +11,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1643ffd4cc032e4cbeda84830cb223e, type: 3}
   m_Name: Mower
   m_EditorClassIdentifier: 
-  gunName: Mower
-  cost: 0
-  description: Mow things down.
-  shotDelay: 0
-  particlesColor: {r: 1, g: 1, b: 1, a: 1}
-  icon: {fileID: 21300000, guid: 5e0a2659f4493442a9e493ef74ac200b, type: 3}
-  auto: 1
-  weaponRechargeTime: 0
-  weaponHasRecharge: 0
-  projectile: {fileID: 0}
-  particles: {fileID: 1784506465146280, guid: 9a4df70a9070ab54dae732623c01aee9, type: 2}
-  lineWidth: 0
-  hasParticles: 1
-  shakesCamera: 0
-  shakeMagnitude: 0
-  shakeRoughness: 0
-  firerate: 100
-  damage: 25
-  range: 20
-  type: 0
-  rarity: 4
-  sound: {fileID: 0}
-  soundRefreshTime: 0
+  Shooting:
+    Damage: 500
+    Range: 300
+    FireRate: 200
+    Recharge: 0
+    ShotCount: 5
+    Force: 50
+  Emmision:
+    Type: 1
+    EmmisionSize: 1
+    ShotOffset: 0
+  Particles:
+    Prefab: BlastV3
+    Position: {x: 0, y: 0, z: 1}
+    Coloring: {r: 1, g: 0, b: 0, a: 1}
+    Type: KvantSprayMV
+  Sound:
+    Clip: {fileID: 0}
+    Refresh: 0
+    Volume: 0

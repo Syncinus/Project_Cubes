@@ -290,7 +290,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 80
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!64 &64580115214265466
 MeshCollider:
   m_ObjectHideFlags: 1
@@ -423,27 +423,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 152db277308bc214bb8546c275d5d650, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particlesOn: 1
-  damage: 50
-  range: 100
-  impactForce: 10
-  fireRate: 100
-  beamRechargeTime: 10
-  beamReady: 1
-  beamrange: 100
-  beamdamage: 5000
-  beamImpactForce: 50
-  ableToShoot: 1
-  beamHyperMode: 0
-  blast: {fileID: 198270107399764736}
-  beam: {fileID: 198612528012401866}
-  impactEffect: {fileID: 1749192060895538, guid: a756014bf9d85374683e069db235d118,
-    type: 2}
-  cameraHolderForShaking: {fileID: 1568065287731682}
-  shooter: {fileID: 1960394249213178}
-  ColorOfParticles: {r: 0, g: 0, b: 0, a: 0}
-  realPosition: {x: 0, y: 0, z: 0}
-  ableToFire: 0
 --- !u!114 &114456616867040010
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -488,7 +467,7 @@ MonoBehaviour:
   - 225
   - 270
   - 315
-  weapon: {fileID: 11400000, guid: 69e1518580db3c24ba5c5654c8453265, type: 2}
+  weapon: {fileID: 11400000, guid: fa2585ecdaf43a34fb7e483fa269ae31, type: 2}
   ableToMove: 1
   timeScinceLastTimeTakingDamage: 0
   moving: 0

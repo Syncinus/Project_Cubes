@@ -45,4 +45,10 @@ MonoBehaviour:
   - SetUpLine
   - Disconnect
   - EndGame
+  - particleFade
+  - stopParticleFade
+  - particleFadeIn
+  - particleFadeOut
+  - stopParticleFadeIn
+  - stopParticleFadeOut
   DisableAutoOpenWizard: 1
