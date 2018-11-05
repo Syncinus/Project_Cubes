@@ -1,0 +1,12 @@
+{
+    "name": "TestCards.Editor",
+    "references": [
+        "TestCards"
+    ],
+    "optionalUnityReferences": [],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false
+}
