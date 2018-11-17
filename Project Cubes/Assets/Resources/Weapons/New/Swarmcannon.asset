@@ -26,7 +26,7 @@ MonoBehaviour:
     Prefab: Swarm
     Position: {x: 0, y: 0, z: 1}
     Coloring: {r: 1, g: 1, b: 1, a: 1}
-    Type: KvamtSwarmMV
+    Type: KvantSwarmMV
   Sound:
     Clip: {fileID: 0}
     Refresh: 0

@@ -159,7 +159,7 @@ MonoBehaviour:
   _noiseFrequency: 3
   _noiseMotion: 0.65
   _shapes:
-  - {fileID: 10202, guid: 0000000000000000e000000000000000, type: 3}
+  - {fileID: 0}
   _scale: 0.02
   _scaleRandomness: 0.8
   _material: {fileID: 2100000, guid: b516e39e18a644c2a884db62ba4f7ee3, type: 2}
@@ -199,7 +199,7 @@ MonoBehaviour:
   _noiseFrequency: 3
   _noiseMotion: 0.65
   _shapes:
-  - {fileID: 10202, guid: 0000000000000000e000000000000000, type: 3}
+  - {fileID: 0}
   _scale: 0.02
   _scaleRandomness: 0.8
   _material: {fileID: 2100000, guid: 4e7e239ddb586764ea254b37687454d4, type: 2}

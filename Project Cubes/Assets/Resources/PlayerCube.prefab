@@ -467,7 +467,7 @@ MonoBehaviour:
   - 225
   - 270
   - 315
-  weapon: {fileID: 11400000, guid: fa2585ecdaf43a34fb7e483fa269ae31, type: 2}
+  weapon: {fileID: 11400000, guid: ac8728492c63ccc4394c88740becef0c, type: 2}
   ableToMove: 1
   timeScinceLastTimeTakingDamage: 0
   moving: 0

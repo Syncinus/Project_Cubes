@@ -154,4 +154,3 @@ MonoBehaviour:
   _randomSeed: 0
   _kernels: {fileID: 4800000, guid: ec7be90622201624cb51488b5eebbdc8, type: 3}
   _defaultMaterial: {fileID: 2100000, guid: 0139c04a93166b843be379e0cc915782, type: 2}
-  _material: {fileID: 0}

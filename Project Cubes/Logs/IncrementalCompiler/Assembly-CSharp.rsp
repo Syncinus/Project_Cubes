@@ -5,29 +5,6 @@
 -out:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Temp/Assembly-CSharp.dll"
 -nostdlib
 -unsafe
--r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/Cinemachine.dll"
--r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/Unity.ProBuilder.AddOns.Editor.dll"
--r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/Unity.ProGrids.dll"
--r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/jp.keijiro.kino.post-processing.Editor.dll"
--r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Editor.dll"
--r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Runtime.dll"
--r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/Unity.ProGrids.Editor.dll"
--r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll"
--r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll"
--r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll"
--r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/Unity.Postprocessing.Editor.dll"
--r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/Unity.Postprocessing.Runtime.dll"
--r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/com.unity.cinemachine.editor.dll"
--r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/Unity.ShaderGraph.Editor.dll"
--r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/jp.keijiro.kino.post-processing.Runtime.dll"
--r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/Unity.TextMeshPro.dll"
--r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/Unity.RenderPipelines.Core.IncludePaths.dll"
--r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/jp.keijiro.klak.Sensel.dll"
--r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/sensel.sensel-api.dll"
--r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/jp.keijiro.klak.chromatics.Runtime.dll"
--r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/jp.keijiro.klak.chromatics.Editor.dll"
--r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/TestCards.dll"
--r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/TestCards.Editor.dll"
 -r:D:\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.dll
 -r:D:\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.AIModule.dll
 -r:D:\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.ARModule.dll
@@ -90,6 +67,29 @@
 -r:D:\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.XRModule.dll
 -r:D:\Unity\Editor\Data\Managed/UnityEditor.dll
 -r:D:\Unity\Editor\Data\Managed/Unity.Locator.dll
+-r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/Cinemachine.dll"
+-r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/TestCards.dll"
+-r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/Unity.ProBuilder.AddOns.Editor.dll"
+-r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/Unity.ProGrids.dll"
+-r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/jp.keijiro.kino.post-processing.Editor.dll"
+-r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Editor.dll"
+-r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/jp.keijiro.klak.chromatics.Runtime.dll"
+-r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Runtime.dll"
+-r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/Unity.ProGrids.Editor.dll"
+-r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll"
+-r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll"
+-r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/TestCards.Editor.dll"
+-r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/jp.keijiro.klak.Sensel.dll"
+-r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll"
+-r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/Unity.Postprocessing.Editor.dll"
+-r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/jp.keijiro.klak.chromatics.Editor.dll"
+-r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/Unity.Postprocessing.Runtime.dll"
+-r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/com.unity.cinemachine.editor.dll"
+-r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/Unity.ShaderGraph.Editor.dll"
+-r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/jp.keijiro.kino.post-processing.Runtime.dll"
+-r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/Unity.TextMeshPro.dll"
+-r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/Unity.RenderPipelines.Core.IncludePaths.dll"
+-r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/sensel.sensel-api.dll"
 -r:D:/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll
 -r:D:/Unity/Editor/Data/UnityExtensions/Unity/Timeline/RuntimeEditor/UnityEngine.Timeline.dll
 -r:D:/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll
@@ -535,6 +535,8 @@
 -i:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Kvant/Lattice/Scripts/BulkMesh.cs"
 -i:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Kvant/Line/Line.cs"
 -i:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Kvant/Line/Script/LineTemplate.cs"
+-i:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Kvant/Spray/Scripts/BulkMesh.cs"
+-i:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Kvant/Spray/Spray.cs"
 -i:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Kvant/SprayMV/Script/SprayMVTemplate.cs"
 -i:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Kvant/SprayMV/SprayMV.cs"
 -i:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Kvant/Stream/KvantStream-master/Assets/Kvant/Stream/Stream.cs"
@@ -548,6 +550,9 @@
 -i:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Kvant/Warp/Warp.cs"
 -i:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Maps/Doombox/GravityController.cs"
 -i:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/MusicSystem.cs"
+-i:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/OutlineEffect/LinkedSet.cs"
+-i:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/OutlineEffect/Outline.cs"
+-i:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/OutlineEffect/OutlineEffect.cs"
 -i:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Photon/PhotonLibs/WebSocket/SocketWebTcp.cs"
 -i:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Photon/PhotonLibs/WebSocket/WebSocket.cs"
 -i:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Photon/PhotonRealtime/Code/AppSettings.cs"

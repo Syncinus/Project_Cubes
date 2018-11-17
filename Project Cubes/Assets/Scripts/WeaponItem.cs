@@ -5,11 +5,8 @@ using UnityEngine.UI;
 
 [CreateAssetMenu(fileName = "New Weapon", menuName = "Items/Weapon")]
 public class WeaponItem : ScriptableObject {
-    public ShotMode Shooting;
-    public EmmisionMode Emmision;
-    public ParticleMode Particles;
-    public SoundMode Sound;
 
+    public List<FiringPoint> Points = new List<FiringPoint>();
 
 	public void Equip() {
 		EquipmentManager.instance.Equip(this);
@@ -17,12 +14,23 @@ public class WeaponItem : ScriptableObject {
 	}
 }
 
+[System.Serializable]
+public class FiringPoint
+{
+    public string Name = "Point";
+    public ShotMode Shooting;
+    public EmmisionMode Emmision;
+    public ParticleMode Particles;
+    public SoundMode Sound;
+}
+
 #region Modes
 [System.Serializable] public class EmmisionMode
 {
     public EmmisionType Type;
     public float EmmisionSize;
-    public float ShotOffset;
+    public Vector3 EmmisionOffset;
+    public Vector3 RotationOffset;
 }
 
 [System.Serializable] public class ShotMode
@@ -38,9 +46,10 @@ public class WeaponItem : ScriptableObject {
 [System.Serializable] public class ParticleMode
 {
     public string Prefab;
+    public string Type;
     public Vector3 Position;
     public Color Coloring;
-    public string Type;
+    public float Size;
 }
 
 [System.Serializable] public class SoundMode

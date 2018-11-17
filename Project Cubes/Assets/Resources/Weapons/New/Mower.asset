@@ -11,23 +11,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1643ffd4cc032e4cbeda84830cb223e, type: 3}
   m_Name: Mower
   m_EditorClassIdentifier: 
-  Shooting:
-    Damage: 500
-    Range: 300
-    FireRate: 200
-    Recharge: 0
-    ShotCount: 5
-    Force: 50
-  Emmision:
-    Type: 1
-    EmmisionSize: 1
-    ShotOffset: 0
-  Particles:
-    Prefab: BlastV3
-    Position: {x: 0, y: 0, z: 1}
-    Coloring: {r: 1, g: 0, b: 0, a: 1}
-    Type: KvantSprayMV
-  Sound:
-    Clip: {fileID: 0}
-    Refresh: 0
-    Volume: 0
+  Points:
+  - Name: Point
+    Shooting:
+      Damage: 30
+      Range: 10
+      FireRate: 100
+      Recharge: 0
+      ShotCount: 4
+      Force: 10
+    Emmision:
+      Type: 0
+      EmmisionSize: 1
+      EmmisionOffset: {x: 0, y: 0, z: 0.5}
+      RotationOffset: {x: 0, y: 0, z: 0}
+    Particles:
+      Prefab: BlastV3
+      Type: KvantSprayMV
+      Position: {x: 0, y: 0, z: 0}
+      Coloring: {r: 1, g: 1, b: 1, a: 1}
+      Size: 1
+    Sound:
+      Clip: {fileID: 0}
+      Refresh: 0
+      Volume: 0
