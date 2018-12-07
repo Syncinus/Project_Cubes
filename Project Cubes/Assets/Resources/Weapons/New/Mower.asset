@@ -14,23 +14,26 @@ MonoBehaviour:
   Points:
   - Name: Point
     Shooting:
-      Damage: 30
+      Speed: 0
       Range: 10
       FireRate: 100
       Recharge: 0
       ShotCount: 4
       Force: 10
     Emmision:
-      Type: 0
-      EmmisionSize: 1
+      Prefab: 
+      EmmisionScale: 0
+      EmmisionRandomOffset: {x: 0, y: 0, z: 0}
       EmmisionOffset: {x: 0, y: 0, z: 0.5}
       RotationOffset: {x: 0, y: 0, z: 0}
     Particles:
+      HasParticles: 1
       Prefab: BlastV3
       Type: KvantSprayMV
       Position: {x: 0, y: 0, z: 0}
       Coloring: {r: 1, g: 1, b: 1, a: 1}
       Size: 1
+      ProjectileColor: {r: 0, g: 0, b: 0, a: 0}
     Sound:
       Clip: {fileID: 0}
       Refresh: 0

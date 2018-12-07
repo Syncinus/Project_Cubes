@@ -14,23 +14,26 @@ MonoBehaviour:
   Points:
   - Name: Point
     Shooting:
-      Damage: 1000
+      Speed: 0
       Range: 30
       FireRate: 1
       Recharge: 1
       ShotCount: 1
       Force: 100
     Emmision:
-      Type: 0
-      EmmisionSize: 0.1
+      Prefab: Bullet
+      EmmisionScale: 1
+      EmmisionRandomOffset: {x: 0, y: 0, z: 0}
       EmmisionOffset: {x: 0, y: 0, z: 1}
       RotationOffset: {x: 0, y: 0, z: 0}
     Particles:
+      HasParticles: 1
       Prefab: BlastV2
       Type: LineRenderer
       Position: {x: 0, y: 0, z: 0}
       Coloring: {r: 1, g: 0, b: 0, a: 1}
       Size: 0.5
+      ProjectileColor: {r: 0, g: 0, b: 0, a: 0}
     Sound:
       Clip: {fileID: 0}
       Refresh: 0

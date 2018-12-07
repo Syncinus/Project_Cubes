@@ -80,8 +80,8 @@ public class UpgradeSystem : MonoBehaviourPunCallbacks {
             DestroyableObject desObj = cubeToUpgrade.GetComponent<DestroyableObject>();
             ShootShots shootShots = cubeToUpgrade.GetComponent<ShootShots>();
 
-            desObj.maxHealth += CurrentArmorUpgrade.modifier;
-            desObj.health = desObj.maxHealth;
+            //desObj.maxHealth += CurrentArmorUpgrade.modifier;
+            //desObj.health = desObj.maxHealth;
             if (CurrentArmorUpgrade.upgradePrefab != null)
             {
                 //Transform cube = GameObject.FindObjectOfType<PlayerCube>().transform;

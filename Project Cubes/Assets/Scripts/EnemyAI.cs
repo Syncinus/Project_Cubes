@@ -351,11 +351,11 @@ public class EnemyAI : MonoBehaviourPunCallbacks
                     {
                         if (beamMode == false)
                         {
-                            desObj.TakeDamage(damage, hit.point, this.gameObject);
+                            //desObj.TakeDamage(damage, hit.point, this.gameObject);
                         }
                         else
                         {
-                            desObj.TakeDamage(1000f, hit.point, this.gameObject);
+                            //desObj.TakeDamage(1000f, hit.point, this.gameObject);
                         }
                         if (hitRigid != null)
                         {
@@ -394,7 +394,7 @@ public class EnemyAI : MonoBehaviourPunCallbacks
             {
                 ContactPoint point = collision.contacts[0];
                 Vector3 hitpoint = point.point;
-                target.TakeDamage(damage, hitpoint, this.gameObject);
+                //target.TakeDamage(damage, hitpoint, this.gameObject);
             }
 
             Rigidbody hitRigid = Hit.transform.GetComponent<Rigidbody>();

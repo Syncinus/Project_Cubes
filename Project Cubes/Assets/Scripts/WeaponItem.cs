@@ -27,15 +27,16 @@ public class FiringPoint
 #region Modes
 [System.Serializable] public class EmmisionMode
 {
-    public EmmisionType Type;
-    public float EmmisionSize;
+    public string Prefab;
+    public float EmmisionScale;
+    public Vector3 EmmisionRandomOffset;
     public Vector3 EmmisionOffset;
     public Vector3 RotationOffset;
 }
 
 [System.Serializable] public class ShotMode
 {
-    public float Damage;
+    public float Speed;
     public float Range;
     public float FireRate;
     public float Recharge;
@@ -45,11 +46,13 @@ public class FiringPoint
 
 [System.Serializable] public class ParticleMode
 {
+    public bool HasParticles;
     public string Prefab;
     public string Type;
     public Vector3 Position;
     public Color Coloring;
     public float Size;
+    public Color ProjectileColor;
 }
 
 [System.Serializable] public class SoundMode
@@ -60,5 +63,3 @@ public class FiringPoint
 }
 
 #endregion
-
-public enum EmmisionType { Line, Tube }

@@ -73,10 +73,10 @@ public class SpawnSystem : MonoBehaviourPunCallbacks {
             {
                 if (isTerrorizer == true)
                 {
-                    this.transform.GetComponent<TerrorizerAI>().objectStorage.Add(spawnedEnemy);
+                   // this.transform.GetComponent<TerrorizerAI>().objectStorage.Add(spawnedEnemy);
                 }  else
                 {
-                    terrorizer.GetComponent<TerrorizerAI>().objectStorage.Add(spawnedEnemy);
+                   // terrorizer.GetComponent<TerrorizerAI>().objectStorage.Add(spawnedEnemy);
                     this.GetComponent<EnemyAI>().enemyMode = EnemyAI.Mode.Assault;
                 }
                 spawnedEnemy.transform.SetParent(GameObject.Find("TempStorage").transform);

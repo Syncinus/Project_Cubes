@@ -51,4 +51,8 @@ MonoBehaviour:
   - particleFadeOut
   - stopParticleFadeIn
   - stopParticleFadeOut
+  - PunBreak
+  - ChangeEnergyColor
+  - SetProjectile
+  - respawn
   DisableAutoOpenWizard: 1

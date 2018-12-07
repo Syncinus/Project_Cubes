@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1643ffd4cc032e4cbeda84830cb223e, type: 3}
+  m_Name: Gatler
+  m_EditorClassIdentifier: 
+  Points:
+  - Name: Point
+    Shooting:
+      Speed: 10
+      Range: 20
+      FireRate: 5
+      Recharge: 0
+      ShotCount: 1
+      Force: 10
+    Emmision:
+      Prefab: Bullet
+      EmmisionScale: 1
+      EmmisionRandomOffset: {x: 0.5, y: 0.5, z: 0.5}
+      EmmisionOffset: {x: 0, y: 0, z: 1}
+      RotationOffset: {x: 0, y: 0, z: 0}
+    Particles:
+      HasParticles: 0
+      Prefab: 
+      Type: 
+      Position: {x: 0, y: 0, z: 0}
+      Coloring: {r: 0, g: 0, b: 0, a: 0}
+      Size: 0
+      ProjectileColor: {r: 0, g: 0, b: 0, a: 1}
+    Sound:
+      Clip: {fileID: 0}
+      Refresh: 0
+      Volume: 0
