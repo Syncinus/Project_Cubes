@@ -190,8 +190,9 @@ MonoBehaviour:
   damage: 1
   fireRate: 100
   range: 10
-  attackDistance: 7.5
   detectionRadius: 20
+  fieldOfView: 60
+  attackDistance: 7.5
   ScoreGiven: 1
   wandering: 1
   dead: 0

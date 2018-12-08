@@ -1,77 +1,95 @@
  (0,0): Unity incremental compiler server
- (0,0): watchdog active on pid: 14096
- (0,0): [09/30/2018 03:50:09.780 PM] Assembly-CSharp.dll: no prior compilation found in cache
- (0,0): [09/30/2018 03:50:09.798 PM] Assembly-CSharp.dll compiling...
- (0,0): [09/30/2018 03:50:16.883 PM] Assembly-CSharp.dll: emitting IL to : C:\Users\nj7\OneDrive\Desktop\ProjectCubesDevelopment\Project_Cubes\Project Cubes\Temp\Assembly-CSharp.dll
- (0,0): [09/30/2018 03:50:17.274 PM] Assembly-CSharp.dll compilation finished in 7475ms  source files re-parsed: 381 metadata reloaded: 206
- (0,0): [09/30/2018 03:50:18.996 PM] Assembly-CSharp-Editor.dll: no prior compilation found in cache
- (0,0): [09/30/2018 03:50:19.009 PM] Assembly-CSharp-Editor.dll compiling...
- (0,0): [09/30/2018 03:50:19.625 PM] Assembly-CSharp-Editor.dll: emitting IL to : C:\Users\nj7\OneDrive\Desktop\ProjectCubesDevelopment\Project_Cubes\Project Cubes\Temp\Assembly-CSharp-Editor.dll
- (0,0): [09/30/2018 03:50:19.857 PM] Assembly-CSharp-Editor.dll compilation finished in 848ms  source files re-parsed: 66 metadata reloaded: 23
- (0,0): [09/30/2018 03:53:37.554 PM] Compiler cache size is now 20.43 MB
- (0,0): [09/30/2018 03:54:51.809 PM] Assembly-CSharp.dll compiling...
- (0,0): [09/30/2018 03:54:53.671 PM] Assembly-CSharp.dll: emitting IL to : C:\Users\nj7\OneDrive\Desktop\ProjectCubesDevelopment\Project_Cubes\Project Cubes\Temp\Assembly-CSharp.dll
- (0,0): [09/30/2018 03:54:53.947 PM] Assembly-CSharp.dll compilation finished in 2137ms  source files re-parsed: 1 metadata reloaded: 0
- (0,0): [09/30/2018 03:54:53.960 PM] Assembly-CSharp.dll: compilation was cached, 1 file(s) were found to have changed.
- (0,0): [09/30/2018 03:54:55.236 PM] Assembly-CSharp-Editor.dll compiling...
- (0,0): [09/30/2018 03:54:55.635 PM] Assembly-CSharp-Editor.dll: emitting IL to : C:\Users\nj7\OneDrive\Desktop\ProjectCubesDevelopment\Project_Cubes\Project Cubes\Temp\Assembly-CSharp-Editor.dll
- (0,0): [09/30/2018 03:54:55.871 PM] Assembly-CSharp-Editor.dll compilation finished in 635ms  source files re-parsed: 0 metadata reloaded: 1
- (0,0): [09/30/2018 03:54:55.884 PM] Assembly-CSharp-Editor.dll: compilation was cached, 0 file(s) were found to have changed.
- (0,0): [09/30/2018 03:57:06.737 PM] Assembly-CSharp.dll: no prior compilation found in cache
- (0,0): [09/30/2018 03:57:06.801 PM] Assembly-CSharp.dll compiling...
- (0,0): [09/30/2018 03:57:10.685 PM] Assembly-CSharp.dll: emitting IL to : C:\Users\nj7\OneDrive\Desktop\ProjectCubesDevelopment\Project_Cubes\Project Cubes\Temp\Assembly-CSharp.dll
- (0,0): [09/30/2018 03:57:11.171 PM] Assembly-CSharp.dll compilation finished in 4369ms  source files re-parsed: 381 metadata reloaded: 0
- (0,0): [09/30/2018 03:57:12.451 PM] Assembly-CSharp-Editor.dll compiling...
- (0,0): [09/30/2018 03:57:12.886 PM] Assembly-CSharp-Editor.dll: emitting IL to : C:\Users\nj7\OneDrive\Desktop\ProjectCubesDevelopment\Project_Cubes\Project Cubes\Temp\Assembly-CSharp-Editor.dll
- (0,0): [09/30/2018 03:57:13.199 PM] Assembly-CSharp-Editor.dll compilation finished in 747ms  source files re-parsed: 0 metadata reloaded: 1
- (0,0): [09/30/2018 03:57:13.212 PM] Assembly-CSharp-Editor.dll: compilation was cached, 0 file(s) were found to have changed.
- (0,0): [09/30/2018 03:59:45.003 PM] Assembly-CSharp.dll compiling...
- (0,0): [09/30/2018 03:59:46.914 PM] Assembly-CSharp.dll: emitting IL to : C:\Users\nj7\OneDrive\Desktop\ProjectCubesDevelopment\Project_Cubes\Project Cubes\Temp\Assembly-CSharp.dll
- (0,0): [09/30/2018 03:59:47.174 PM] Assembly-CSharp.dll compilation finished in 2171ms  source files re-parsed: 1 metadata reloaded: 0
- (0,0): [09/30/2018 03:59:47.187 PM] Assembly-CSharp.dll: compilation was cached, 1 file(s) were found to have changed.
- (0,0): [09/30/2018 03:59:48.725 PM] Assembly-CSharp-Editor.dll compiling...
- (0,0): [09/30/2018 03:59:49.104 PM] Assembly-CSharp-Editor.dll: emitting IL to : C:\Users\nj7\OneDrive\Desktop\ProjectCubesDevelopment\Project_Cubes\Project Cubes\Temp\Assembly-CSharp-Editor.dll
- (0,0): [09/30/2018 03:59:49.299 PM] Assembly-CSharp-Editor.dll compilation finished in 574ms  source files re-parsed: 0 metadata reloaded: 1
- (0,0): [09/30/2018 03:59:49.312 PM] Assembly-CSharp-Editor.dll: compilation was cached, 0 file(s) were found to have changed.
- (0,0): [09/30/2018 04:00:32.397 PM] Assembly-CSharp.dll compiling...
- (0,0): [09/30/2018 04:00:34.443 PM] Assembly-CSharp.dll: emitting IL to : C:\Users\nj7\OneDrive\Desktop\ProjectCubesDevelopment\Project_Cubes\Project Cubes\Temp\Assembly-CSharp.dll
- (0,0): [09/30/2018 04:00:34.934 PM] Assembly-CSharp.dll compilation finished in 2536ms  source files re-parsed: 1 metadata reloaded: 0
- (0,0): [09/30/2018 04:00:34.946 PM] Assembly-CSharp.dll: compilation was cached, 1 file(s) were found to have changed.
- (0,0): [09/30/2018 04:00:36.321 PM] Assembly-CSharp-Editor.dll compiling...
- (0,0): [09/30/2018 04:00:36.620 PM] Assembly-CSharp-Editor.dll: emitting IL to : C:\Users\nj7\OneDrive\Desktop\ProjectCubesDevelopment\Project_Cubes\Project Cubes\Temp\Assembly-CSharp-Editor.dll
- (0,0): [09/30/2018 04:00:36.815 PM] Assembly-CSharp-Editor.dll compilation finished in 493ms  source files re-parsed: 0 metadata reloaded: 1
- (0,0): [09/30/2018 04:00:36.827 PM] Assembly-CSharp-Editor.dll: compilation was cached, 0 file(s) were found to have changed.
- (0,0): [09/30/2018 04:05:13.255 PM] Assembly-CSharp.dll compiling...
- (0,0): [09/30/2018 04:05:18.993 PM] Assembly-CSharp.dll: emitting IL to : C:\Users\nj7\OneDrive\Desktop\ProjectCubesDevelopment\Project_Cubes\Project Cubes\Temp\Assembly-CSharp.dll
- (0,0): [09/30/2018 04:05:20.137 PM] Assembly-CSharp.dll compilation finished in 6881ms  source files re-parsed: 1 metadata reloaded: 0
- (0,0): [09/30/2018 04:05:20.254 PM] Assembly-CSharp.dll: compilation was cached, 1 file(s) were found to have changed.
- (0,0): [09/30/2018 04:05:27.532 PM] Assembly-CSharp-Editor.dll compiling...
- (0,0): [09/30/2018 04:05:28.055 PM] Assembly-CSharp-Editor.dll: emitting IL to : C:\Users\nj7\OneDrive\Desktop\ProjectCubesDevelopment\Project_Cubes\Project Cubes\Temp\Assembly-CSharp-Editor.dll
- (0,0): [09/30/2018 04:05:28.706 PM] Assembly-CSharp-Editor.dll compilation finished in 1174ms  source files re-parsed: 0 metadata reloaded: 1
- (0,0): [09/30/2018 04:05:28.740 PM] Assembly-CSharp-Editor.dll: compilation was cached, 0 file(s) were found to have changed.
- (0,0): [09/30/2018 04:05:57.012 PM] Assembly-CSharp.dll compiling...
- (0,0): [09/30/2018 04:05:59.408 PM] Assembly-CSharp.dll: emitting IL to : C:\Users\nj7\OneDrive\Desktop\ProjectCubesDevelopment\Project_Cubes\Project Cubes\Temp\Assembly-CSharp.dll
- (0,0): [09/30/2018 04:05:59.688 PM] Assembly-CSharp.dll compilation finished in 2676ms  source files re-parsed: 1 metadata reloaded: 0
- (0,0): [09/30/2018 04:05:59.701 PM] Assembly-CSharp.dll: compilation was cached, 1 file(s) were found to have changed.
- (0,0): [09/30/2018 04:06:01.110 PM] Assembly-CSharp-Editor.dll compiling...
- (0,0): [09/30/2018 04:06:01.733 PM] Assembly-CSharp-Editor.dll: emitting IL to : C:\Users\nj7\OneDrive\Desktop\ProjectCubesDevelopment\Project_Cubes\Project Cubes\Temp\Assembly-CSharp-Editor.dll
- (0,0): [09/30/2018 04:06:02.074 PM] Assembly-CSharp-Editor.dll compilation finished in 963ms  source files re-parsed: 0 metadata reloaded: 1
- (0,0): [09/30/2018 04:06:02.104 PM] Assembly-CSharp-Editor.dll: compilation was cached, 0 file(s) were found to have changed.
- (0,0): [09/30/2018 04:08:25.139 PM] Assembly-CSharp.dll compiling...
- (0,0): [09/30/2018 04:08:27.154 PM] Assembly-CSharp.dll: emitting IL to : C:\Users\nj7\OneDrive\Desktop\ProjectCubesDevelopment\Project_Cubes\Project Cubes\Temp\Assembly-CSharp.dll
- (0,0): [09/30/2018 04:08:27.448 PM] Assembly-CSharp.dll compilation finished in 2307ms  source files re-parsed: 1 metadata reloaded: 0
- (0,0): [09/30/2018 04:08:27.460 PM] Assembly-CSharp.dll: compilation was cached, 1 file(s) were found to have changed.
- (0,0): [09/30/2018 04:08:28.754 PM] Assembly-CSharp-Editor.dll compiling...
- (0,0): [09/30/2018 04:08:29.175 PM] Assembly-CSharp-Editor.dll: emitting IL to : C:\Users\nj7\OneDrive\Desktop\ProjectCubesDevelopment\Project_Cubes\Project Cubes\Temp\Assembly-CSharp-Editor.dll
- (0,0): [09/30/2018 04:08:29.380 PM] Assembly-CSharp-Editor.dll compilation finished in 625ms  source files re-parsed: 0 metadata reloaded: 1
- (0,0): [09/30/2018 04:08:29.392 PM] Assembly-CSharp-Editor.dll: compilation was cached, 0 file(s) were found to have changed.
- (0,0): [09/30/2018 04:08:56.932 PM] Compiler cache size is now 20.43 MB
- (0,0): [09/30/2018 04:34:11.181 PM] Assembly-CSharp.dll compiling...
- (0,0): [09/30/2018 04:34:14.387 PM] Assembly-CSharp.dll: emitting IL to : C:\Users\nj7\OneDrive\Desktop\ProjectCubesDevelopment\Project_Cubes\Project Cubes\Temp\Assembly-CSharp.dll
- (0,0): [09/30/2018 04:34:14.778 PM] Assembly-CSharp.dll compilation finished in 3596ms  source files re-parsed: 1 metadata reloaded: 0
- (0,0): [09/30/2018 04:34:14.791 PM] Assembly-CSharp.dll: compilation was cached, 1 file(s) were found to have changed.
- (0,0): [09/30/2018 04:34:15.828 PM] Assembly-CSharp-Editor.dll compiling...
- (0,0): [09/30/2018 04:34:16.241 PM] Assembly-CSharp-Editor.dll: emitting IL to : C:\Users\nj7\OneDrive\Desktop\ProjectCubesDevelopment\Project_Cubes\Project Cubes\Temp\Assembly-CSharp-Editor.dll
- (0,0): [09/30/2018 04:34:16.556 PM] Assembly-CSharp-Editor.dll compilation finished in 727ms  source files re-parsed: 0 metadata reloaded: 1
- (0,0): [09/30/2018 04:34:16.571 PM] Assembly-CSharp-Editor.dll: compilation was cached, 0 file(s) were found to have changed.
- (0,0): [09/30/2018 04:34:21.690 PM] Compiler cache size is now 20.43 MB
+ (0,0): watchdog active on pid: 4764
+ (0,0): [10/08/2018 04:07:19.503 PM] Unity.RenderPipelines.Core.Runtime.dll: no prior compilation found in cache
+ (0,0): [10/08/2018 04:07:19.530 PM] Unity.TextMeshPro.dll: no prior compilation found in cache
+ (0,0): [10/08/2018 04:07:19.503 PM] Unity.Postprocessing.Runtime.dll: no prior compilation found in cache
+ (0,0): [10/08/2018 04:07:19.503 PM] Cinemachine.dll: no prior compilation found in cache
+ (0,0): [10/08/2018 04:07:19.734 PM] Cinemachine.dll compiling...
+ (0,0): [10/08/2018 04:07:19.734 PM] Unity.TextMeshPro.dll compiling...
+ (0,0): [10/08/2018 04:07:19.734 PM] Unity.Postprocessing.Runtime.dll compiling...
+ (0,0): [10/08/2018 04:07:19.734 PM] Unity.RenderPipelines.Core.Runtime.dll compiling...
+ (0,0): [10/08/2018 04:07:37.017 PM] Unity.TextMeshPro.dll: emitting IL to : C:\Users\nj7\Desktop\ProjectCubesDevelopment\Project_Cubes\Project Cubes\Temp\Unity.TextMeshPro.dll
+ (0,0): [10/08/2018 04:07:37.017 PM] Unity.RenderPipelines.Core.Runtime.dll: emitting IL to : C:\Users\nj7\Desktop\ProjectCubesDevelopment\Project_Cubes\Project Cubes\Temp\Unity.RenderPipelines.Core.Runtime.dll
+ (0,0): [10/08/2018 04:07:37.017 PM] Cinemachine.dll: emitting IL to : C:\Users\nj7\Desktop\ProjectCubesDevelopment\Project_Cubes\Project Cubes\Temp\Cinemachine.dll
+ (0,0): [10/08/2018 04:07:37.017 PM] Unity.Postprocessing.Runtime.dll: emitting IL to : C:\Users\nj7\Desktop\ProjectCubesDevelopment\Project_Cubes\Project Cubes\Temp\Unity.Postprocessing.Runtime.dll
+ (0,0): [10/08/2018 04:07:37.434 PM] Cinemachine.dll compilation finished in 17700ms  source files re-parsed: 62 metadata reloaded: 204
+ (0,0): [10/08/2018 04:07:37.434 PM] Unity.RenderPipelines.Core.Runtime.dll compilation finished in 17700ms  source files re-parsed: 72 metadata reloaded: 205
+ (0,0): [10/08/2018 04:07:37.434 PM] Unity.TextMeshPro.dll compilation finished in 17700ms  source files re-parsed: 45 metadata reloaded: 204
+ (0,0): [10/08/2018 04:07:37.462 PM] Unity.Postprocessing.Runtime.dll compilation finished in 17728ms  source files re-parsed: 56 metadata reloaded: 206
+ (0,0): [10/08/2018 04:07:39.845 PM] jp.keijiro.kino.post-processing.Runtime.dll: no prior compilation found in cache
+ (0,0): [10/08/2018 04:07:39.884 PM] jp.keijiro.kino.post-processing.Runtime.dll compiling...
+ (0,0): [10/08/2018 04:07:40.062 PM] jp.keijiro.kino.post-processing.Runtime.dll: emitting IL to : C:\Users\nj7\Desktop\ProjectCubesDevelopment\Project_Cubes\Project Cubes\Temp\jp.keijiro.kino.post-processing.Runtime.dll
+ (0,0): [10/08/2018 04:07:40.106 PM] Unity.ShaderGraph.Editor.dll: no prior compilation found in cache
+ (0,0): [10/08/2018 04:07:40.120 PM] Unity.ShaderGraph.Editor.dll compiling...
+ (0,0): [10/08/2018 04:07:40.156 PM] jp.keijiro.kino.post-processing.Runtime.dll compilation finished in 272ms  source files re-parsed: 5 metadata reloaded: 1
+ (0,0): [10/08/2018 04:07:40.288 PM] Unity.PackageManagerUI.Editor.dll: no prior compilation found in cache
+ (0,0): [10/08/2018 04:07:40.343 PM] Unity.PackageManagerUI.Editor.dll compiling...
+ (0,0): [10/08/2018 04:07:41.045 PM] Unity.RenderPipelines.HighDefinition.Runtime.dll: no prior compilation found in cache
+ (0,0): [10/08/2018 04:07:41.740 PM] Unity.RenderPipelines.HighDefinition.Runtime.dll compiling...
+ (0,0): [10/08/2018 04:07:41.828 PM] com.unity.cinemachine.editor.dll: no prior compilation found in cache
+ (0,0): [10/08/2018 04:07:41.842 PM] com.unity.cinemachine.editor.dll compiling...
+ (0,0): [10/08/2018 04:07:41.933 PM] Unity.PackageManagerUI.Editor.dll: emitting IL to : C:\Users\nj7\Desktop\ProjectCubesDevelopment\Project_Cubes\Project Cubes\Temp\Unity.PackageManagerUI.Editor.dll
+ (0,0): [10/08/2018 04:07:42.236 PM] Unity.PackageManagerUI.Editor.dll compilation finished in 1892ms  source files re-parsed: 44 metadata reloaded: 0
+ (0,0): [10/08/2018 04:07:42.840 PM] Unity.RenderPipelines.Core.Editor.dll: no prior compilation found in cache
+ (0,0): [10/08/2018 04:07:42.868 PM] Unity.RenderPipelines.Core.Editor.dll compiling...
+ (0,0): [10/08/2018 04:07:42.951 PM] Unity.ShaderGraph.Editor.dll: emitting IL to : C:\Users\nj7\Desktop\ProjectCubesDevelopment\Project_Cubes\Project Cubes\Temp\Unity.ShaderGraph.Editor.dll
+ (0,0): [10/08/2018 04:07:43.191 PM] com.unity.cinemachine.editor.dll: emitting IL to : C:\Users\nj7\Desktop\ProjectCubesDevelopment\Project_Cubes\Project Cubes\Temp\com.unity.cinemachine.editor.dll
+ (0,0): [10/08/2018 04:07:43.356 PM] Unity.ShaderGraph.Editor.dll compilation finished in 3236ms  source files re-parsed: 378 metadata reloaded: 1
+ (0,0): [10/08/2018 04:07:43.465 PM] Unity.RenderPipelines.Core.Editor.dll: emitting IL to : C:\Users\nj7\Desktop\ProjectCubesDevelopment\Project_Cubes\Project Cubes\Temp\Unity.RenderPipelines.Core.Editor.dll
+ (0,0): [10/08/2018 04:07:44.013 PM] Unity.Postprocessing.Editor.dll: no prior compilation found in cache
+ (0,0): [10/08/2018 04:07:44.015 PM] com.unity.cinemachine.editor.dll compilation finished in 2173ms  source files re-parsed: 60 metadata reloaded: 1
+ (0,0): [10/08/2018 04:07:44.055 PM] Unity.Postprocessing.Editor.dll compiling...
+ (0,0): [10/08/2018 04:07:44.069 PM] Unity.RenderPipelines.Core.Editor.dll compilation finished in 1201ms  source files re-parsed: 33 metadata reloaded: 0
+ (0,0): [10/08/2018 04:07:44.507 PM] Unity.Postprocessing.Editor.dll: emitting IL to : C:\Users\nj7\Desktop\ProjectCubesDevelopment\Project_Cubes\Project Cubes\Temp\Unity.Postprocessing.Editor.dll
+ (0,0): [10/08/2018 04:07:44.560 PM] Unity.TextMeshPro.Editor.dll: no prior compilation found in cache
+ (0,0): [10/08/2018 04:07:44.564 PM] Unity.RenderPipelines.HighDefinition.Runtime.dll: emitting IL to : C:\Users\nj7\Desktop\ProjectCubesDevelopment\Project_Cubes\Project Cubes\Temp\Unity.RenderPipelines.HighDefinition.Runtime.dll
+ (0,0): [10/08/2018 04:07:44.573 PM] Unity.TextMeshPro.Editor.dll compiling...
+ (0,0): [10/08/2018 04:07:44.726 PM] UnityEditor.StandardEvents.dll: no prior compilation found in cache
+ (0,0): [10/08/2018 04:07:44.807 PM] UnityEditor.StandardEvents.dll compiling...
+ (0,0): [10/08/2018 04:07:44.877 PM] Unity.Postprocessing.Editor.dll compilation finished in 821ms  source files re-parsed: 35 metadata reloaded: 0
+ (0,0): [10/08/2018 04:07:45.013 PM] UnityEditor.StandardEvents.dll: emitting IL to : C:\Users\nj7\Desktop\ProjectCubesDevelopment\Project_Cubes\Project Cubes\Temp\UnityEditor.StandardEvents.dll
+ (0,0): [10/08/2018 04:07:45.300 PM] Unity.RenderPipelines.HighDefinition.Runtime.dll compilation finished in 3559ms  source files re-parsed: 97 metadata reloaded: 1
+ (0,0): [10/08/2018 04:07:45.340 PM] Unity.TextMeshPro.Editor.dll: emitting IL to : C:\Users\nj7\Desktop\ProjectCubesDevelopment\Project_Cubes\Project Cubes\Temp\Unity.TextMeshPro.Editor.dll
+ (0,0): [10/08/2018 04:07:45.351 PM] UnityEditor.StandardEvents.dll compilation finished in 543ms  source files re-parsed: 1 metadata reloaded: 0
+ (0,0): [10/08/2018 04:07:45.537 PM] Unity.RenderPipelines.Core.IncludePaths.dll: no prior compilation found in cache
+ (0,0): [10/08/2018 04:07:45.550 PM] Unity.RenderPipelines.Core.IncludePaths.dll compiling...
+ (0,0): [10/08/2018 04:07:45.583 PM] Unity.RenderPipelines.Core.IncludePaths.dll: emitting IL to : C:\Users\nj7\Desktop\ProjectCubesDevelopment\Project_Cubes\Project Cubes\Temp\Unity.RenderPipelines.Core.IncludePaths.dll
+ (0,0): [10/08/2018 04:07:45.629 PM] Unity.RenderPipelines.Core.IncludePaths.dll compilation finished in 79ms  source files re-parsed: 1 metadata reloaded: 0
+ (0,0): [10/08/2018 04:07:45.963 PM] Unity.TextMeshPro.Editor.dll compilation finished in 1390ms  source files re-parsed: 39 metadata reloaded: 1
+ (0,0): [10/08/2018 04:07:46.453 PM] jp.keijiro.kino.post-processing.Editor.dll: no prior compilation found in cache
+ (0,0): [10/08/2018 04:07:46.466 PM] jp.keijiro.kino.post-processing.Editor.dll compiling...
+ (0,0): [10/08/2018 04:07:46.529 PM] jp.keijiro.kino.post-processing.Editor.dll: emitting IL to : C:\Users\nj7\Desktop\ProjectCubesDevelopment\Project_Cubes\Project Cubes\Temp\jp.keijiro.kino.post-processing.Editor.dll
+ (0,0): [10/08/2018 04:07:46.565 PM] Unity.RenderPipelines.HighDefinition.Editor.dll: no prior compilation found in cache
+ (0,0): [10/08/2018 04:07:46.571 PM] jp.keijiro.kino.post-processing.Editor.dll compilation finished in 105ms  source files re-parsed: 2 metadata reloaded: 2
+ (0,0): [10/08/2018 04:07:46.577 PM] Unity.RenderPipelines.HighDefinition.Editor.dll compiling...
+ (0,0): [10/08/2018 04:07:47.241 PM] Unity.RenderPipelines.HighDefinition.Editor.dll: emitting IL to : C:\Users\nj7\Desktop\ProjectCubesDevelopment\Project_Cubes\Project Cubes\Temp\Unity.RenderPipelines.HighDefinition.Editor.dll
+ (0,0): [10/08/2018 04:07:47.431 PM] Unity.RenderPipelines.HighDefinition.Editor.dll compilation finished in 854ms  source files re-parsed: 102 metadata reloaded: 3
+ (0,0): [10/08/2018 04:07:57.098 PM] Assembly-CSharp.dll: no prior compilation found in cache
+ (0,0): [10/08/2018 04:07:57.122 PM] Assembly-CSharp.dll compiling...
+ (0,0): [10/08/2018 04:07:59.930 PM] Assembly-CSharp.dll: emitting IL to : C:\Users\nj7\Desktop\ProjectCubesDevelopment\Project_Cubes\Project Cubes\Temp\Assembly-CSharp.dll
+ (0,0): [10/08/2018 04:08:00.227 PM] Assembly-CSharp.dll compilation finished in 3105ms  source files re-parsed: 381 metadata reloaded: 7
+ (0,0): [10/08/2018 04:08:01.323 PM] Assembly-CSharp-Editor.dll: no prior compilation found in cache
+ (0,0): [10/08/2018 04:08:01.335 PM] Assembly-CSharp-Editor.dll compiling...
+ (0,0): [10/08/2018 04:08:01.699 PM] Assembly-CSharp-Editor.dll: emitting IL to : C:\Users\nj7\Desktop\ProjectCubesDevelopment\Project_Cubes\Project Cubes\Temp\Assembly-CSharp-Editor.dll
+ (0,0): [10/08/2018 04:08:01.966 PM] Assembly-CSharp-Editor.dll compilation finished in 631ms  source files re-parsed: 66 metadata reloaded: 1
+ (0,0): [10/08/2018 04:11:20.773 PM] Compiler cache size is now 20.13 MB
+ (0,0): [10/08/2018 04:45:51.690 PM] Assembly-CSharp.dll: no prior compilation found in cache
+ (0,0): [10/08/2018 04:45:51.772 PM] Assembly-CSharp.dll compiling...
+ (0,0): [10/08/2018 04:45:56.144 PM] Assembly-CSharp.dll: emitting IL to : C:\Users\nj7\Desktop\ProjectCubesDevelopment\Project_Cubes\Project Cubes\Temp\Assembly-CSharp.dll
+ (0,0): [10/08/2018 04:45:56.877 PM] Assembly-CSharp.dll compilation finished in 5105ms  source files re-parsed: 382 metadata reloaded: 0
+ (0,0): [10/08/2018 04:46:01.974 PM] Assembly-CSharp-Editor.dll compiling...
+ (0,0): [10/08/2018 04:46:02.387 PM] Assembly-CSharp-Editor.dll: emitting IL to : C:\Users\nj7\Desktop\ProjectCubesDevelopment\Project_Cubes\Project Cubes\Temp\Assembly-CSharp-Editor.dll
+ (0,0): [10/08/2018 04:46:02.638 PM] Assembly-CSharp-Editor.dll compilation finished in 664ms  source files re-parsed: 0 metadata reloaded: 1
+ (0,0): [10/08/2018 04:46:02.651 PM] Assembly-CSharp-Editor.dll: compilation was cached, 0 file(s) were found to have changed.
+ (0,0): [10/08/2018 04:51:51.878 PM] Assembly-CSharp.dll compiling...
+ (0,0): [10/08/2018 04:51:54.753 PM] Assembly-CSharp.dll: emitting IL to : C:\Users\nj7\Desktop\ProjectCubesDevelopment\Project_Cubes\Project Cubes\Temp\Assembly-CSharp.dll
+ (0,0): [10/08/2018 04:51:55.592 PM] Assembly-CSharp.dll compilation finished in 3713ms  source files re-parsed: 1 metadata reloaded: 0
+ (0,0): [10/08/2018 04:51:55.614 PM] Assembly-CSharp.dll: compilation was cached, 1 file(s) were found to have changed.
+ (0,0): [10/08/2018 04:52:00.588 PM] Assembly-CSharp-Editor.dll compiling...
+ (0,0): [10/08/2018 04:52:01.191 PM] Assembly-CSharp-Editor.dll: emitting IL to : C:\Users\nj7\Desktop\ProjectCubesDevelopment\Project_Cubes\Project Cubes\Temp\Assembly-CSharp-Editor.dll
+ (0,0): [10/08/2018 04:52:01.524 PM] Assembly-CSharp-Editor.dll compilation finished in 935ms  source files re-parsed: 0 metadata reloaded: 1
+ (0,0): [10/08/2018 04:52:01.538 PM] Assembly-CSharp-Editor.dll: compilation was cached, 0 file(s) were found to have changed.
+ (0,0): [10/08/2018 04:54:50.024 PM] Assembly-CSharp.dll compiling...
+ (0,0): [10/08/2018 04:54:51.988 PM] Assembly-CSharp.dll: emitting IL to : C:\Users\nj7\Desktop\ProjectCubesDevelopment\Project_Cubes\Project Cubes\Temp\Assembly-CSharp.dll
+ (0,0): [10/08/2018 04:54:52.017 PM] Assembly-CSharp.dll compilation finished in 1992ms  source files re-parsed: 1 metadata reloaded: 0
+ (0,0): [10/08/2018 04:54:52.040 PM] Assembly-CSharp.dll: compilation was cached, 1 file(s) were found to have changed.

@@ -2,116 +2,114 @@
 -target:library
 -nowarn:0169
 -langversion:7
--out:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Temp/Assembly-CSharp-Editor.dll"
+-out:"C:/Users/nj7/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Temp/Assembly-CSharp-Editor.dll"
 -nostdlib
 -unsafe
--r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/Assembly-CSharp.dll"
--r:D:\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.dll
--r:D:\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.AIModule.dll
--r:D:\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.ARModule.dll
--r:D:\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.AccessibilityModule.dll
--r:D:\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.AnimationModule.dll
--r:D:\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.AssetBundleModule.dll
--r:D:\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.AudioModule.dll
--r:D:\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.BaselibModule.dll
--r:D:\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.ClothModule.dll
--r:D:\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.CloudWebServicesModule.dll
--r:D:\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.ClusterInputModule.dll
--r:D:\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.ClusterRendererModule.dll
--r:D:\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.CoreModule.dll
--r:D:\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.CrashReportingModule.dll
--r:D:\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.DirectorModule.dll
--r:D:\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.FacebookModule.dll
--r:D:\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.FileSystemHttpModule.dll
--r:D:\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.GameCenterModule.dll
--r:D:\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.GridModule.dll
--r:D:\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.HotReloadModule.dll
--r:D:\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.IMGUIModule.dll
--r:D:\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.ImageConversionModule.dll
--r:D:\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.InputModule.dll
--r:D:\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.JSONSerializeModule.dll
--r:D:\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.LocalizationModule.dll
--r:D:\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.ParticleSystemModule.dll
--r:D:\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.ParticlesLegacyModule.dll
--r:D:\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.PerformanceReportingModule.dll
--r:D:\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.PhysicsModule.dll
--r:D:\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.Physics2DModule.dll
--r:D:\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.ProfilerModule.dll
--r:D:\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.ScreenCaptureModule.dll
--r:D:\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.SharedInternalsModule.dll
--r:D:\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.SpatialTrackingModule.dll
--r:D:\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.SpriteMaskModule.dll
--r:D:\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.SpriteShapeModule.dll
--r:D:\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.StreamingModule.dll
--r:D:\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.StyleSheetsModule.dll
--r:D:\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.SubstanceModule.dll
--r:D:\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.TLSModule.dll
--r:D:\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.TerrainModule.dll
--r:D:\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.TerrainPhysicsModule.dll
--r:D:\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.TextRenderingModule.dll
--r:D:\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.TilemapModule.dll
--r:D:\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.TimelineModule.dll
--r:D:\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.UIModule.dll
--r:D:\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.UIElementsModule.dll
--r:D:\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.UNETModule.dll
--r:D:\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.UmbraModule.dll
--r:D:\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.UnityAnalyticsModule.dll
--r:D:\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.UnityConnectModule.dll
--r:D:\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.UnityWebRequestModule.dll
--r:D:\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.UnityWebRequestAssetBundleModule.dll
--r:D:\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.UnityWebRequestAudioModule.dll
--r:D:\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.UnityWebRequestTextureModule.dll
--r:D:\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.UnityWebRequestWWWModule.dll
--r:D:\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.VRModule.dll
--r:D:\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.VehiclesModule.dll
--r:D:\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.VideoModule.dll
--r:D:\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.WindModule.dll
--r:D:\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.XRModule.dll
--r:D:\Unity\Editor\Data\Managed/UnityEditor.dll
--r:D:\Unity\Editor\Data\Managed/Unity.Locator.dll
--r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/Cinemachine.dll"
--r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/jp.keijiro.kino.post-processing.Editor.dll"
--r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Editor.dll"
--r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Runtime.dll"
--r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll"
--r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll"
--r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll"
--r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/Unity.RenderPipelines.HighDefinition.Runtime.dll"
--r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/Unity.Postprocessing.Editor.dll"
--r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/Unity.Postprocessing.Runtime.dll"
--r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/com.unity.cinemachine.editor.dll"
--r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/Unity.ShaderGraph.Editor.dll"
--r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/Unity.RenderPipelines.HighDefinition.Editor.dll"
--r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/jp.keijiro.kino.post-processing.Runtime.dll"
--r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/Unity.TextMeshPro.dll"
--r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/Unity.RenderPipelines.Core.IncludePaths.dll"
--r:D:/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll
--r:D:/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/Editor/UnityEditor.UI.dll
--r:D:/Unity/Editor/Data/UnityExtensions/Unity/TestRunner/Editor/UnityEditor.TestRunner.dll
--r:D:/Unity/Editor/Data/UnityExtensions/Unity/TestRunner/UnityEngine.TestRunner.dll
--r:D:/Unity/Editor/Data/UnityExtensions/Unity/TestRunner/net35/unity-custom/nunit.framework.dll
--r:D:/Unity/Editor/Data/UnityExtensions/Unity/Timeline/RuntimeEditor/UnityEngine.Timeline.dll
--r:D:/Unity/Editor/Data/UnityExtensions/Unity/Timeline/Editor/UnityEditor.Timeline.dll
--r:D:/Unity/Editor/Data/UnityExtensions/Unity/TreeEditor/Editor/UnityEditor.TreeEditor.dll
--r:D:/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll
--r:D:/Unity/Editor/Data/UnityExtensions/Unity/Networking/Editor/UnityEditor.Networking.dll
--r:D:/Unity/Editor/Data/UnityExtensions/Unity/UnityGoogleAudioSpatializer/Editor/UnityEditor.GoogleAudioSpatializer.dll
--r:D:/Unity/Editor/Data/UnityExtensions/Unity/UnityGoogleAudioSpatializer/RuntimeEditor/UnityEngine.GoogleAudioSpatializer.dll
--r:D:/Unity/Editor/Data/UnityExtensions/Unity/UnityHoloLens/Editor/UnityEditor.HoloLens.dll
--r:D:/Unity/Editor/Data/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll
--r:D:/Unity/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/Editor/UnityEditor.SpatialTracking.dll
--r:D:/Unity/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll
--r:D:/Unity/Editor/Data/UnityExtensions/Unity/UnityVR/Editor/UnityEditor.VR.dll
--r:D:/Unity/Editor/Data/Managed/UnityEditor.Graphs.dll
--r:D:/Unity/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll
--r:D:/Unity/Editor/Data/PlaybackEngines/windowsstandalonesupport/UnityEditor.WindowsStandalone.Extensions.dll
--r:D:/Unity/Editor/Data/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll
--r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/AstarPathfindingProject/Plugins/Clipper/Pathfinding.ClipperLib.dll"
--r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/AstarPathfindingProject/Plugins/DotNetZip/Pathfinding.Ionic.Zip.Reduced.dll"
--r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/AstarPathfindingProject/Plugins/Poly2Tri/Pathfinding.Poly2Tri.dll"
--r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Photon/PhotonLibs/Photon3Unity3D.dll"
--r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Photon/PhotonLibs/WebSocket/websocket-sharp.dll"
--r:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Photon/PhotonUnityNetworking/Code/Editor/Newtonsoft.Json.dll"
+-r:"C:/Users/nj7/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/Assembly-CSharp.dll"
+-r:"C:\Program Files\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.dll"
+-r:"C:\Program Files\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.AIModule.dll"
+-r:"C:\Program Files\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.ARModule.dll"
+-r:"C:\Program Files\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.AccessibilityModule.dll"
+-r:"C:\Program Files\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.AnimationModule.dll"
+-r:"C:\Program Files\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.AssetBundleModule.dll"
+-r:"C:\Program Files\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.AudioModule.dll"
+-r:"C:\Program Files\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.BaselibModule.dll"
+-r:"C:\Program Files\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.ClothModule.dll"
+-r:"C:\Program Files\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.CloudWebServicesModule.dll"
+-r:"C:\Program Files\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.ClusterInputModule.dll"
+-r:"C:\Program Files\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.ClusterRendererModule.dll"
+-r:"C:\Program Files\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.CoreModule.dll"
+-r:"C:\Program Files\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.CrashReportingModule.dll"
+-r:"C:\Program Files\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.DirectorModule.dll"
+-r:"C:\Program Files\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.FacebookModule.dll"
+-r:"C:\Program Files\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.FileSystemHttpModule.dll"
+-r:"C:\Program Files\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.GameCenterModule.dll"
+-r:"C:\Program Files\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.GridModule.dll"
+-r:"C:\Program Files\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.HotReloadModule.dll"
+-r:"C:\Program Files\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.IMGUIModule.dll"
+-r:"C:\Program Files\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.ImageConversionModule.dll"
+-r:"C:\Program Files\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.InputModule.dll"
+-r:"C:\Program Files\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.JSONSerializeModule.dll"
+-r:"C:\Program Files\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.LocalizationModule.dll"
+-r:"C:\Program Files\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.ParticleSystemModule.dll"
+-r:"C:\Program Files\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.ParticlesLegacyModule.dll"
+-r:"C:\Program Files\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.PerformanceReportingModule.dll"
+-r:"C:\Program Files\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.PhysicsModule.dll"
+-r:"C:\Program Files\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.Physics2DModule.dll"
+-r:"C:\Program Files\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.ProfilerModule.dll"
+-r:"C:\Program Files\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.ScreenCaptureModule.dll"
+-r:"C:\Program Files\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.SharedInternalsModule.dll"
+-r:"C:\Program Files\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.SpatialTrackingModule.dll"
+-r:"C:\Program Files\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.SpriteMaskModule.dll"
+-r:"C:\Program Files\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.SpriteShapeModule.dll"
+-r:"C:\Program Files\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.StreamingModule.dll"
+-r:"C:\Program Files\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.StyleSheetsModule.dll"
+-r:"C:\Program Files\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.SubstanceModule.dll"
+-r:"C:\Program Files\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.TLSModule.dll"
+-r:"C:\Program Files\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.TerrainModule.dll"
+-r:"C:\Program Files\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.TerrainPhysicsModule.dll"
+-r:"C:\Program Files\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.TextRenderingModule.dll"
+-r:"C:\Program Files\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.TilemapModule.dll"
+-r:"C:\Program Files\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.TimelineModule.dll"
+-r:"C:\Program Files\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.UIModule.dll"
+-r:"C:\Program Files\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.UIElementsModule.dll"
+-r:"C:\Program Files\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.UNETModule.dll"
+-r:"C:\Program Files\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.UmbraModule.dll"
+-r:"C:\Program Files\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.UnityAnalyticsModule.dll"
+-r:"C:\Program Files\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.UnityConnectModule.dll"
+-r:"C:\Program Files\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.UnityWebRequestModule.dll"
+-r:"C:\Program Files\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.UnityWebRequestAssetBundleModule.dll"
+-r:"C:\Program Files\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.UnityWebRequestAudioModule.dll"
+-r:"C:\Program Files\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.UnityWebRequestTextureModule.dll"
+-r:"C:\Program Files\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.UnityWebRequestWWWModule.dll"
+-r:"C:\Program Files\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.VRModule.dll"
+-r:"C:\Program Files\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.VehiclesModule.dll"
+-r:"C:\Program Files\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.VideoModule.dll"
+-r:"C:\Program Files\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.WindModule.dll"
+-r:"C:\Program Files\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.XRModule.dll"
+-r:"C:\Program Files\Unity\Editor\Data\Managed/UnityEditor.dll"
+-r:"C:\Program Files\Unity\Editor\Data\Managed/Unity.Locator.dll"
+-r:"C:/Users/nj7/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/Cinemachine.dll"
+-r:"C:/Users/nj7/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/jp.keijiro.kino.post-processing.Editor.dll"
+-r:"C:/Users/nj7/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Editor.dll"
+-r:"C:/Users/nj7/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Runtime.dll"
+-r:"C:/Users/nj7/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll"
+-r:"C:/Users/nj7/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll"
+-r:"C:/Users/nj7/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll"
+-r:"C:/Users/nj7/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/Unity.RenderPipelines.HighDefinition.Runtime.dll"
+-r:"C:/Users/nj7/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/Unity.Postprocessing.Editor.dll"
+-r:"C:/Users/nj7/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/Unity.Postprocessing.Runtime.dll"
+-r:"C:/Users/nj7/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/com.unity.cinemachine.editor.dll"
+-r:"C:/Users/nj7/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/Unity.ShaderGraph.Editor.dll"
+-r:"C:/Users/nj7/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/Unity.RenderPipelines.HighDefinition.Editor.dll"
+-r:"C:/Users/nj7/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/jp.keijiro.kino.post-processing.Runtime.dll"
+-r:"C:/Users/nj7/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/Unity.TextMeshPro.dll"
+-r:"C:/Users/nj7/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Library/ScriptAssemblies/Unity.RenderPipelines.Core.IncludePaths.dll"
+-r:"C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll"
+-r:"C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/Editor/UnityEditor.UI.dll"
+-r:"C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/TestRunner/Editor/UnityEditor.TestRunner.dll"
+-r:"C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/TestRunner/UnityEngine.TestRunner.dll"
+-r:"C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/TestRunner/net35/unity-custom/nunit.framework.dll"
+-r:"C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Timeline/RuntimeEditor/UnityEngine.Timeline.dll"
+-r:"C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Timeline/Editor/UnityEditor.Timeline.dll"
+-r:"C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/TreeEditor/Editor/UnityEditor.TreeEditor.dll"
+-r:"C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll"
+-r:"C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/Editor/UnityEditor.Networking.dll"
+-r:"C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityGoogleAudioSpatializer/Editor/UnityEditor.GoogleAudioSpatializer.dll"
+-r:"C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityGoogleAudioSpatializer/RuntimeEditor/UnityEngine.GoogleAudioSpatializer.dll"
+-r:"C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityHoloLens/Editor/UnityEditor.HoloLens.dll"
+-r:"C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll"
+-r:"C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/Editor/UnityEditor.SpatialTracking.dll"
+-r:"C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll"
+-r:"C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityVR/Editor/UnityEditor.VR.dll"
+-r:"C:/Program Files/Unity/Editor/Data/Managed/UnityEditor.Graphs.dll"
+-r:"C:/Program Files/Unity/Editor/Data/PlaybackEngines/windowsstandalonesupport/UnityEditor.WindowsStandalone.Extensions.dll"
+-r:"C:/Users/nj7/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/AstarPathfindingProject/Plugins/Clipper/Pathfinding.ClipperLib.dll"
+-r:"C:/Users/nj7/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/AstarPathfindingProject/Plugins/DotNetZip/Pathfinding.Ionic.Zip.Reduced.dll"
+-r:"C:/Users/nj7/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/AstarPathfindingProject/Plugins/Poly2Tri/Pathfinding.Poly2Tri.dll"
+-r:"C:/Users/nj7/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Photon/PhotonLibs/Photon3Unity3D.dll"
+-r:"C:/Users/nj7/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Photon/PhotonLibs/WebSocket/websocket-sharp.dll"
+-r:"C:/Users/nj7/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Photon/PhotonUnityNetworking/Code/Editor/Newtonsoft.Json.dll"
 -r:C:/Users/nj7/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.ads@2.0.8/Editor/UnityEditor.Advertisements.dll
 -r:C:/Users/nj7/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.analytics@2.0.16/UnityEngine.Analytics.dll
 -r:C:/Users/nj7/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.analytics@2.0.16/Editor/UnityEditor.Analytics.dll
@@ -119,121 +117,121 @@
 -r:C:/Users/nj7/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.render-pipelines.core@3.0.0-preview/CoreRP/Editor/ShaderGenerator/ICSharpCode.NRefactory.dll
 -r:C:/Users/nj7/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.13/UnityEngine.StandardEvents.dll
 -r:"C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/15.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll"
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\mscorlib.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\System.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\System.Core.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\System.Runtime.Serialization.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\System.Xml.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\System.Xml.Linq.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\System.Numerics.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\System.Numerics.Vectors.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\Microsoft.Win32.Primitives.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\netstandard.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.AppContext.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Collections.Concurrent.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Collections.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Collections.NonGeneric.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Collections.Specialized.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.ComponentModel.Annotations.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.ComponentModel.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.ComponentModel.EventBasedAsync.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.ComponentModel.Primitives.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.ComponentModel.TypeConverter.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Console.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Data.Common.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Diagnostics.Contracts.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Diagnostics.Debug.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Diagnostics.FileVersionInfo.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Diagnostics.Process.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Diagnostics.StackTrace.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Diagnostics.TextWriterTraceListener.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Diagnostics.Tools.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Diagnostics.TraceSource.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Drawing.Primitives.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Dynamic.Runtime.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Globalization.Calendars.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Globalization.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Globalization.Extensions.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.IO.Compression.ZipFile.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.IO.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.IO.FileSystem.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.IO.FileSystem.DriveInfo.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.IO.FileSystem.Primitives.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.IO.FileSystem.Watcher.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.IO.IsolatedStorage.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.IO.MemoryMappedFiles.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.IO.Pipes.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.IO.UnmanagedMemoryStream.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Linq.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Linq.Expressions.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Linq.Parallel.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Linq.Queryable.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Net.Http.Rtc.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Net.NameResolution.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Net.NetworkInformation.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Net.Ping.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Net.Primitives.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Net.Requests.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Net.Security.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Net.Sockets.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Net.WebHeaderCollection.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Net.WebSockets.Client.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Net.WebSockets.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.ObjectModel.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Reflection.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Reflection.Emit.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Reflection.Emit.ILGeneration.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Reflection.Emit.Lightweight.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Reflection.Extensions.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Reflection.Primitives.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Resources.Reader.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Resources.ResourceManager.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Resources.Writer.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Runtime.CompilerServices.VisualC.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Runtime.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Runtime.Extensions.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Runtime.Handles.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Runtime.InteropServices.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Runtime.InteropServices.RuntimeInformation.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Runtime.InteropServices.WindowsRuntime.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Runtime.Numerics.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Runtime.Serialization.Formatters.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Runtime.Serialization.Json.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Runtime.Serialization.Primitives.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Runtime.Serialization.Xml.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Security.Claims.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Security.Cryptography.Algorithms.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Security.Cryptography.Csp.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Security.Cryptography.Encoding.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Security.Cryptography.Primitives.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Security.Cryptography.X509Certificates.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Security.Principal.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Security.SecureString.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.ServiceModel.Duplex.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.ServiceModel.Http.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.ServiceModel.NetTcp.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.ServiceModel.Primitives.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.ServiceModel.Security.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Text.Encoding.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Text.Encoding.Extensions.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Text.RegularExpressions.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Threading.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Threading.Overlapped.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Threading.Tasks.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Threading.Tasks.Parallel.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Threading.Thread.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Threading.ThreadPool.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Threading.Timer.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.ValueTuple.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Xml.ReaderWriter.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Xml.XDocument.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Xml.XmlDocument.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Xml.XmlSerializer.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Xml.XPath.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Xml.XPath.XDocument.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\unityscript\UnityScript.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\unityscript\UnityScript.Lang.dll
--r:D:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\unityscript\Boo.Lang.dll
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\mscorlib.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\System.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\System.Core.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\System.Runtime.Serialization.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\System.Xml.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\System.Xml.Linq.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\System.Numerics.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\System.Numerics.Vectors.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\Microsoft.Win32.Primitives.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\netstandard.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.AppContext.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Collections.Concurrent.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Collections.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Collections.NonGeneric.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Collections.Specialized.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.ComponentModel.Annotations.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.ComponentModel.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.ComponentModel.EventBasedAsync.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.ComponentModel.Primitives.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.ComponentModel.TypeConverter.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Console.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Data.Common.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Diagnostics.Contracts.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Diagnostics.Debug.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Diagnostics.FileVersionInfo.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Diagnostics.Process.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Diagnostics.StackTrace.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Diagnostics.TextWriterTraceListener.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Diagnostics.Tools.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Diagnostics.TraceSource.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Drawing.Primitives.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Dynamic.Runtime.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Globalization.Calendars.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Globalization.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Globalization.Extensions.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.IO.Compression.ZipFile.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.IO.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.IO.FileSystem.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.IO.FileSystem.DriveInfo.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.IO.FileSystem.Primitives.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.IO.FileSystem.Watcher.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.IO.IsolatedStorage.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.IO.MemoryMappedFiles.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.IO.Pipes.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.IO.UnmanagedMemoryStream.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Linq.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Linq.Expressions.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Linq.Parallel.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Linq.Queryable.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Net.Http.Rtc.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Net.NameResolution.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Net.NetworkInformation.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Net.Ping.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Net.Primitives.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Net.Requests.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Net.Security.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Net.Sockets.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Net.WebHeaderCollection.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Net.WebSockets.Client.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Net.WebSockets.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.ObjectModel.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Reflection.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Reflection.Emit.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Reflection.Emit.ILGeneration.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Reflection.Emit.Lightweight.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Reflection.Extensions.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Reflection.Primitives.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Resources.Reader.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Resources.ResourceManager.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Resources.Writer.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Runtime.CompilerServices.VisualC.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Runtime.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Runtime.Extensions.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Runtime.Handles.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Runtime.InteropServices.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Runtime.InteropServices.RuntimeInformation.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Runtime.InteropServices.WindowsRuntime.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Runtime.Numerics.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Runtime.Serialization.Formatters.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Runtime.Serialization.Json.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Runtime.Serialization.Primitives.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Runtime.Serialization.Xml.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Security.Claims.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Security.Cryptography.Algorithms.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Security.Cryptography.Csp.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Security.Cryptography.Encoding.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Security.Cryptography.Primitives.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Security.Cryptography.X509Certificates.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Security.Principal.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Security.SecureString.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.ServiceModel.Duplex.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.ServiceModel.Http.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.ServiceModel.NetTcp.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.ServiceModel.Primitives.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.ServiceModel.Security.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Text.Encoding.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Text.Encoding.Extensions.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Text.RegularExpressions.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Threading.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Threading.Overlapped.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Threading.Tasks.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Threading.Tasks.Parallel.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Threading.Thread.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Threading.ThreadPool.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Threading.Timer.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.ValueTuple.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Xml.ReaderWriter.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Xml.XDocument.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Xml.XmlDocument.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Xml.XmlSerializer.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Xml.XPath.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Xml.XPath.XDocument.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\unityscript\UnityScript.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\unityscript\UnityScript.Lang.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\unityscript\Boo.Lang.dll"
 -d:UNITY_5_3_OR_NEWER
 -d:UNITY_5_4_OR_NEWER
 -d:UNITY_5_5_OR_NEWER
@@ -244,7 +242,7 @@
 -d:UNITY_2017_4_OR_NEWER
 -d:UNITY_2018_1_OR_NEWER
 -d:UNITY_2018_2_OR_NEWER
--d:UNITY_2018_2_8
+-d:UNITY_2018_2_11
 -d:UNITY_2018_2
 -d:UNITY_2018
 -d:PLATFORM_ARCH_64
@@ -335,70 +333,70 @@
 -d:PHOTON_UNITY_NETWORKING
 -d:PUN_2_0_OR_NEWER
 -d:PUN_2_OR_NEWER
--i:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/AstarPathfindingProject/Editor/AIBaseEditor.cs"
--i:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/AstarPathfindingProject/Editor/AILerpEditor.cs"
--i:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/AstarPathfindingProject/Editor/AnimationLinkEditor.cs"
--i:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/AstarPathfindingProject/Editor/AstarPathEditor.cs"
--i:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/AstarPathfindingProject/Editor/AstarUpdateChecker.cs"
--i:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/AstarPathfindingProject/Editor/AstarUpdateWindow.cs"
--i:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/AstarPathfindingProject/Editor/CustomGraphEditorAttribute.cs"
--i:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/AstarPathfindingProject/Editor/GraphEditors/GraphEditor.cs"
--i:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/AstarPathfindingProject/Editor/GraphEditors/GridGeneratorEditor.cs"
--i:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/AstarPathfindingProject/Editor/GraphEditors/LayerGridGraphEditor.cs"
--i:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/AstarPathfindingProject/Editor/GraphEditors/NavMeshGeneratorEditor.cs"
--i:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/AstarPathfindingProject/Editor/GraphEditors/PointGeneratorEditor.cs"
--i:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/AstarPathfindingProject/Editor/GraphEditors/RecastGraphEditor.cs"
--i:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/AstarPathfindingProject/Editor/GraphUpdateSceneEditor.cs"
--i:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/AstarPathfindingProject/Editor/ModifierEditors/RaycastModifierEditor.cs"
--i:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/AstarPathfindingProject/Editor/ModifierEditors/SmoothModifierEditor.cs"
--i:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/AstarPathfindingProject/Editor/NavmeshCutEditor.cs"
--i:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/AstarPathfindingProject/Editor/RecastMeshObjEditor.cs"
--i:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/AstarPathfindingProject/Editor/RVOControllerEditor.cs"
--i:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/AstarPathfindingProject/Editor/RVONavmeshEditor.cs"
--i:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/AstarPathfindingProject/Editor/RVOSimulatorEditor.cs"
--i:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/AstarPathfindingProject/Editor/RVOSquareObstacleEditor.cs"
--i:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/AstarPathfindingProject/Editor/SeekerEditor.cs"
--i:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/AstarPathfindingProject/Legacy/Editor/LegacyAIPathEditor.cs"
--i:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/AstarPathfindingProject/Legacy/Editor/LegacyEditorHelper.cs"
--i:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/AstarPathfindingProject/Legacy/Editor/LegacyRichAIEditor.cs"
--i:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/AstarPathfindingProject/Legacy/Editor/LegacyRVOControllerEditor.cs"
--i:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/AstarPathfindingProject/PackageTools/Editor/EditorBase.cs"
--i:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/AstarPathfindingProject/PackageTools/Editor/EditorGUIx.cs"
--i:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/AstarPathfindingProject/PackageTools/Editor/EnumFlagDrawer.cs"
--i:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/AstarPathfindingProject/PackageTools/Editor/OptimizationHandler.cs"
--i:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Editor/CreatePolygon.cs"
--i:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Editor/InspectorHider.cs"
--i:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Kino/Bloom/Editor/BloomEditor.cs"
--i:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Kino/Bloom/Editor/BloomGraphDrawer.cs"
--i:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Kino/Feedback/Editor/FeedbackEditor.cs"
--i:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Kino/Glitch/Editor/AnalogGlitchEditor.cs"
--i:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Kino/Glitch/Editor/DigitalGlitchEditor.cs"
--i:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Kvant/Stream/KvantStream-master/Assets/Editor/PackageTool.cs"
--i:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Kvant/Stream/KvantStream-master/Assets/Kvant/Stream/Editor/StreamEditor.cs"
--i:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Kvant/Stream/KvantStream-master/Assets/Reaktion/Editor/Utility/ConstantMotionEditor.cs"
--i:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Kvant/Stream/KvantStream-master/Assets/Reaktion/Editor/Utility/JitterMotionEditor.cs"
--i:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Kvant/Stream/KvantStream-master/Assets/Shaders/ImageEffects/Bloom_V2/Editor/VideoBloomEditor.cs"
--i:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Kvant/Warp/Editor/WarpEditor.cs"
--i:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Kvant/Warp/Editor/WarpTemplateEditor.cs"
--i:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Photon/PhotonUnityNetworking/Code/Editor/AccountService.cs"
--i:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Photon/PhotonUnityNetworking/Code/Editor/PhotonEditor.cs"
--i:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Photon/PhotonUnityNetworking/Code/Editor/PhotonEditorUtils.cs"
--i:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Photon/PhotonUnityNetworking/Code/Editor/PhotonGUI.cs"
--i:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Photon/PhotonUnityNetworking/Code/Editor/PhotonViewHandler.cs"
--i:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Photon/PhotonUnityNetworking/Code/Editor/PhotonViewInspector.cs"
--i:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Photon/PhotonUnityNetworking/Code/Editor/PunSceneSettings.cs"
--i:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Photon/PhotonUnityNetworking/Code/Editor/ReorderableListResources.cs"
--i:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Photon/PhotonUnityNetworking/Code/Editor/ServerSettingsInspector.cs"
--i:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Photon/PhotonUnityNetworking/Code/Editor/Views/PhotonAnimatorViewEditor.cs"
--i:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Photon/PhotonUnityNetworking/Code/Editor/Views/PhotonRigidbody2DViewEditor.cs"
--i:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Photon/PhotonUnityNetworking/Code/Editor/Views/PhotonRigidbodyViewEditor.cs"
--i:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Photon/PhotonUnityNetworking/Code/Editor/Views/PhotonTransformViewEditor.cs"
--i:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Photon/PhotonUnityNetworking/Demos/DemoHub/Editor/PunStartup.cs"
--i:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Photon/PhotonUnityNetworking/Demos/DemoSlotRacer/Scripts/BezierCurve/Editor/BezierCurveInspector.cs"
--i:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Photon/PhotonUnityNetworking/Demos/DemoSlotRacer/Scripts/BezierCurve/Editor/BezierSplineInspector.cs"
--i:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Photon/PhotonUnityNetworking/Demos/DemoSlotRacer/Scripts/BezierCurve/Editor/LineInspector.cs"
--i:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Photon/PhotonUnityNetworking/UtilityScripts/Culling/Editor/CullAreaEditor.cs"
--i:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Photon/PhotonUnityNetworking/UtilityScripts/PhotonPlayer/Editor/PlayerNumberingInspector.cs"
--i:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Photon/PhotonUnityNetworking/UtilityScripts/PhotonPlayer/Editor/PunTeamsInspector.cs"
--i:"C:/Users/nj7/OneDrive/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/SonarFx/Editor/SonarFxEditor.cs"
+-i:"C:/Users/nj7/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/AstarPathfindingProject/Editor/AIBaseEditor.cs"
+-i:"C:/Users/nj7/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/AstarPathfindingProject/Editor/AILerpEditor.cs"
+-i:"C:/Users/nj7/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/AstarPathfindingProject/Editor/AnimationLinkEditor.cs"
+-i:"C:/Users/nj7/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/AstarPathfindingProject/Editor/AstarPathEditor.cs"
+-i:"C:/Users/nj7/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/AstarPathfindingProject/Editor/AstarUpdateChecker.cs"
+-i:"C:/Users/nj7/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/AstarPathfindingProject/Editor/AstarUpdateWindow.cs"
+-i:"C:/Users/nj7/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/AstarPathfindingProject/Editor/CustomGraphEditorAttribute.cs"
+-i:"C:/Users/nj7/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/AstarPathfindingProject/Editor/GraphEditors/GraphEditor.cs"
+-i:"C:/Users/nj7/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/AstarPathfindingProject/Editor/GraphEditors/GridGeneratorEditor.cs"
+-i:"C:/Users/nj7/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/AstarPathfindingProject/Editor/GraphEditors/LayerGridGraphEditor.cs"
+-i:"C:/Users/nj7/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/AstarPathfindingProject/Editor/GraphEditors/NavMeshGeneratorEditor.cs"
+-i:"C:/Users/nj7/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/AstarPathfindingProject/Editor/GraphEditors/PointGeneratorEditor.cs"
+-i:"C:/Users/nj7/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/AstarPathfindingProject/Editor/GraphEditors/RecastGraphEditor.cs"
+-i:"C:/Users/nj7/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/AstarPathfindingProject/Editor/GraphUpdateSceneEditor.cs"
+-i:"C:/Users/nj7/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/AstarPathfindingProject/Editor/ModifierEditors/RaycastModifierEditor.cs"
+-i:"C:/Users/nj7/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/AstarPathfindingProject/Editor/ModifierEditors/SmoothModifierEditor.cs"
+-i:"C:/Users/nj7/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/AstarPathfindingProject/Editor/NavmeshCutEditor.cs"
+-i:"C:/Users/nj7/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/AstarPathfindingProject/Editor/RecastMeshObjEditor.cs"
+-i:"C:/Users/nj7/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/AstarPathfindingProject/Editor/RVOControllerEditor.cs"
+-i:"C:/Users/nj7/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/AstarPathfindingProject/Editor/RVONavmeshEditor.cs"
+-i:"C:/Users/nj7/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/AstarPathfindingProject/Editor/RVOSimulatorEditor.cs"
+-i:"C:/Users/nj7/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/AstarPathfindingProject/Editor/RVOSquareObstacleEditor.cs"
+-i:"C:/Users/nj7/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/AstarPathfindingProject/Editor/SeekerEditor.cs"
+-i:"C:/Users/nj7/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/AstarPathfindingProject/Legacy/Editor/LegacyAIPathEditor.cs"
+-i:"C:/Users/nj7/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/AstarPathfindingProject/Legacy/Editor/LegacyEditorHelper.cs"
+-i:"C:/Users/nj7/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/AstarPathfindingProject/Legacy/Editor/LegacyRichAIEditor.cs"
+-i:"C:/Users/nj7/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/AstarPathfindingProject/Legacy/Editor/LegacyRVOControllerEditor.cs"
+-i:"C:/Users/nj7/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/AstarPathfindingProject/PackageTools/Editor/EditorBase.cs"
+-i:"C:/Users/nj7/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/AstarPathfindingProject/PackageTools/Editor/EditorGUIx.cs"
+-i:"C:/Users/nj7/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/AstarPathfindingProject/PackageTools/Editor/EnumFlagDrawer.cs"
+-i:"C:/Users/nj7/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/AstarPathfindingProject/PackageTools/Editor/OptimizationHandler.cs"
+-i:"C:/Users/nj7/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Editor/CreatePolygon.cs"
+-i:"C:/Users/nj7/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Editor/InspectorHider.cs"
+-i:"C:/Users/nj7/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Kino/Bloom/Editor/BloomEditor.cs"
+-i:"C:/Users/nj7/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Kino/Bloom/Editor/BloomGraphDrawer.cs"
+-i:"C:/Users/nj7/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Kino/Feedback/Editor/FeedbackEditor.cs"
+-i:"C:/Users/nj7/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Kino/Glitch/Editor/AnalogGlitchEditor.cs"
+-i:"C:/Users/nj7/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Kino/Glitch/Editor/DigitalGlitchEditor.cs"
+-i:"C:/Users/nj7/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Kvant/Stream/KvantStream-master/Assets/Editor/PackageTool.cs"
+-i:"C:/Users/nj7/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Kvant/Stream/KvantStream-master/Assets/Kvant/Stream/Editor/StreamEditor.cs"
+-i:"C:/Users/nj7/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Kvant/Stream/KvantStream-master/Assets/Reaktion/Editor/Utility/ConstantMotionEditor.cs"
+-i:"C:/Users/nj7/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Kvant/Stream/KvantStream-master/Assets/Reaktion/Editor/Utility/JitterMotionEditor.cs"
+-i:"C:/Users/nj7/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Kvant/Stream/KvantStream-master/Assets/Shaders/ImageEffects/Bloom_V2/Editor/VideoBloomEditor.cs"
+-i:"C:/Users/nj7/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Kvant/Warp/Editor/WarpEditor.cs"
+-i:"C:/Users/nj7/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Kvant/Warp/Editor/WarpTemplateEditor.cs"
+-i:"C:/Users/nj7/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Photon/PhotonUnityNetworking/Code/Editor/AccountService.cs"
+-i:"C:/Users/nj7/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Photon/PhotonUnityNetworking/Code/Editor/PhotonEditor.cs"
+-i:"C:/Users/nj7/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Photon/PhotonUnityNetworking/Code/Editor/PhotonEditorUtils.cs"
+-i:"C:/Users/nj7/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Photon/PhotonUnityNetworking/Code/Editor/PhotonGUI.cs"
+-i:"C:/Users/nj7/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Photon/PhotonUnityNetworking/Code/Editor/PhotonViewHandler.cs"
+-i:"C:/Users/nj7/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Photon/PhotonUnityNetworking/Code/Editor/PhotonViewInspector.cs"
+-i:"C:/Users/nj7/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Photon/PhotonUnityNetworking/Code/Editor/PunSceneSettings.cs"
+-i:"C:/Users/nj7/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Photon/PhotonUnityNetworking/Code/Editor/ReorderableListResources.cs"
+-i:"C:/Users/nj7/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Photon/PhotonUnityNetworking/Code/Editor/ServerSettingsInspector.cs"
+-i:"C:/Users/nj7/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Photon/PhotonUnityNetworking/Code/Editor/Views/PhotonAnimatorViewEditor.cs"
+-i:"C:/Users/nj7/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Photon/PhotonUnityNetworking/Code/Editor/Views/PhotonRigidbody2DViewEditor.cs"
+-i:"C:/Users/nj7/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Photon/PhotonUnityNetworking/Code/Editor/Views/PhotonRigidbodyViewEditor.cs"
+-i:"C:/Users/nj7/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Photon/PhotonUnityNetworking/Code/Editor/Views/PhotonTransformViewEditor.cs"
+-i:"C:/Users/nj7/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Photon/PhotonUnityNetworking/Demos/DemoHub/Editor/PunStartup.cs"
+-i:"C:/Users/nj7/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Photon/PhotonUnityNetworking/Demos/DemoSlotRacer/Scripts/BezierCurve/Editor/BezierCurveInspector.cs"
+-i:"C:/Users/nj7/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Photon/PhotonUnityNetworking/Demos/DemoSlotRacer/Scripts/BezierCurve/Editor/BezierSplineInspector.cs"
+-i:"C:/Users/nj7/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Photon/PhotonUnityNetworking/Demos/DemoSlotRacer/Scripts/BezierCurve/Editor/LineInspector.cs"
+-i:"C:/Users/nj7/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Photon/PhotonUnityNetworking/UtilityScripts/Culling/Editor/CullAreaEditor.cs"
+-i:"C:/Users/nj7/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Photon/PhotonUnityNetworking/UtilityScripts/PhotonPlayer/Editor/PlayerNumberingInspector.cs"
+-i:"C:/Users/nj7/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/Photon/PhotonUnityNetworking/UtilityScripts/PhotonPlayer/Editor/PunTeamsInspector.cs"
+-i:"C:/Users/nj7/Desktop/ProjectCubesDevelopment/Project_Cubes/Project Cubes/Assets/SonarFx/Editor/SonarFxEditor.cs"
 -v:0
