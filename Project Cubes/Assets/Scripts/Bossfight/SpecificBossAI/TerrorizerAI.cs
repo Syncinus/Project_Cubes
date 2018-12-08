@@ -7,7 +7,7 @@ using Photon.Pun;
 using Photon.Realtime;
 
 public class TerrorizerAI : BossAI {
-
+    /*
     public int currentPhase = 1;
 
     public override void Start()
@@ -18,7 +18,7 @@ public class TerrorizerAI : BossAI {
         states.Add(new MissileLaunch());
         states.Add(new CuttingEdge());
 
-        currentDesObjHealth = this.GetComponent<DestroyableObject>().health;
+        //currentDesObjHealth = this.GetComponent<DestroyableObject>().health;
         currentTeleportsRemaining = maximumTeleports;
             
         base.Start();
@@ -79,11 +79,11 @@ public class TerrorizerAI : BossAI {
 
     public new void FixedUpdate()
     {
-        if (this.GetComponent<DestroyableObject>().health <= PhaseTwoInitilization && StartedPhaseTwo == false && target != null)
-        {
-            StartPhaseTwo();
-            StartedPhaseTwo = true;
-        }
+        //if (this.GetComponent<DestroyableObject>().health <= PhaseTwoInitilization && StartedPhaseTwo == false && target != null)
+        //{
+        //    StartPhaseTwo();
+        //    StartedPhaseTwo = true;
+        //}
 
         
 
@@ -95,11 +95,11 @@ public class TerrorizerAI : BossAI {
         if (currentPhase == 2)
         {
             ExecutePhaseTwoState();
-            if (target.GetComponent<DestroyableObject>().health <= 0)
-            {
-                states.Insert(0, lastState);
-                StartCoroutine(ScreenFlashStateSet());
-            }
+            //if (target.GetComponent<DestroyableObject>().health <= 0)
+            //{
+            //    states.Insert(0, lastState);
+            //    StartCoroutine(ScreenFlashStateSet());
+            //}
         }
 
         if (currentPhase == 3)
@@ -134,7 +134,7 @@ public class TerrorizerAI : BossAI {
         {
             if (currentTeleportsRemaining == maximumTeleports)
             {
-                currentDesObjHealth = this.GetComponent<DestroyableObject>().health;
+                //currentDesObjHealth = this.GetComponent<DestroyableObject>().health;
             }
             this.transform.Find("TeleportParticles").GetComponent<ParticleSystem>().Play();
             Vector2 newPosition = Random.insideUnitCircle * 4 + new Vector2(target.transform.position.x, target.transform.position.z);
@@ -149,11 +149,11 @@ public class TerrorizerAI : BossAI {
 
             DestroyableObject desObj = this.GetComponent<DestroyableObject>();
 
-            if (desObj.health < currentDesObjHealth)
-            {
-                currentDesObjHealth = desObj.health;
-                nextTeleportTime = Time.time * 1.01f;
-            }
+            //if (desObj.health < currentDesObjHealth)
+            //{
+            //    currentDesObjHealth = desObj.health;
+            //    nextTeleportTime = Time.time * 1.01f;
+            //}
         }
 
 
@@ -264,8 +264,8 @@ public class TerrorizerAI : BossAI {
 
                     Destroy(newEnemy.GetComponent<TerrorizerAI>());
                     EnemyAI eAI = newEnemy.AddComponent<EnemyAI>();
-                    newEnemy.GetComponent<DestroyableObject>().maxHealth = 1000f;
-                    newEnemy.GetComponent<DestroyableObject>().health = 1000f;
+                    //newEnemy.GetComponent<DestroyableObject>().maxHealth = 1000f;
+                    //newEnemy.GetComponent<DestroyableObject>().health = 1000f;
                     eAI.damage = 0;
                     eAI.fireRate = fireRate;
                     eAI.range = range;
@@ -295,7 +295,7 @@ public class TerrorizerAI : BossAI {
 
                         if (hit.transform.GetComponent<EnemyAI>() == null)
                         {
-                            obj.TakeDamage(1000f, hit.point);
+                            //obj.TakeDamage(1000f, hit.point, this.gameObject);
 
                             if (hitRigid != null)
                             {
@@ -347,7 +347,7 @@ public class TerrorizerAI : BossAI {
                 {
                     if (currentTeleportsRemaining == maximumTeleports)
                     {
-                        currentDesObjHealth = this.GetComponent<DestroyableObject>().health;
+                        //currentDesObjHealth = this.GetComponent<DestroyableObject>().health;
                     }
                     this.transform.Find("TeleportParticles").GetComponent<ParticleSystem>().Play();
                     Vector2 newPosition = Random.insideUnitCircle * 4 + new Vector2(target.transform.position.x, target.transform.position.z);
@@ -362,11 +362,11 @@ public class TerrorizerAI : BossAI {
 
                     DestroyableObject desObj = this.GetComponent<DestroyableObject>();
 
-                    if (desObj.health < currentDesObjHealth)
-                    {
-                        currentDesObjHealth = desObj.health;
-                        nextTeleportTime = Time.time * 1.01f;
-                    }
+                    //if (desObj.health < currentDesObjHealth)
+                    //{
+                    //    currentDesObjHealth = desObj.health;
+                    //    nextTeleportTime = Time.time * 1.01f;
+                    //}
 
                     if (currentTeleportsRemaining <= 0)
                     {
@@ -470,7 +470,7 @@ public class TerrorizerAI : BossAI {
 
                             if (hit.transform.GetComponent<EnemyAI>() == null)
                             {
-                                obj.TakeDamage(1000f, hit.point);
+                                //obj.TakeDamage(1000f, hit.point, this.gameObject);
 
                                 if (hitRigid != null)
                                 {
@@ -575,8 +575,8 @@ public class TerrorizerAI : BossAI {
 
                         Destroy(newEnemy.GetComponent<TerrorizerAI>());
                         EnemyAI eAI = newEnemy.AddComponent<EnemyAI>();
-                        newEnemy.GetComponent<DestroyableObject>().maxHealth = 1000f;
-                        newEnemy.GetComponent<DestroyableObject>().health = 1000f;
+                        //newEnemy.GetComponent<DestroyableObject>().maxHealth = 1000f;
+                        //newEnemy.GetComponent<DestroyableObject>().health = 1000f;
                         eAI.damage = 0;
                         eAI.fireRate = fireRate;
                         eAI.range = range;
@@ -873,7 +873,7 @@ public class TerrorizerAI : BossAI {
         {
             ContactPoint point = collision.contacts[0];
             Vector3 hitpoint = point.point;
-            hitDesObj.TakeDamage(DamageAmount, hitpoint);
+            //hitDesObj.TakeDamage(DamageAmount, hitpoint, this.gameObject);
         }
 
         Rigidbody hitRigid = Hit.transform.GetComponent<Rigidbody>();
@@ -943,7 +943,7 @@ public class TerrorizerAI : BossAI {
     //Final Phase
     [SerializeField] public sealed class WarMode : BaseState { }
 
-
+    */
 }
 
 

@@ -27,6 +27,7 @@ public class CrateSystem : MonoBehaviour {
 		int rnd = Random.Range(1, 100);
 		Debug.Log(rnd.ToString());
 
+        /*
 		if (rnd >= 0 && rnd <= basic) {
 			List<WeaponItem> Items = new List<WeaponItem>();
 			foreach (WeaponItem item in AllItems) {
@@ -83,6 +84,7 @@ public class CrateSystem : MonoBehaviour {
 			WeaponItem itemToUse = Items.ElementAt(Random.Range(0, Items.Count));
 			Inventory.instance.Add(itemToUse);
  		}
+        */
 
 		Debug.Log("Opened Crate!");
 	}

@@ -24,7 +24,7 @@ MonoBehaviour:
     EnableLobbyStatistics: 0
     NetworkLogging: 1
   StartInOfflineMode: 0
-  PunLogging: 2
+  PunLogging: 0
   EnableSupportLogger: 0
   RunInBackground: 1
   RpcList:
@@ -43,4 +43,16 @@ MonoBehaviour:
   - SetAliveness
   - SetLinePositions
   - SetUpLine
+  - Disconnect
+  - EndGame
+  - particleFade
+  - stopParticleFade
+  - particleFadeIn
+  - particleFadeOut
+  - stopParticleFadeIn
+  - stopParticleFadeOut
+  - PunBreak
+  - ChangeEnergyColor
+  - SetProjectile
+  - respawn
   DisableAutoOpenWizard: 1

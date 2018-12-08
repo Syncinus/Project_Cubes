@@ -5,89 +5,56 @@ using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 
-public class Bullet : MonoBehaviourPunCallbacks {
+public class Bullet : MonoBehaviourPunCallbacks
+{
+    public GameObject shooter;
 
-    private GameObject finder;
-    private string objName;
-    private List<GameObject> objects = new List<GameObject>();
-    [HideInInspector] public bool isBlockBlaster = false;
-    public bool isExplosive = false;
-    public float explosionForce = 30000f;
-    public float damage = 100f;
-    public bool goesForward = true;
-    public bool breaks = true;
-    public bool mineMode = false;
-    public Transform shooter;
+    [HideInInspector] public ShotMode Shooting;
+    [HideInInspector] public int index;
 
-    public virtual void Update()
+    public float speed = 1f;
+    public float maxRange = 10f;
+
+    float distanceTraveled;
+    Vector3 lastPosition;
+
+    public void Start()
     {
-        if (goesForward == true)
-        {
-            transform.position += transform.forward * Time.deltaTime * 2;
-        }
+        lastPosition = transform.position;
     }
 
-
-    void OnCollisionEnter(Collision collision)
+    public void Fire()
     {
-        if (collision.gameObject.tag == "Bullet" || collision.transform.name == "Bullet(Clone)" || collision.transform.name == "Piece (1)" || collision.transform.name == "Piece (2)" || collision.transform.name == "Piece (3)" || collision.transform.name == "Piece (4)" || collision.transform.name == "Box (Clone)" || collision.gameObject.tag == "Bullet")
+        this.GetComponent<Rigidbody>().velocity = this.transform.forward * speed;
+    }
+
+    public void FixedUpdate()
+    {
+        distanceTraveled += Vector3.Distance(transform.position, lastPosition);
+        lastPosition = transform.position;
+
+        if (distanceTraveled >= maxRange)
         {
-            Collider collider = this.GetComponent<Collider>();
-            Physics.IgnoreCollision(collision.collider, collider);
-            return;
+            PhotonNetwork.Destroy(this.photonView);
         }
 
-        if (collision.gameObject != shooter.gameObject && collision.transform.name != "Tile(Clone)" && collision.transform.name != "MapGenerator" && collision.transform.name != "Bullet (Clone)" && collision.transform.name != "Floor" || collision.transform.name == "Piece (1)" || collision.transform.name == "Piece (2)" || collision.transform.name == "Piece (3)" || collision.transform.name == "Piece (4)")
+        this.GetComponent<Rigidbody>().velocity = this.transform.forward * speed;
+    }
+
+    public void OnCollisionEnter(Collision collision)
+    {
+        if (collision.transform.name == shooter.transform.name)
         {
-            
-            //Debug.Log(collision.transform.name);
-
-            if (isBlockBlaster == true)
-            {   
-                finder = collision.gameObject;
-                objName = collision.transform.name;
-            }
-
-            GameObject obj = collision.gameObject;
-
-            ShootShots shootingScript = shooter.GetComponent<ShootShots>();
-            TerrorizerAI terrorizer = shooter.GetComponent<TerrorizerAI>();
-
-            if (shootingScript != null)
+            Physics.IgnoreCollision(this.GetComponent<Collider>(), collision.collider);
+        }
+        else
+        {
+            ContactPoint contact = collision.contacts[0];
+            if (collision.gameObject != null)
             {
-                shootingScript.OnBulletHit(obj, collision);
+                shooter.GetComponent<ShootShots>().Damage(collision.gameObject, contact.point, Shooting, index);
             }
-            if (terrorizer != null)
-            {
-                terrorizer.OnBulletHit(obj, collision, damage);
-            }
-
-            if (isExplosive == true)
-            {
-                //Debug.Log("Boom!");
-                RaycastHit[] hits = Physics.SphereCastAll(this.transform.position, 10f, this.transform.position, 10f);
-
-                foreach (RaycastHit hit in hits)
-                {
-                    Rigidbody rigid = hit.transform.GetComponent<Rigidbody>();
-                    if (hit.transform != shooter)
-                    {
-                        if (rigid != null)
-                        {
-                            rigid.AddForce(-hit.point * 500, ForceMode.Impulse);
-                            if (mineMode == true)
-                            {
-                                rigid.velocity += new Vector3(0, 1, 0);
-                            }
-                        }
-                    }
-                }
-            }
-
-            if (breaks == true)
-            {
-                PhotonNetwork.Destroy(this.gameObject);
-            }
+            PhotonNetwork.Destroy(this.photonView);
         }
     }
 }

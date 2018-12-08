@@ -10,7 +10,7 @@ using Photon.Realtime;
 //namespace Pathfinding {
 public class EnemyAI : MonoBehaviourPunCallbacks
 {
-
+    
     #region Depracted
     [HideInInspector] [System.Obsolete] public EnemyType typeOfEnemy;
     [HideInInspector] [System.Obsolete] public enum EnemyType { Blue, Green, Yellow, Orange, Black };
@@ -33,8 +33,8 @@ public class EnemyAI : MonoBehaviourPunCallbacks
     public float damage = 5.0f;
     public float fireRate = 10.0f;
     public float range = 10.0f;
-    public float detectionRadius = 7.5f;
-    public float fieldOfView = 60f;
+    public float detectionRadius = 15f;
+    public float stealthDetection = 10f;
     private float lookAtDistance = 10f;
     public float attackDistance = 7.5f;
 
@@ -48,7 +48,9 @@ public class EnemyAI : MonoBehaviourPunCallbacks
 
     [HideInInspector] public bool targetChangeable;
     [HideInInspector] public bool playerDistanceCheckReady;
+    /*
     [HideInInspector] public WeaponType wType;
+    */
     [HideInInspector] public LineRenderer lineRenderer;
     [HideInInspector] public Color particlesColor;
 
@@ -60,6 +62,11 @@ public class EnemyAI : MonoBehaviourPunCallbacks
     float timeOfLastFire;
     bool ableToShoot = true;
 
+    public float fieldOfView = 60f;
+    public Vector3 personalLastSighting;
+
+    private Vector3 previousSighting;
+
 
     public void Die()
     {
@@ -70,7 +77,12 @@ public class EnemyAI : MonoBehaviourPunCallbacks
     }
 
     private void Awake()
-    {    
+    {
+
+        personalLastSighting = LastPlayerSighting.resetPosition;
+        previousSighting = LastPlayerSighting.resetPosition;
+
+
         this.gameObject.AddComponent<InvalidDestroyer>();
         this.gameObject.AddComponent<FallDissolve>();
         ai = this.GetComponent<IAstarAI>();
@@ -117,8 +129,10 @@ public class EnemyAI : MonoBehaviourPunCallbacks
 
         if (lineRenderer.enabled == true)
         {
+            /*
             SetLinePositions(this.transform.position, this.transform.position + (this.transform.forward * weapon.range));
-
+            */
+            /*
             if (weapon.type == WeaponType.Laser)
             {
                 RaycastHit hit;
@@ -135,11 +149,12 @@ public class EnemyAI : MonoBehaviourPunCallbacks
                     disableLineRenderer(0.25f);
                 }
             }
+            */
         }
 
         lastTimeFired += Time.deltaTime;
 
-
+        /*
         if (weapon != null)
         {
             damage = weapon.damage;
@@ -148,6 +163,7 @@ public class EnemyAI : MonoBehaviourPunCallbacks
             wType = weapon.type;
             particlesColor = weapon.particlesColor;
         }
+        */
 
 
         //if (target != null)
@@ -165,6 +181,7 @@ public class EnemyAI : MonoBehaviourPunCallbacks
 
         if (target != null && enemyMode != Mode.Avoid)
         {
+            /*
             if (Time.time >= nextTimeToFire && ableToShoot == true)
             {
                 float sqrDstToTarget = (target.position - this.transform.position).sqrMagnitude;
@@ -200,6 +217,7 @@ public class EnemyAI : MonoBehaviourPunCallbacks
                 }
 
             }
+            */
         }
 
 
@@ -333,11 +351,11 @@ public class EnemyAI : MonoBehaviourPunCallbacks
                     {
                         if (beamMode == false)
                         {
-                            desObj.TakeDamage(damage, hit.point);
+                            //desObj.TakeDamage(damage, hit.point, this.gameObject);
                         }
                         else
                         {
-                            desObj.TakeDamage(1000f, hit.point);
+                            //desObj.TakeDamage(1000f, hit.point, this.gameObject);
                         }
                         if (hitRigid != null)
                         {
@@ -347,307 +365,10 @@ public class EnemyAI : MonoBehaviourPunCallbacks
                 }
             }
         } else
-        {
-            if (weapon.hasParticles == true)
-            {
-                if (beamMode == true)
-                {
-                    this.transform.Find("Beam").transform.GetComponent<ParticleSystem>().Play();
-                } else
-                {
-                    if (weapon.hasParticles == true)
-                    {
-                        if (createdParticles == false)
-                        {
-                            GameObject particles = PhotonNetwork.Instantiate("Particles/" + weapon.particles.name, this.transform.position, this.transform.rotation, 0);
-                            particles.transform.SetParent(this.transform);
-                            particles.transform.localPosition = Vector3.zero;
-                            particles.transform.localRotation = Quaternion.Euler(new Vector3(90f, 0f, 0f));
-                            particlesTransform = particles.transform;
-                            
-                            createdParticles = true;
-                        }
-                        PlayParticles(false, particlesColor);
-                    }
-                }
-            }
-
-            if (weapon.type == WeaponType.Mowing)
-            {
-
-                float radiusShooting = 0.5f;
-                Vector3 shootingPoint = this.transform.position;
-                shootingPoint.x += UnityEngine.Random.Range(-radiusShooting, radiusShooting);
-                shootingPoint.y += UnityEngine.Random.Range(-radiusShooting, radiusShooting);
-                //shootingPoint.z += UnityEngine.Random.Range(-radiusShooting, radiusShooting);
-                if (Physics.Raycast(shootingPoint, this.transform.forward, out hit, range, ~(1 << LayerMask.NameToLayer("Pieces"))))
-                {
-                    if (hit.transform.GetComponent<EnemyAI>() == null)
-                    {
-                        if (hit.transform.name == "Piece (1)" || hit.transform.name == "Piece (2)" || hit.transform.name == "Piece (3)" || hit.transform.name == "Piece (4)")
-                            Debug.Log(hit.transform.name);
-
-                        //float radius = 0.25f;
-                        //Vector3 originPoint;
-                        //originPoint = hit.point;
-                        //originPoint.x += UnityEngine.Random.Range(-radius, radius);
-                        //originPoint.z += UnityEngine.Random.Range(-radius, radius);
-                        //originPoint.y += UnityEngine.Random.Range(-radius, radius);
-
-                        //GameObject impactEffectItem = Resources.Load<GameObject>("Particles/ImpactEffect");
-                        //GameObject impact = Instantiate(impactEffectItem, originPoint, Quaternion.LookRotation(hit.normal));
-                        //var main = impact.GetComponent<ParticleSystem>().main;
-                        //main.startColor = weapon.particlesColor;
-
-                        //impact.transform.Find("Light").GetComponent<Light>().color = weapon.particlesColor;
-                        //impact.transform.SetParent(GameObject.Find("TempStorage").transform);
-
-                        DestroyableObject target = hit.transform.GetComponent<DestroyableObject>();
-                        if (target != null)
-                        {
-                            if (beamMode == false)
-                            {
-                                target.TakeDamage(damage, hit.point);
-                            }
-                            if (beamMode == true)
-                            {
-                                target.TakeDamage(1000f, hit.point);
-                            }
-                        }
-
-                        Rigidbody hitRigid = hit.transform.GetComponent<Rigidbody>();
-                        Rigidbody rb = this.transform.GetComponent<Rigidbody>();
-                        if (hitRigid != null)
-                        {
-                            if (rb != null)
-                            {
-                                if (hitRigid == rb)
-                                {
-                                    yield return null;
-                                }
-                            }
-
-                            /*
-                            if (hit.transform.GetComponent<EnemyAI> ()) {
-                                hit.transform.gameObject.GetComponent<NavMeshAgent> ().enabled = false;
-                            }
-                            */
-                            if (beamMode == false)
-                            {
-                                hitRigid.AddExplosionForce(100f, hit.point, 100f);
-                                hitRigid.AddForce(-hit.point * 100f);
-                            }
-
-                            if (beamMode == true)
-                            {
-                                hitRigid.AddForce(-hit.normal * 200f);
-                            }
-
-                            /*
-                            if (hit.transform.GetComponent<EnemyAI> ()) {
-                                if (hitRigid != null) {
-                                    hitRigid.Sleep ();
-                                }
-                                hit.transform.gameObject.GetComponent<NavMeshAgent> ().enabled = true;
-                                hitRigid.WakeUp ();
-                            }
-                            */
-                        }
-                    }
-
-                }
-            }
-            if (weapon.type == WeaponType.Laser)
-            {
-                yield return new WaitForSeconds(weapon.shotDelay);
-
-                SetUpLine(particlesColor);
-                growLineRenderer(weapon.lineWidth, 0.25f);
-                SetLinePositions(this.transform.position, this.transform.position + (this.transform.forward * weapon.range));
-                //lineRenderer.SetPosition(0, this.transform.position);
-                //lineRenderer.SetPosition(1, this.transform.position + (this.transform.forward * weapon.range));
-
-                if (Physics.SphereCast(this.transform.position, weapon.lineWidth, this.transform.forward, out hit, weapon.range, ~(1 << LayerMask.NameToLayer("Pieces"))))
-                {
-                    //lineRenderer.SetPosition(1, hit.point);
-                    SetLinePositions(this.transform.position, hit.point);
-
-                    float radius = 0.25f;
-                    Vector3 originPoint;
-                    originPoint = hit.point;
-                    originPoint.x += UnityEngine.Random.Range(-radius, radius);
-                    originPoint.z += UnityEngine.Random.Range(-radius, radius);
-                    originPoint.y += UnityEngine.Random.Range(-radius, radius);
-
-                    GameObject impactEffectItem = Resources.Load<GameObject>("Particles/ImpactEffect");
-                    GameObject impact = Instantiate(impactEffectItem, originPoint, Quaternion.LookRotation(hit.normal));
-                    var main = impact.GetComponent<ParticleSystem>().main;
-                    main.startColor = weapon.particlesColor;
-
-                    impact.transform.Find("Light").GetComponent<Light>().color = weapon.particlesColor;
-                    impact.transform.SetParent(GameObject.Find("TempStorage").transform);
-
-                    if (hit.transform.GetComponent<EnemyAI>() == null)
-                    {
-
-                        DestroyableObject target = hit.transform.GetComponent<DestroyableObject>();
-                        if (target != null)
-                        {
-                            if (beamMode == false)
-                            {
-                                target.TakeDamage(damage, hit.point);
-                            }
-                            if (beamMode == true)
-                            {
-                                target.TakeDamage(1000f, hit.point);
-                            }
-                        }
-
-                        Rigidbody hitRigid = hit.transform.GetComponent<Rigidbody>();
-                        Rigidbody rb = this.transform.GetComponent<Rigidbody>();
-
-                        if (hitRigid != null)
-                        {
-                           
-                            /*
-                            if (hit.transform.GetComponent<EnemyAI> ()) {
-                                hit.transform.gameObject.GetComponent<NavMeshAgent> ().enabled = false;
-                            }
-                            */
-                            if (beamMode == false)
-                            {
-                                if (hitRigid != rb)
-                                {
-                                    hitRigid.AddExplosionForce(100f, hit.point, 100f);
-                                    hitRigid.AddForce(-hit.point * 100f);
-                                }
-                            }
-
-                            if (beamMode == true)
-                            {
-                                if (hitRigid != rb)
-                                {
-                                    hitRigid.AddForce(-hit.normal * 200f);
-                                }
-                            }
-                        }
-                    }
-                }
-
-            }
-            if (weapon.type == WeaponType.Rail)
-            {
-                List<RaycastHit> hits;
-                yield return new WaitForSeconds(weapon.shotDelay);
-
-                hits = (Physics.SphereCastAll(this.transform.position, weapon.lineWidth, this.transform.forward, range)).ToList();
-
-                SetUpLine(particlesColor);
-                SetLinePositions(this.transform.position, this.transform.position + (this.transform.forward * range));
-                growLineRenderer(weapon.lineWidth, 0.25f);
-
-                foreach (RaycastHit Hit in hits)
-                {
-
-                    float radius = 0.25f;
-                    Vector3 originPoint;
-                    originPoint = Hit.point;
-                    originPoint.x += UnityEngine.Random.Range(-radius, radius);
-                    originPoint.z += UnityEngine.Random.Range(-radius, radius);
-                    originPoint.y += UnityEngine.Random.Range(-radius, radius);
-
-                    GameObject impactEffectItem = Resources.Load<GameObject>("Particles/ImpactEffect");
-                    GameObject impact = Instantiate(impactEffectItem, originPoint, Quaternion.LookRotation(Hit.normal));
-                    var main = impact.GetComponent<ParticleSystem>().main;
-                    main.startColor = weapon.particlesColor;
-
-                    impact.transform.Find("Light").GetComponent<Light>().color = weapon.particlesColor;
-                    impact.transform.SetParent(GameObject.Find("TempStorage").transform);
-
-                    if (Hit.transform.GetComponent<EnemyAI>() == null)
-                    {
-
-                        DestroyableObject target = Hit.transform.GetComponent<DestroyableObject>();
-                        if (target != null)
-                        {
-                            if (beamMode == false)
-                            {
-                                target.TakeDamage(damage, Hit.point);
-                            }
-                            if (beamMode == true)
-                            {
-                                target.TakeDamage(1000f, Hit.point);
-                            }
-                        }
-
-                        Rigidbody hitRigid = Hit.transform.GetComponent<Rigidbody>();
-                        Rigidbody rb = this.transform.GetComponent<Rigidbody>();
-                        if (hitRigid != null)
-                        {
-                            if (rb != null)
-                            {
-                                if (hitRigid == rb)
-                                {
-                                    yield return null;
-                                }
-                            }
-
-                            /*
-                            if (hit.transform.GetComponent<EnemyAI> ()) {
-                                hit.transform.gameObject.GetComponent<NavMeshAgent> ().enabled = false;
-                            }
-                            */
-                            if (beamMode == false)
-                            {
-                                hitRigid.AddExplosionForce(100f, Hit.point, 500f);
-                                hitRigid.AddForce(-Hit.point * 10000f);
-                            }
-
-                            if (beamMode == true)
-                            {
-                                hitRigid.AddForce(-Hit.normal * 200f);
-                            }
-                        }
-                    }
-                }
-            }
-            if (weapon.type == WeaponType.Projectile)
-            {
-                yield return new WaitForSeconds(weapon.shotDelay);
-
-                GameObject bullet = PhotonNetwork.Instantiate(weapon.projectile.name, this.transform.position + this.transform.forward * 2, this.transform.rotation, 0);
-                //bullet.transform.SetParent(this.transform);
-                bullet.GetComponent<Bullet>().shooter = this.transform;
-                bullet.transform.SetParent(GameObject.Find("TempStorage").transform);
-                bullet.GetComponent<Rigidbody>().AddForce(-this.transform.position + this.transform.forward * 50);
-                bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 100;
-                Destroy(bullet, 2.0f);
-
-            }
-            if (weapon.type == WeaponType.SeekingProjectile)
-            {
-                yield return new WaitForSeconds(weapon.shotDelay);
-
-                GameObject projectile = PhotonNetwork.Instantiate(weapon.projectile.name, this.transform.position + this.transform.forward * 1.4f, this.transform.rotation, 0);
-                projectile.GetComponent<Bullet>().shooter = this.transform;
-                Destroy(projectile.GetComponent<Bullet>());
-                projectile.AddComponent<Missile>();
-                //projectile.GetComponent<Missile>().enabled = true;
-                projectile.GetComponent<Missile>().ogName = weapon.projectile.name;
-                projectile.GetComponent<Missile>().shooter = this.transform;
-                //projectile.GetComponent<Missile>().enabled = true;
-                projectile.transform.SetParent(GameObject.Find("TempStorage").transform);
-            }
-        }
-
-        timeOfLastFire = Time.time;
-        lastTimeFired = Time.time;
-        if (weapon.weaponHasRecharge == true)
-        {
-            nextTimeToFire = weapon.weaponRechargeTime;
-            reEnableShots(weapon.weaponRechargeTime);
-        }
+        
+          
         yield return null;
+
     }
 
     public void PlayParticles(bool usingbeam, Color color)
@@ -673,7 +394,7 @@ public class EnemyAI : MonoBehaviourPunCallbacks
             {
                 ContactPoint point = collision.contacts[0];
                 Vector3 hitpoint = point.point;
-                target.TakeDamage(damage, hitpoint);
+                //target.TakeDamage(damage, hitpoint, this.gameObject);
             }
 
             Rigidbody hitRigid = Hit.transform.GetComponent<Rigidbody>();
@@ -815,8 +536,34 @@ public class EnemyAI : MonoBehaviourPunCallbacks
 
     public Transform OldTarget { get; set; }
 
-
     private bool hasDetectedPlayer = false;
+
+    private void RunDetection(Collider other)
+    {
+        if (other.gameObject == target.gameObject)
+        {
+            hasDetectedPlayer = false;
+
+            Vector3 direction = other.transform.position - this.transform.position;
+            float angle = (Vector3.Angle(direction, this.transform.forward));
+
+            if (angle >= -(fieldOfView / 2) && angle <= (fieldOfView / 2))
+            {
+                RaycastHit hit;
+
+                Debug.DrawRay(this.transform.position, direction, Color.red);
+                if (Physics.Raycast(this.transform.position, direction, out hit, 20f, LayerMask.NameToLayer("Player")))
+                {
+                    if (hit.collider.transform == target)
+                    {
+                        hasDetectedPlayer = true;
+                        LastPlayerSighting.position = target.transform.position;
+                    }
+                }
+
+            }
+        }
+    }
 
     IEnumerator UpdatePath()
     {
@@ -833,14 +580,19 @@ public class EnemyAI : MonoBehaviourPunCallbacks
                     {
                         if (hasDetectedPlayer == false)
                         {
-                            Vector3 targetDir = target.position - this.transform.position;
-                            float angle = Vector3.Angle(targetDir, this.transform.forward);
-
-                            if (angle >= fieldOfView)
+                            if (LastPlayerSighting.position != previousSighting)
                             {
-                                Debug.Log("Seeing Player!");
+                                personalLastSighting = LastPlayerSighting.position;
                             }
-                            
+
+                            Collider[] colliders = Physics.OverlapSphere(this.transform.position, detectionRadius);
+
+                            foreach (Collider collider in colliders)
+                            {
+                                RunDetection(collider);
+                            }
+
+                            previousSighting = LastPlayerSighting.position;                      
 
                             if (Time.time > nextSearchTime && (ai.reachedEndOfPath || !ai.hasPath))
                             {

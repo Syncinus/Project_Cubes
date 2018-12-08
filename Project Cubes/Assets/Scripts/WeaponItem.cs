@@ -5,36 +5,61 @@ using UnityEngine.UI;
 
 [CreateAssetMenu(fileName = "New Weapon", menuName = "Items/Weapon")]
 public class WeaponItem : ScriptableObject {
-    public string gunName;
-	public int cost = 50;
-	public string description;
-    public float shotDelay;
-	public Color particlesColor;
-	public Sprite icon;
-    public bool auto = false;
-	public float weaponRechargeTime = 0f;
-	public bool weaponHasRecharge = false;
-    public GameObject projectile;
-    public GameObject particles;
-    public float lineWidth;
-    public bool hasParticles = true;
-    public bool shakesCamera = false;
-    public float shakeMagnitude;
-    public float shakeRoughness;
-    public float firerate = 10f;
-	public float damage = 10;
-	public float range = 100;
-    public WeaponType type;
-	public WeaponRarity rarity;
-    public AudioClip sound;
-    public float soundRefreshTime;
+
+    public List<FiringPoint> Points = new List<FiringPoint>();
 
 	public void Equip() {
 		EquipmentManager.instance.Equip(this);
 		Inventory.instance.Remove(this);
 	}
-
 }
 
-public enum WeaponType{Mowing, Laser, Rail, Projectile, SeekingProjectile}
-public enum WeaponRarity{Basic, Advanced, Elite, Legendary, Ultimate}
+[System.Serializable]
+public class FiringPoint
+{
+    public string Name = "Point";
+    public ShotMode Shooting;
+    public EmmisionMode Emmision;
+    public ParticleMode Particles;
+    public SoundMode Sound;
+}
+
+#region Modes
+[System.Serializable] public class EmmisionMode
+{
+    public string Prefab;
+    public float EmmisionScale;
+    public Vector3 EmmisionRandomOffset;
+    public Vector3 EmmisionOffset;
+    public Vector3 RotationOffset;
+}
+
+[System.Serializable] public class ShotMode
+{
+    public float Speed;
+    public float Range;
+    public float FireRate;
+    public float Recharge;
+    public float ShotCount;
+    public float Force;
+}
+
+[System.Serializable] public class ParticleMode
+{
+    public bool HasParticles;
+    public string Prefab;
+    public string Type;
+    public Vector3 Position;
+    public Color Coloring;
+    public float Size;
+    public Color ProjectileColor;
+}
+
+[System.Serializable] public class SoundMode
+{
+    public AudioClip Clip;
+    public float Refresh;
+    public float Volume;
+}
+
+#endregion

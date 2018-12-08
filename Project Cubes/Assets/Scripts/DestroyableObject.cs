@@ -9,369 +9,187 @@ using Photon.Realtime;
 
 public class DestroyableObject : MonoBehaviourPunCallbacks {
 
-	public float maxHealth = 50f;
-	public float health;
-	public bool isAlive = true;
-	public GameObject brokenVersion;
-	public bool brokenModel = false;
-	public Transform partStorage;
-	public bool layeredExplosion = true;
+    private Transform partStorage;
+    public bool isAlive = true;
+    public ExplosionEffect Effect;
+    public float Pieces;
 
-	private GameObject brokenModelSpawned;
-	private new PhotonView photonView;
-	private bool explosionPossible = true;
+    public PhotonView photonView;
 
-	public void Start() {
-		if (this.transform.name == "Obstacle(Clone)") {
-			maxHealth = Mathf.Round(this.transform.localScale.y * 100000);
-		}
-		partStorage = GameObject.Find ("TempStorage").transform;
-		health = maxHealth;
-	    photonView = PhotonView.Get(this);
+    public void Start()
+    {
+        partStorage = GameObject.Find("TempStorage").transform;
+        photonView = PhotonView.Get(this);
     }
 
-    public void Update() {
-		//NO MORE SUICIDE KEY
-	}
-
-	public void FixedUpdate() {
-		if (health <= 0f) {
-			isAlive = false;
-		}
-
-		if (isAlive == false) {
-			if (this.GetComponent<EnemyAI>() != null) {
-                this.GetComponent<EnemyAI>().Die();
-				Destroy(this.gameObject);
-			} else {
-				if (this.GetComponent<PlayerCube>() != null) {
-                    Transform armHolder = this.transform.Find("ArmorHolder");
-                    Transform armorHolder = Instantiate(armHolder, armHolder.position, armHolder.transform.rotation);
-                    armorHolder.transform.SetParent(this.transform.parent);
-
-                    foreach (Transform armorPiece in armorHolder)
-                    {
-                        //armorPiece.transform.SetParent(this.transform.parent);
-       
-                        foreach (Transform piece in armorPiece)
-                        {
-                            piece.gameObject.AddComponent<Rigidbody>();
-                            piece.gameObject.AddComponent<UnrenderDespawn>();
-                            Rigidbody body = piece.GetComponent<Rigidbody>();
-                            body.mass = 1f;
-                            body.useGravity = true;
-                            body.AddForce(Vector3.forward * 100, ForceMode.Impulse);
-                        }
-                    }
-
-                    this.gameObject.SetActive(false);
-                    Invoke("RPCRespawn", 1f);
-				} else {
-					Destroy(this.gameObject);
-				}
-			}
-		}
-	}
-
-    
-	public void TakeDamage (float amount, Vector3 point) {
-		//health -= amount;
-		if (photonView != null && this.GetComponent<EnemyAI>() == null) {
-		    photonView.RPC("PunTakeDamage", RpcTarget.All, amount, point);
-		} else {
-            AntiNetworkTakeDamage(amount, point);
-		}
-	}
-
-	public void RPCRespawn() {
-		photonView.RPC ("Respawn", RpcTarget.All, 10);
-	}
-
-	[PunRPC] public void Respawn(int rpcallower) {
-		this.gameObject.SetActive(true);
-	    health = maxHealth;
-		this.transform.position = GameObject.Find("PlayerSpawn").transform.position;
-        this.GetComponent<ShootShots>().ableToPlaySound = true;
-		explosionPossible = true;
-		isAlive = true;
-		if (photonView.IsMine == true) {
-			Transform cam = Camera.main.transform;
-			if (cam != null) {
-			    cam.transform.SetParent(this.transform);
-			    cam.GetComponent<SmoothCameraAdvanced>().enabled = true;
-				cam.transform.position = new Vector3(0, 1, -3);
-			}
-		}
-	}
-
-
-    public IEnumerator ShakeCamera(float magnitude, float roughness, float startFadeIn, float endFadeOut)
+    public void Respawn()
     {
-        GameObject cameraHolderForShaking = this.GetComponent<ShootShots>().cameraHolderForShaking;
-        Camera.main.transform.GetComponent<SmoothCameraAdvanced>().enabled = false;
-        Camera.main.transform.GetComponent<CameraShaker>().enabled = true;
-        Vector3 camPosition = Camera.main.transform.localPosition;
-        Quaternion camRotation = Camera.main.transform.localRotation;
-        cameraHolderForShaking.transform.localPosition = camPosition;
-        cameraHolderForShaking.transform.localRotation = camRotation;
-        Camera.main.transform.SetParent(cameraHolderForShaking.transform);
-        CameraShaker.Instance.ShakeOnce(magnitude, roughness, startFadeIn, endFadeOut);
-        yield return new WaitForSeconds(endFadeOut + 0.1f);
-        Camera.main.transform.GetComponent<CameraShaker>().enabled = false;
-        Camera.main.transform.SetParent(this.transform);
-        Camera.main.transform.localPosition = camPosition;
-        Camera.main.transform.localRotation = camRotation;
-        Camera.main.transform.GetComponent<SmoothCameraAdvanced>().enabled = true;
+        PhotonNetwork.RPC(photonView, "Respawn", RpcTarget.AllBuffered, false, this.gameObject.GetPhotonView());
     }
 
-
-    public void AntiNetworkTakeDamage(float amount, Vector3 point) {
-		health -= amount;
-		if (this.GetComponent<PlayerCube> () != null) {
-			this.GetComponent<PlayerCube> ().timeScinceLastTimeTakingDamage = 0;
-		}
-		if (health <= 0f) {
-			if (this.GetComponent<EnemyAI>() == null) {
-			    EndWithoutView(point);
-			} else {
-				photonView.RPC("End", RpcTarget.All, point);
-			}
-		}
-	}
-
-	[PunRPC] public void PunTakeDamage(float amount, Vector3 point) {
-		health -= amount;
-		if (this.GetComponent<PlayerCube> () != null) {
-			this.GetComponent<PlayerCube> ().timeScinceLastTimeTakingDamage = 0;
-		}
-		if (health <= 0f) {
-			//Break (point);
-			if (photonView != null) {
-			    photonView.RPC("End", RpcTarget.All, point);
-			}
-		}
-	}
-
-	public void EndWithoutView(Vector3 point) {
-        PrepareDeath();
-        RunExplosionAnimation(point);
-		if (this.GetComponent<EnemyAI>() != null) {
-		    photonView.RPC("SetAliveness", RpcTarget.All, false);
-			isAlive = false;
-			this.transform.GetComponent<EnemyAI>().Die();
-		} else {
-			if (this.GetComponent<PlayerCube>() != null) {
-                    this.gameObject.SetActive(false);
-                    //(ShakeCamera(5f, 3f, 0.1f, 1.5f));
-            } else {
-					Destroy(this.gameObject);
-			}
-		}
-	}
-
-	[PunRPC] public void SetAliveness(bool alive) {
-		isAlive = alive;
-	}
-
-    [PunRPC]
-    public void End(Vector3 point)
+    [PunRPC] public void respawn(int viewID)
     {
-        PrepareDeath();
-        RunExplosionAnimation(point);
-        if (this.GetComponent<EnemyAI>() != null)
-        {
-            photonView.RPC("SetAliveness", RpcTarget.All, false);
-            isAlive = false;
-            this.transform.GetComponent<EnemyAI>().Die();
-        }
-        else
-        {
-            if (photonView.IsMine == true)
-            {
-                isAlive = false;
+        Transform thisObject = PhotonView.Find(viewID).transform;
+        DestroyableObject desObj = thisObject.GetComponent<DestroyableObject>();
+        desObj.isAlive = true;
+        thisObject.gameObject.SetActive(true);
+        thisObject.position = new Vector3(0f, 0.5f, 0f);
+    }
 
-                if (this.GetComponent<PlayerCube>() == null)
-                {
-                    PhotonNetwork.DestroyPlayerObjects(PhotonNetwork.LocalPlayer);
-                } else
-                {
-                    //StartCoroutine(ShakeCamera(5f, 3f, 0.1f, 1.5f));
-                }
-            }
-            //if (PhotonNetwork.isMasterClient) {
-            //PhotonNetwork.Destroy(this.photonView);
-            //}
-            //Destroy(w);
+    public void GetHit(Vector3 point)
+    {
+        if (photonView != null)
+        {
+            PhotonNetwork.RPC(photonView, "PunBreak", RpcTarget.AllBuffered, false, point);
+        } else
+        {
+            Break(point);
         }
     }
-
-
-	public void RunExplosionAnimation(Vector3 point) {
-		if (explosionPossible == true) {
-		if (layeredExplosion == true) {
-			float heightLevel = this.transform.localScale.y;
-			for (float x = 0.25f; x <= heightLevel; x += 0.25f) {
-			    ExplosionAnimation(point);
-			}
-		}
-		if (layeredExplosion == false) {
-			    ExplosionAnimation(point);
-		}
-		explosionPossible = false;
-		}
-	}
-
-	public void PrepareDeath() {
-		if (this.GetComponent<PlayerCube>() != null) {
-			if (photonView.IsMine == true) {
-				   Transform cam = Camera.main.transform;
-				   if (cam != null) {
-					    cam.transform.SetParent(this.transform.parent);
-					    cam.GetComponent<SmoothCameraAdvanced>().enabled = false;
-				   }
-			}
-			if (this.transform.GetComponent<EnemyAI>() != null) {
-                this.transform.GetComponent<EnemyAI>().Die();
-			}
-		}
-	}
-
-
-
-	public void ExplosionAnimation(Vector3 point) {
-		GameObject brokenCube = (GameObject)GameObject.Instantiate (brokenVersion, new Vector3(this.transform.position.x, this.transform.position.y + 0.25f, this.transform.position.z), this.transform.rotation) as GameObject;
-		brokenCube.transform.SetParent (partStorage);
-		brokenModelSpawned = brokenCube;
-		
-            foreach(Transform colorChange in brokenCube.transform) {
-				Renderer ccrend = colorChange.GetComponent<Renderer>();
-				Material ccmat = new Material(ccrend.sharedMaterial);
-
-                ccmat.SetColor("_BaseColor", this.GetComponent<Renderer>().sharedMaterial.GetColor("_BaseColor"));
-				ccrend.sharedMaterial = ccmat;
-			}
-		
-				Rigidbody rigidThing = brokenCube.AddComponent<Rigidbody> ();
-				rigidThing.AddForce ((point - rigidThing.transform.position).normalized * 10f, ForceMode.Force);
-				//rigidThing.AddExplosionForce (100f, brokenCube.transform.position, 10f, 3.0f, ForceMode.Force);
-				Transform[] allChildren = brokenCube.GetComponentsInChildren<Transform> ();
-				foreach (Transform child in allChildren) {
-					if (child.GetComponent<Rigidbody> () != null) {
-						Rigidbody rigid = child.GetComponent<Rigidbody> ();
-						Light lit = child.gameObject.AddComponent<Light> ();
-						lit.range = 5.0f;
-						//rigid.AddForceAtPosition(40f * rigidThing.transform.forward, point, ForceMode.Force);
-						var dir = point - child.position;
-						dir = dir.normalized;
-						rigid.AddForce(-dir * 15f, ForceMode.Impulse);
-						rigid.AddExplosionForce (30f, child.position, 10f, 2.0f, ForceMode.Force);
-					}
-				}
-				RaycastHit[] hits = Physics.SphereCastAll (brokenCube.transform.position, 10f, brokenCube.transform.position, 20f);
-				foreach (RaycastHit hit in hits) {
-					//Debug.Log (hit.transform.name);
-					Rigidbody rigidb = hit.transform.GetComponent<Rigidbody> ();
-					if (rigidb != null) {
-						//rigidb.AddForce (-hit.normal * 500f);
-				}
-		}
-	}
-
-
-
-
 
     public void Break(Vector3 point)
     {
-        //Destroy (gameObject);
-        if (brokenModel == true)
-        {
+        Explosion(point);
+        Die();
+    }
 
-            if (this.gameObject.GetComponent<PlayerCube>() != null)
+    [PunRPC] public void PunBreak(Vector3 point)
+    {
+        Explosion(point);
+        Die();
+    }
+
+    public void Die()
+    {
+        if (photonView != null)
+        {
+            if (photonView.IsMine == true)
             {
-                if (!photonView.IsMine == false)
+                if (this.GetComponent<PlayerCube>() != null)
                 {
                     Transform cam = Camera.main.transform;
                     if (cam != null)
                     {
                         cam.transform.SetParent(this.transform.parent);
+                        cam.GetComponent<SmoothCameraAdvanced>().enabled = false;
                     }
                 }
+
+                isAlive = false;
             }
-
-            float heightLevel = this.transform.localScale.y;
-
-            for (float x = 0.25f; x <= heightLevel; x += 0.25f)
+        } else
+        {
+            if (this.GetComponent<PlayerCube>() != null)
             {
-                GameObject brokenCube = (GameObject)GameObject.Instantiate(brokenVersion, new Vector3(this.transform.position.x, this.transform.position.y + 0.25f, this.transform.position.z), this.transform.rotation) as GameObject;
-                brokenCube.transform.SetParent(partStorage);
-                brokenModelSpawned = brokenCube;
-                Rigidbody rigidThing = brokenCube.AddComponent<Rigidbody>();
-                rigidThing.AddForce((point - rigidThing.transform.position).normalized * 10f, ForceMode.Force);
-                //rigidThing.AddExplosionForce (100f, brokenCube.transform.position, 10f, 3.0f, ForceMode.Force);
-                Transform[] allChildren = brokenCube.GetComponentsInChildren<Transform>();
-                foreach (Transform child in allChildren)
+                Transform cam = Camera.main.transform;
+                if (cam != null)
                 {
-                    if (child.GetComponent<Rigidbody>() != null)
-                    {
-                        Rigidbody rigid = child.GetComponent<Rigidbody>();
-                        Light lit = child.gameObject.AddComponent<Light>();
-                        lit.range = 5.0f;
-                        //rigid.AddForceAtPosition(40f * rigidThing.transform.forward, point, ForceMode.Force);
-                        var dir = point - child.position;
-                        dir = dir.normalized;
-                        rigid.AddForce(-dir * 15f, ForceMode.Impulse);
-                        rigid.AddExplosionForce(30f, child.position, 10f, 2.0f, ForceMode.Force);
-                    }
+                    cam.transform.SetParent(this.transform.parent);
+                    cam.GetComponent<SmoothCameraAdvanced>().enabled = false;
                 }
-                RaycastHit[] hits = Physics.SphereCastAll(brokenCube.transform.position, 10f, brokenCube.transform.position, 20f);
-                foreach (RaycastHit hit in hits)
-                {
-                    //Debug.Log (hit.transform.name);
-                    Rigidbody rigidb = hit.transform.GetComponent<Rigidbody>();
-                    if (rigidb != null)
-                    {
-                        //rigidb.AddForce (-hit.normal * 500f);
-                    }
-                }
+                Invoke("Respawn", 5f);
             }
+
+            isAlive = false;
         }
 
-
-
-        if (this.transform != null && this.gameObject != null && this.transform.parent != null)
-        {
-            if (this.transform.GetComponent<EnemyAI>() != null)
-            {
-                this.transform.GetComponent<EnemyAI>().Die();
-            }
-            this.gameObject.SetActive(false);
-        }
-        this.enabled = false;
-        if (this.GetComponent<PlayerCube>() != null)
-        {
-            this.gameObject.SetActive(false);
-        }
-        else
-        {
-            Destroy(this.gameObject);
-        }
+        this.gameObject.SetActive(false);
     }
 
-    public void DestroyModel()
+
+    public void Explosion(Vector3 point)
     {
-        if (this.GetComponent<PlayerCube>() != null)
-        {
-            this.gameObject.SetActive(false);
-        }
-        else
-        {
-            Destroy(this.gameObject);
-        }
+        if (Effect == ExplosionEffect.Cubeblast)
+            ExplosionCubes(point);
+        else if (Effect == ExplosionEffect.Polygons)
+            ExplosionPolygons(point);
     }
 
+    private GameObject[] fragments;
 
-	public void DisableEditor() {
+    public void ExplosionPolygons(Vector3 point)
+    {
+       
+    }
+
+    public GameObject[] GetFragments()
+    {
+        return fragments;
+    }
+
+    public void ExplosionCubes(Vector3 point)
+    {
+        List<Vector3> LayerPositions = new List<Vector3>();
+        /*
+
+        float SeperationZ = PieceSize.z;
+        float SeperationX = PieceSize.x;
+
+        List<Vector3> RowPositions = new List<Vector3>();
+
+        for(int i = 0; i < Pieces; i++)
+        {
+            RowPositions.Add(new Vector3(0, 0, SeperationZ * i));
+        }
+
+
+        for(int i = 0; i < Pieces; i++)
+        {
+            for (int j = 0; j < RowPositions.Count; j++)
+            {
+                Vector3 vector = RowPositions[j];
+                vector.x = SeperationX * i;
+                LayerPositions.Add(vector);
+            }
+        }
+        */
+
+        Vector3 Size = this.transform.localScale;
+        Vector3 PieceSize = Size / Pieces;
+
+        for (int i = 0; i < Pieces; i++)
+        {
+            for (int j = 0; j < Pieces; j++)
+            {
+                for (int k = 0; k < Pieces; k++)
+                {
+                    Vector3 PiecePosition = new Vector3((PieceSize.x * j) - PieceSize.x, (PieceSize.y * i) - PieceSize.y, (PieceSize.z * k) - PieceSize.z);
+                    LayerPositions.Add(PiecePosition);
+                }
+            }
+        }
+
+        foreach (Vector3 position in LayerPositions)
+        {
+            GameObject Piece = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            Piece.AddComponent<Rigidbody>();
+            Rigidbody Rigid = Piece.transform.GetComponent<Rigidbody>();
+            Piece.transform.localScale = PieceSize;
+            Piece.transform.rotation = Quaternion.identity;
+            if (this.GetComponent<Rigidbody>() != null)
+            {
+                Rigid.mass = this.GetComponent<Rigidbody>().mass / LayerPositions.Count;
+            }
+            else
+            {
+                Rigid.mass = 1000 / LayerPositions.Count;
+            }
+            Rigid.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
+            Rigid.useGravity = true;
+
+            Piece.transform.SetParent(partStorage);
+            Piece.transform.position = this.transform.position + position;
+            Piece.transform.name = "Piece";
+
+            Piece.GetComponent<Renderer>().sharedMaterial = this.GetComponent<Renderer>().sharedMaterial;
+            Piece.GetComponent<Renderer>().sharedMaterial.color = this.GetComponent<Renderer>().sharedMaterial.color;
+
+            Rigid.AddExplosionForce(Rigid.mass * 5f, point, 2f, 0.001f, ForceMode.Acceleration);
+            Rigid.AddForce(point * (Rigid.mass * 10f), ForceMode.Impulse);
+        }     
+    }
+
+    public void DisableEditor() {
 		#if UNITY_EDITOR
 		UnityEditor.EditorApplication.isPlaying = false;
 		#endif
@@ -379,14 +197,14 @@ public class DestroyableObject : MonoBehaviourPunCallbacks {
 
 	public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info) {
 		if (stream.IsWriting) {
-			stream.SendNext(health);
 			stream.SendNext(isAlive);
 
 		}
 		else 
 		{
-            this.health = (float)stream.ReceiveNext();
 			this.isAlive = (bool)stream.ReceiveNext();
 		}
 	}
 }
+
+public enum ExplosionEffect { Cubeblast, Polygons }

@@ -29,12 +29,12 @@ public class Shop : MonoBehaviour {
         WeaponItem[] loadItems = Resources.LoadAll<WeaponItem>("Weapons");
         itemsToLoad = loadItems.ToList();
         foreach (WeaponItem item in itemsToLoad) {
-			if (item.cost > 0) {
-			    buyableItems.Add(item);
-			    if (onShopChangedCallback != null) {
-				    onShopChangedCallback.Invoke();
-			    }
-			}
+			//if (item.cost > 0) {
+			//    buyableItems.Add(item);
+			//    if (onShopChangedCallback != null) {
+			//	    onShopChangedCallback.Invoke();
+			//    }
+			//}
 		}
 	}
 
@@ -42,9 +42,9 @@ public class Shop : MonoBehaviour {
         WeaponItem[] loadItems = Resources.LoadAll<WeaponItem>("Weapons");
         List<WeaponItem> possibleItems = new List<WeaponItem>();
 		foreach (WeaponItem item in loadItems) {
-			if (item.cost > 0 && !boughtItems.Contains(item)) {
-				possibleItems.Add(item);
-			}
+			//if (item.cost > 0 && !boughtItems.Contains(item)) {
+			//	possibleItems.Add(item);
+			//}
 		}
 
 		WeaponItem newItem = possibleItems[Random.Range(0, possibleItems.Count - 1)];

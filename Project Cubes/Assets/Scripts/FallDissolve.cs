@@ -17,7 +17,7 @@ public class FallDissolve : MonoBehaviour {
     {
         if (this.GetComponent<DestroyableObject>() != null)
         {
-            this.GetComponent<DestroyableObject>().TakeDamage(10000000000000000f, this.transform.position);
+            //this.GetComponent<DestroyableObject>().TakeDamage(10000000000000000f, this.transform.position, this.gameObject);
         }
     }
 }

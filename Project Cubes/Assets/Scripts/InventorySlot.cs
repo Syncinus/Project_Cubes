@@ -19,7 +19,7 @@ public class InventorySlot : MonoBehaviour, IPointerClickHandler {
 	public void AddItem(WeaponItem newItem) {
 		item = newItem;
 
-		icon.sprite = newItem.icon;
+		//icon.sprite = newItem.icon;
 		icon.enabled = true;
 	}
 

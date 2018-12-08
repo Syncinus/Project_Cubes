@@ -191,7 +191,11 @@ MonoBehaviour:
   fireRate: 100
   range: 10
   detectionRadius: 20
+<<<<<<< HEAD
   fieldOfView: 60
+=======
+  stealthDetection: 10
+>>>>>>> f42c810597f771d1831dc40c7426d0227296670f
   attackDistance: 7.5
   ScoreGiven: 1
   wandering: 1
@@ -201,6 +205,8 @@ MonoBehaviour:
   wType: 0
   lineRenderer: {fileID: 0}
   particlesColor: {r: 0, g: 0, b: 0, a: 0}
+  fieldOfView: 60
+  personalLastSighting: {x: 0, y: 0, z: 0}
 --- !u!114 &114127452763466312
 MonoBehaviour:
   m_ObjectHideFlags: 1

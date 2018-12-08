@@ -43,22 +43,22 @@ public class WeaponButton : MonoBehaviourPunCallbacks {
     }
 
     void SetButton() {
-        string costString = wItem.cost.ToString();
+        //string costString = wItem.cost.ToString();
         name.enabled = true;
         cost.enabled = true;
         description.enabled = true;
-        name.text = wItem.gunName;
-        cost.text = "#" + wItem.cost;
-        description.text = wItem.description;
+        //name.text = wItem.gunName;
+        //cost.text = "#" + wItem.cost;
+        //description.text = wItem.description;
     }
 
     public void OnClick() {
         if (wItem != null) {
-            if (ScoreSystem.Score >= wItem.cost && Inventory.instance.items.Count < Inventory.instance.space) {
-                ScoreSystem.Score -= wItem.cost;
-                Inventory.instance.Add(wItem);
-                RemoveFromShop();
-            }
+            //if (ScoreSystem.Score >= wItem.cost && Inventory.instance.items.Count < Inventory.instance.space) {
+            //   ScoreSystem.Score -= wItem.cost;
+            //    Inventory.instance.Add(wItem);
+            //    RemoveFromShop();
+            //}
         }
     }
 

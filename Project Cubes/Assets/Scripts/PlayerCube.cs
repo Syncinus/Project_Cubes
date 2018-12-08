@@ -2,19 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using System;
 using System.Linq;
 using Photon.Pun;
-using Photon.Realtime;
-using EZCameraShake;
-using Unity.Jobs;
-using Unity.Collections;
-using UnityEngine.Jobs;
-using Unity.Jobs.LowLevel;
-
+using Chronos;
 
 public class PlayerCube : MonoBehaviourPunCallbacks {
-
 	public Rigidbody rigid;
 	public float smooth = 1.0f;
 	public float speed = 5.0f;
@@ -24,69 +16,67 @@ public class PlayerCube : MonoBehaviourPunCallbacks {
     public bool ableToMove = true;
 
 	private DestroyableObject desObj;
-	private Vector3 velocity;
 	public float timeScinceLastTimeTakingDamage = 0f;
 	public bool moving = false;
 	public bool rotation = false;
-	public GameObject proxyCube;
-    public Vector3 realPosition;
+
+    public Color EnergyColor;
+    private Color LastEnergyColor;
+    private List<Transform> Energy = new List<Transform>();
+
+    private List<RealityManipulator> manipulators = new List<RealityManipulator>();
 
 	private bool setCamera = false;
-	private Text healthText;
-    private EquipmentManager gunManager;
-
-    bool first = true;
-
-    [SerializeField]
-    private float _timeScale = 1;
-    public float timeScale
+    
+    public Timeline time
     {
-        get { return _timeScale; }
-        set
+        get
         {
-            if (!first)
-            {
-                this.GetComponent<Rigidbody>().mass *= timeScale;
-                this.GetComponent<Rigidbody>().velocity /= timeScale;
-                this.GetComponent<Rigidbody>().angularVelocity /= timeScale;
-            }
-            first = false;
-
-            _timeScale = Mathf.Abs(value);
-
-            this.GetComponent<Rigidbody>().mass /= timeScale;
-            this.GetComponent<Rigidbody>().velocity *= timeScale;
-            this.GetComponent<Rigidbody>().angularVelocity *= timeScale;
+            return this.transform.GetComponent<Timeline>();
         }
     }
-
-    private void Awake()
-    {
-        timeScale = _timeScale;
-    }
-
 
     public void Start() {
 		if (photonView.IsMine != true) {
 			return;
 		}
 
+        PhotonNetwork.RPC(photonView, "ChangeEnergyColor", RpcTarget.AllBuffered, false, new Vector3(EnergyColor.r, EnergyColor.g, EnergyColor.b), Energy.ToArray());
+        LastEnergyColor = EnergyColor;
+
+        foreach(Transform child in this.transform.Find("Model"))
+        {
+            if (child.name == "Energy")
+            {
+                Energy.Add(child);
+            }
+        }
+
         //jobsTransform.Add(this.transform);        
         
         Camera.main.transform.GetComponent<SmoothCameraAdvanced>().target = this.transform;
         Camera.main.transform.SetParent(this.transform);
         Camera.main.transform.GetComponent<SmoothCameraAdvanced>().enabled = true;
-        
+
         //Camera.main.transform.GetComponent<AlternateCameraScript>().target = this.transform;
 
 		this.transform.position = new Vector3(0f, 0.5f, 0f);
 		rigid = this.GetComponent<Rigidbody> ();
 		desObj = this.GetComponent<DestroyableObject> ();
-		GameObject canvas = GameObject.Find("Canvas");
-		healthText = canvas.transform.Find("Health").GetComponent<Text>();
-		StartCoroutine (Regenerate ());
-        gunManager = EquipmentManager.instance;
-        weapon = gunManager.currentGun;
+        if (CubeSettings.weapon != null)
+        {
+            weapon = CubeSettings.weapon;
+        }
+        if (CubeSettings.manipulators.Count > 0)
+        {
+            manipulators = CubeSettings.manipulators;
+        }
+    }
+
+    public void AddScore(float score)
+    {
+        ScoreSystem.Score += score;
+        CubeSettings.Score += score;
     }
 
     public void Update()
@@ -96,163 +86,91 @@ public class PlayerCube : MonoBehaviourPunCallbacks {
             return;
         }
 
-
-        this.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezeRotationX;
-        
-
-        if (Input.GetKeyDown(KeyCode.K))
+        if (EnergyColor != LastEnergyColor)
         {
-            this.GetComponent<DestroyableObject>().TakeDamage(30000, this.transform.position);
-        }
-        if (weapon != gunManager.currentGun)
-        {
-            weapon = gunManager.currentGun;
+            PhotonNetwork.RPC(photonView, "ChangeEnergyColor", RpcTarget.AllBuffered, false, new Vector3(EnergyColor.r, EnergyColor.g, EnergyColor.b), Energy.ToArray());
+            LastEnergyColor = EnergyColor;
         }
 	}
 
+    [PunRPC] public void ChangeEnergyColor(Vector3 color, Transform[] energyTransforms)
+    {
+        Color e = new Color(color.x, color.y, color.z);
+        
+        foreach (Transform energy in energyTransforms)
+        {
+            energy.GetComponent<Renderer>().sharedMaterial.color = EnergyColor;
+            energy.GetComponent<Light>().color = EnergyColor;
+        }
+    }
 
-	public float figureDifference(float start, float end) {
+    public float figureDifference(float start, float end) {
 		return end - start;
 	}
 
-	IEnumerator Regenerate() {
-		while (true) {
-			if (desObj.health < desObj.maxHealth && timeScinceLastTimeTakingDamage >= 5f) {
-				desObj.health += 750;
-				yield return new WaitForSeconds (1f);
-			} else {
-				yield return null;
-			}
-		}
-	}
+    public enum MovementDirection { Forward, Backward, Left, Right, Up };
 
-    public void Move(string way)
+
+    public void Move(MovementDirection direction)
     {
+        float dt = time.fixedDeltaTime;
+
         if (ableToMove == true)
         {
-            if (way == "Forward")
+            if (direction == MovementDirection.Forward)
             {
-                this.transform.Translate(Vector3.forward * speed * Time.unscaledDeltaTime, Space.Self);
-
-                /*
-                moveHandle.Complete();
-
-                moveJob = new MovementJob()
-                {
-                    direction = this.transform.forward * speed * Time.deltaTime / Time.timeScale
-                };
-
-                moveHandle = moveJob.Schedule(jobsTransform);
-                */
-               
+                this.transform.Translate(Vector3.forward * speed * dt, Space.Self);
             }
-            if (way == "Backward")
+            if (direction == MovementDirection.Backward)
             {
-                this.transform.Translate(Vector3.back * speed * Time.unscaledDeltaTime, Space.Self);
-
-                /*
-                moveHandle.Complete();
-
-                moveJob = new MovementJob()
-                {
-                    direction = (this.transform.forward * -1) * speed * Time.deltaTime / Time.timeScale
-                };
-
-                moveHandle = moveJob.Schedule(jobsTransform);
-                */
-
+                this.transform.Translate(Vector3.back * speed * dt, Space.Self);
             }
         }
 
-        if (way == "Left")
+        if (direction == MovementDirection.Left)
         {
-            this.transform.rotation = Quaternion.Euler(this.transform.rotation.eulerAngles.x, (transform.rotation.eulerAngles.y + 75f * Time.fixedUnscaledDeltaTime * Input.GetAxis("Horizontal")), transform.rotation.eulerAngles.z);
+            this.transform.rotation = Quaternion.Euler(this.transform.rotation.eulerAngles.x, (transform.rotation.eulerAngles.y + 75f * dt * Input.GetAxis("Horizontal")), transform.rotation.eulerAngles.z);
         }
 
-        if (way == "Right")
+        if (direction == MovementDirection.Right)
         {
-            this.transform.rotation = Quaternion.Euler(this.transform.rotation.eulerAngles.x, (transform.rotation.eulerAngles.y + 75f * Time.fixedUnscaledDeltaTime * Input.GetAxis("Horizontal")), transform.rotation.eulerAngles.z);
+            this.transform.rotation = Quaternion.Euler(this.transform.rotation.eulerAngles.x, (transform.rotation.eulerAngles.y + 75f * dt * Input.GetAxis("Horizontal")), transform.rotation.eulerAngles.z);
         }
 
-        if (way == "Up")
+        if (direction == MovementDirection.Up)
         {
-            this.GetComponent<Rigidbody>().velocity = new Vector3(0, 1000f * Time.fixedUnscaledDeltaTime, 0f);
+            time.rigidbody.AddForce(new Vector3(0, 500, 0), ForceMode.Acceleration);
         }
-
-        JobHandle.ScheduleBatchedJobs();
     }
 
     public void FixedUpdate() {
-
-        /*
-        Plane playerPlane = new Plane(Vector3.up, transform.position);
-
-        // Generate a ray from the cursor position
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-        // Determine the point where the cursor ray intersects the plane.
-        // This will be the point that the object must look towards to be looking at the mouse.
-        // Raycasting to a Plane object only gives us a distance, so we'll have to take the distance,
-        //   then find the point along that ray that meets that distance.  This will be the point
-        //   to look at.
-        float hitdist = 0.0f;
-        // If the ray is parallel to the plane, Raycast will return false.
-        if (playerPlane.Raycast(ray, out hitdist))
-        {
-            // Get the point along the ray that hits the calculated distance.
-            Vector3 targetPoint = ray.GetPoint(hitdist);
-
-            // Determine the target rotation.  This is the rotation if the transform looks at the target point.
-            Quaternion targetRotation = Quaternion.LookRotation(targetPoint - transform.position);
-
-            // Smoothly rotate towards the target point.
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 2.0f * Time.deltaTime);
-        }
-        */
-
-        //foreach (Transform armor in this.transform.Find("ArmorHolder").transform)
-        //{
-        //armor.transform.localPosition = new Vector3 (0f, 0f, 0f);
-        //}
-
-        //if (Camera.main.GetComponent<CameraShaker>().enabled != true)
-        //{
-        //    this.transform.Find("ShakePosition").position = Camera.main.transform.position;
-        //}
-
         if (photonView.IsMine != true) {
             return;
 		}
 
-		healthText.text = "Health: " + this.GetComponent<DestroyableObject>().health;
-
-
-		if (desObj.health > desObj.maxHealth) {
-			desObj.health = desObj.maxHealth;
-		}
-		if (timeScinceLastTimeTakingDamage < 6f) {
+        if (timeScinceLastTimeTakingDamage < 6f) {
 			timeScinceLastTimeTakingDamage += Time.deltaTime;
 		}
 
 		moving = false;
 		//transform.rotation = Quaternion.Euler (this.transform.rotation.eulerAngles.x, (transform.rotation.eulerAngles.y + 100f * Time.deltaTime * Input.GetAxis ("Horizontal")), transform.rotation.eulerAngles.z);
 		if (Input.GetKey (KeyCode.W)) {
-			Move("Forward");
+			Move(MovementDirection.Forward);
 		}
 		if (Input.GetKey (KeyCode.S)) {
-			Move("Backward");
+			Move(MovementDirection.Backward);
 		}
 		if (Input.GetKey(KeyCode.A))
 		{
-			Move("Left");
+			Move(MovementDirection.Left);
 		}
 		if (Input.GetKey(KeyCode.D))
 		{
-			Move("Right");
+			Move(MovementDirection.Right);
 		}
-        if (Input.GetKeyDown(KeyCode.E))
+        if(Input.GetKeyDown(KeyCode.E))
         {
-            Move("Up");
+            Move(MovementDirection.Up);
         }
 
 		if (moving == false) {

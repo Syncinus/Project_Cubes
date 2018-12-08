@@ -2,12 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
-using System;
 using Photon.Pun;
-using Photon.Realtime;
 
 public class Missile : Bullet {
-
+    /*
     public Transform target;
     public float driveSpeed = 10f;
     public float damping = 10f;
@@ -151,4 +149,5 @@ public class Missile : Bullet {
 
         driveSpeed = MaximumSpeed;
     }
+    */
 }

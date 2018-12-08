@@ -74,7 +74,7 @@ public class OldEnemyAI : MonoBehaviour {
 			target = GameObject.FindObjectOfType<PlayerCube> ().transform;
 			oldTarget = target;
 			players = GameObject.FindObjectsOfType<PlayerCube>();
-            healthValue = model.GetComponent<DestroyableObject>().health;
+            //healthValue = model.GetComponent<DestroyableObject>().health;
 
             //if (typeOfEnemy == EnemyType.Black) {
             //    collisionRadius = 30f;
@@ -83,7 +83,7 @@ public class OldEnemyAI : MonoBehaviour {
 			//}
 			//targetCollisionRadius = 1f;
 			//attackDistance = 10f;
-			maxHealth = model.GetComponent<DestroyableObject>().health;
+			//maxHealth = model.GetComponent<DestroyableObject>().health;
 			healthBarLength = Screen.width / 6;
 			StartCoroutine (UpdatePath());
             StartCoroutine (Regenerate());
@@ -107,35 +107,34 @@ public class OldEnemyAI : MonoBehaviour {
         DestroyableObject desObj = model.GetComponent<DestroyableObject>();
         while (true)
         {
-            if (desObj.health < desObj.maxHealth && timeScinceLastTimeTakingDamage >= 5f)
-            {
-                desObj.health += 750;
-                yield return new WaitForSeconds(1f);
-            }
-            else
-            {
-                yield return null;
-            }
+            //if (desObj.health < desObj.maxHealth && timeScinceLastTimeTakingDamage >= 5f)
+            //{
+            //    desObj.health += 750;
+            //    yield return new WaitForSeconds(1f);
+            //}
+            //else
+            //{
+            //    yield return null;
+            //}
         }
     }
 
     public void FixedUpdate() {
-
         timeScinceLastTimeTakingDamage += Time.deltaTime;
-        if(model.GetComponent<DestroyableObject>().health != healthValue)
-        {
-            healthValue = model.GetComponent<DestroyableObject>().health;
-            timeScinceLastTimeTakingDamage = 0.0f;
-        }
+        //if(model.GetComponent<DestroyableObject>().health != healthValue)
+        //{
+        //    healthValue = model.GetComponent<DestroyableObject>().health;
+        //    timeScinceLastTimeTakingDamage = 0.0f;
+        //}
 		if (freezePointsEnabled == true) {
             foreach (float freezePoint in freezePoints) {
-				if (model.GetComponent<DestroyableObject>().health >= freezePoint - 10 && model.GetComponent<DestroyableObject>().health <= freezePoint + 10) {
-                    nav.enabled = false;
-					nav.speed -= 0.3f;
-					nextTimeToFire = Time.time + 5f;
-					Invoke("ReEnableNavMeshAgent", 5f);
+				//if (model.GetComponent<DestroyableObject>().health >= freezePoint - 10 && model.GetComponent<DestroyableObject>().health <= freezePoint + 10) {
+                //    nav.enabled = false;
+				//	nav.speed -= 0.3f;
+				//	nextTimeToFire = Time.time + 5f;
+				//	Invoke("ReEnableNavMeshAgent", 5f);
 					//freezePoints.Remove(freezePoint);
-				}
+				//}
 			}
 		}
 
@@ -254,12 +253,12 @@ public class OldEnemyAI : MonoBehaviour {
             if (hit.transform.GetComponent<EnemyAI>() == null) {
 				if (beam == false) {
 					if (desObj != null) {
-						desObj.TakeDamage (damage, hit.point);
+						//desObj.TakeDamage (damage, hit.point, this.gameObject);
 					}
 				}
 				if (beam == true) {
 					if (desObj != null) {
-					desObj.TakeDamage (1000f, hit.point);
+					//desObj.TakeDamage (1000f, hit.point, this.gameObject);
 					}
 					if (hitRigid != null) {
 						hitRigid.AddForce(hit.point * 100);
