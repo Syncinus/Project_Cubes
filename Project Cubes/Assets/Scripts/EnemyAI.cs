@@ -71,7 +71,9 @@ public class EnemyAI : MonoBehaviourPunCallbacks
     public void Die()
     {
         dead = true;
-        OnDeath?.Invoke();
+        if (OnDeath != null) {
+            OnDeath.Invoke();
+        }
         ScoreSystem.Score += ScoreGiven;
         GameObject.Destroy(this.gameObject);
     }

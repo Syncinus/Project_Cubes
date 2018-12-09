@@ -48,17 +48,17 @@ public class QuickRenderTextureFix : MonoBehaviour {
 
 
         primitive = GameObject.CreatePrimitive(PrimitiveType.Plane);
-        primitive.renderer.castShadows = false;
-        primitive.renderer.receiveShadows = false;
+        primitive.GetComponent<Renderer>().castShadows = false;
+        primitive.GetComponent<Renderer>().receiveShadows = false;
         primitive.transform.rotation = Quaternion.AngleAxis(90, Vector3.back);
         primitive.transform.Rotate(new Vector3(90, 0, 0), Space.World);
         primitive.transform.position = new Vector3(-20, 10, 0);
         primitive.transform.localScale = new Vector3(1, 1, 1);
         Material material = new Material(Shader.Find("Unlit/Transparent"));
-        primitive.renderer.material = material;
-        primitive.renderer.material.color = Color.white;
-        primitive.renderer.material.renderQueue = 4000;  // force renderqueue to be after all other transparencies
-        primitive.renderer.material.mainTexture = outputLifeTexture1;
+        primitive.GetComponent<Renderer>().material = material;
+        primitive.GetComponent<Renderer>().material.color = Color.white;
+        primitive.GetComponent<Renderer>().material.renderQueue = 4000;  // force renderqueue to be after all other transparencies
+        primitive.GetComponent<Renderer>().material.mainTexture = outputLifeTexture1;
         //  primitive.renderer.material.mainTexture=inputLifeTexture1;
     }
 

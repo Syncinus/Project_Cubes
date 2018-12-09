@@ -55,4 +55,5 @@ MonoBehaviour:
   - ChangeEnergyColor
   - SetProjectile
   - respawn
+  - Effect
   DisableAutoOpenWizard: 1

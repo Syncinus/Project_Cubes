@@ -12,3 +12,13 @@ MonoBehaviour:
   m_Name: Slow Time
   m_EditorClassIdentifier: 
   name: Slow Time
+  area: 0
+  color: {r: 1, g: 0, b: 0, a: 1}
+  recharge: 5
+  radius: 10
+  delay: 0
+  length: 0
+  speed: 0.5
+  blend: 0
+  mode: 0
+  emmision: 1

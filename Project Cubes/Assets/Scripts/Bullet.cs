@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
+using Chronos;
 
 public class Bullet : MonoBehaviourPunCallbacks
 {
@@ -18,6 +19,8 @@ public class Bullet : MonoBehaviourPunCallbacks
     float distanceTraveled;
     Vector3 lastPosition;
 
+    bool active = true;
+
     public void Start()
     {
         lastPosition = transform.position;
@@ -25,36 +28,52 @@ public class Bullet : MonoBehaviourPunCallbacks
 
     public void Fire()
     {
-        this.GetComponent<Rigidbody>().velocity = this.transform.forward * speed;
+        //Do nothing right now. 
+        //this.GetComponent<Rigidbody>().velocity = this.transform.forward * speed;
     }
 
     public void FixedUpdate()
     {
-        distanceTraveled += Vector3.Distance(transform.position, lastPosition);
-        lastPosition = transform.position;
-
-        if (distanceTraveled >= maxRange)
+        if (active == true)
         {
-            PhotonNetwork.Destroy(this.photonView);
-        }
+            distanceTraveled += Vector3.Distance(transform.position, lastPosition);
+            lastPosition = transform.position;
 
-        this.GetComponent<Rigidbody>().velocity = this.transform.forward * speed;
+            if (distanceTraveled >= maxRange)
+            {
+                StartCoroutine(Collide(this.transform.position + -this.transform.forward));
+                //PhotonNetwork.Destroy(this.photonView);
+            }
+
+            this.transform.Translate(Vector3.forward * speed * this.GetComponent<Timeline>().fixedDeltaTime, Space.Self);
+        }
+        //this.GetComponent<Rigidbody>().velocity = this.transform.forward * speed;
     }
 
     public void OnCollisionEnter(Collision collision)
     {
-        if (collision.transform.name == shooter.transform.name)
+        if (collision.transform == shooter.transform)
         {
-            Physics.IgnoreCollision(this.GetComponent<Collider>(), collision.collider);
+            Physics.IgnoreCollision(this.transform.GetComponent<Collider>(), collision.collider, true);
         }
         else
         {
             ContactPoint contact = collision.contacts[0];
             if (collision.gameObject != null)
             {
-                shooter.GetComponent<ShootShots>().Damage(collision.gameObject, contact.point, Shooting, index);
+                shooter.GetComponent<ShootShots>().Damage(collision.gameObject, contact.normal, Shooting, index);
             }
-            PhotonNetwork.Destroy(this.photonView);
+            StartCoroutine(Collide(contact.normal));
         }
+    }
+
+    public IEnumerator Collide(Vector3 direction)
+    {
+        active = false;
+        this.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+        this.GetComponent<Rigidbody>().AddForce(-direction * 10, ForceMode.Force);
+        this.GetComponent<Rigidbody>().useGravity = true;
+        yield return new WaitForSeconds(1.5f);
+        PhotonNetwork.Destroy(this.photonView);
     }
 }

@@ -73,7 +73,6 @@ public class ShootShots : MonoBehaviourPunCallbacks {
         foreach (FiringPoint Point in Weapon.Points)
         {
             int Index = Weapon.Points.IndexOf(Point);
-            Debug.Log(Index.ToString());
             if (this.transform.Find("Line: " + Index.ToString()) != null)
             {
                 GameObject LineObject = this.transform.Find("Line: " + Index.ToString()).gameObject;
@@ -369,13 +368,12 @@ public class ShootShots : MonoBehaviourPunCallbacks {
             RaycastHit hit;
             var dir = Quaternion.Euler(Point.Emmision.RotationOffset) * this.transform.forward;
             Ray ray = new Ray(this.transform.position, this.transform.forward);
-            var Layers = 1 << LayerMask.NameToLayer("Player") | 1 << LayerMask.NameToLayer("Pieces") | 1 << LayerMask.NameToLayer("Bullets");
+            var Layers = 1 << LayerMask.NameToLayer("Player") | 1 << LayerMask.NameToLayer("Pieces") | 1 << LayerMask.NameToLayer("Bullets") | 1 << LayerMask.NameToLayer("Manipulators");
             Layers = ~Layers;
             if (Physics.Raycast(ray, out hit, Point.Shooting.Range, Layers))
             {
                 if (hit.transform != this.transform)
                 {
-                    Debug.Log("Outline Object: " + hit.transform.name);
                     if (!hit.transform.gameObject.GetComponent<cakeslice.Outline>())
                     {
                         hit.transform.gameObject.AddComponent<cakeslice.Outline>();
@@ -467,6 +465,7 @@ public class ShootShots : MonoBehaviourPunCallbacks {
             //Quaternion dir = Quaternion.Euler(Quaternion.Euler(Emmision.RotationOffset) * this.transform.forward);
             Quaternion dir = this.transform.rotation * Quaternion.Euler(Emmision.RotationOffset);
             GameObject projectile = PhotonNetwork.Instantiate(Emmision.Prefab, ShootPosition, dir);
+            projectile.layer = LayerMask.NameToLayer("Bullets");
             projectile.transform.SetParent(GameObject.Find("TempStorage").transform);
             projectile.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
             PhotonNetwork.RPC(photonView, "SetProjectile", RpcTarget.AllBuffered, false, projectile.gameObject.GetPhotonView().ViewID,
@@ -495,6 +494,7 @@ public class ShootShots : MonoBehaviourPunCallbacks {
         Transform senderTransform = PhotonView.Find(senderID).transform;
 
         Color c = new Color(color.x, color.y, color.z);
+        bulletTransform.gameObject.layer = LayerMask.NameToLayer("Bullets");
         bulletTransform.GetComponent<Renderer>().sharedMaterial.color = c;
     }
 

@@ -6,6 +6,7 @@ using UnityEngine.Networking;
 using EZCameraShake;
 using Photon.Pun;
 using Photon.Realtime;
+using Chronos;
 
 public class DestroyableObject : MonoBehaviourPunCallbacks {
 
@@ -177,6 +178,10 @@ public class DestroyableObject : MonoBehaviourPunCallbacks {
             Rigid.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
             Rigid.useGravity = true;
 
+            Timeline t = Piece.AddComponent<Timeline>();
+            t.mode = TimelineMode.Global;
+            t.globalClockKey = "Root";
+
             Piece.transform.SetParent(partStorage);
             Piece.transform.position = this.transform.position + position;
             Piece.transform.name = "Piece";
@@ -184,8 +189,8 @@ public class DestroyableObject : MonoBehaviourPunCallbacks {
             Piece.GetComponent<Renderer>().sharedMaterial = this.GetComponent<Renderer>().sharedMaterial;
             Piece.GetComponent<Renderer>().sharedMaterial.color = this.GetComponent<Renderer>().sharedMaterial.color;
 
-            Rigid.AddExplosionForce(Rigid.mass * 5f, point, 2f, 0.001f, ForceMode.Acceleration);
-            Rigid.AddForce(point * (Rigid.mass * 10f), ForceMode.Impulse);
+            Rigid.AddExplosionForce(Rigid.mass * 10f, point, 2f, 0.001f, ForceMode.Impulse);
+            Rigid.AddForce(-point * (Rigid.mass * 10f), ForceMode.Impulse);
         }     
     }
 

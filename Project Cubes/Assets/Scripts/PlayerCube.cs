@@ -41,16 +41,8 @@ public class PlayerCube : MonoBehaviourPunCallbacks {
 			return;
 		}
 
-        PhotonNetwork.RPC(photonView, "ChangeEnergyColor", RpcTarget.AllBuffered, false, new Vector3(EnergyColor.r, EnergyColor.g, EnergyColor.b), Energy.ToArray());
+        PhotonNetwork.RPC(photonView, "ChangeEnergyColor", RpcTarget.AllBuffered, false, new Vector3(EnergyColor.r, EnergyColor.g, EnergyColor.b), this.gameObject.GetPhotonView().ViewID);
         LastEnergyColor = EnergyColor;
-
-        foreach(Transform child in this.transform.Find("Model"))
-        {
-            if (child.name == "Energy")
-            {
-                Energy.Add(child);
-            }
-        }
 
         //jobsTransform.Add(this.transform);        
         
@@ -88,15 +80,24 @@ public class PlayerCube : MonoBehaviourPunCallbacks {
 
         if (EnergyColor != LastEnergyColor)
         {
-            PhotonNetwork.RPC(photonView, "ChangeEnergyColor", RpcTarget.AllBuffered, false, new Vector3(EnergyColor.r, EnergyColor.g, EnergyColor.b), Energy.ToArray());
+            PhotonNetwork.RPC(photonView, "ChangeEnergyColor", RpcTarget.AllBuffered, false, new Vector3(EnergyColor.r, EnergyColor.g, EnergyColor.b), this.gameObject.GetPhotonView().ViewID);
             LastEnergyColor = EnergyColor;
         }
 	}
 
-    [PunRPC] public void ChangeEnergyColor(Vector3 color, Transform[] energyTransforms)
+    [PunRPC] public void ChangeEnergyColor(Vector3 color, int viewID)
     {
         Color e = new Color(color.x, color.y, color.z);
-        
+        List<Transform> energyTransforms = new List<Transform>();
+        GameObject thisObject = PhotonView.Find(viewID).gameObject;
+        foreach (Transform child in thisObject.transform.Find("Model"))
+        {
+            if (child.name == "Energy")
+            {
+                energyTransforms.Add(child);
+            }
+        }
+
         foreach (Transform energy in energyTransforms)
         {
             energy.GetComponent<Renderer>().sharedMaterial.color = EnergyColor;
