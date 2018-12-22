@@ -675,7 +675,7 @@ RectTransform:
   m_Children:
   - {fileID: 229012224}
   m_Father: {fileID: 2143698095}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1035,7 +1035,7 @@ MonoBehaviour:
         m_MethodName: Equip
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: eb2a2f7ca9099394caa7b4ef8a15b105,
+          m_ObjectArgument: {fileID: 11400000, guid: 060b5179698afaf4390df7eeee1d6c79,
             type: 2}
           m_ObjectArgumentAssemblyTypeName: WeaponItem, Assembly-CSharp
           m_IntArgument: 0
@@ -1195,7 +1195,7 @@ Transform:
   - {fileID: 410521675}
   - {fileID: 350266098}
   m_Father: {fileID: 2143698095}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1426974318
 GameObject:
@@ -1942,8 +1942,8 @@ RectTransform:
   - {fileID: 1486448592}
   - {fileID: 953734123}
   - {fileID: 1946775358}
-  - {fileID: 712049263}
   - {fileID: 1365047470}
+  - {fileID: 712049263}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1963,5 +1963,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc573b70051cb2b4fa321653ce586b51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonHolder: {fileID: 953734123}
+  buttonHolders:
+  - {fileID: 953734123}
+  - {fileID: 1946775358}
   info: {fileID: 350266099}

@@ -16,14 +16,15 @@ MonoBehaviour:
     Shooting:
       Speed: 10
       Range: 20
-      FireRate: 5
+      FireRate: 10
       Recharge: 0
       ShotCount: 1
       Force: 10
     Emmision:
       Prefab: Bullet
       EmmisionScale: 1
-      EmmisionRandomOffset: {x: 0.5, y: 0.5, z: 0.5}
+      Positioning: 3
+      EmmisionRandomOffset: {x: 0, y: 0.5, z: 0}
       EmmisionOffset: {x: 0, y: 0, z: 1}
       RotationOffset: {x: 0, y: 0, z: 0}
     Particles:
@@ -35,6 +36,6 @@ MonoBehaviour:
       Size: 0
       ProjectileColor: {r: 0, g: 0, b: 0, a: 1}
     Sound:
-      Clip: {fileID: 0}
+      Clip: {fileID: 8300000, guid: f51f7c1c3fb44ba44aff2df7a2d611ed, type: 3}
       Refresh: 0
-      Volume: 0
+      Volume: 1

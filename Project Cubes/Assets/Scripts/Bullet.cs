@@ -8,13 +8,14 @@ using Chronos;
 
 public class Bullet : MonoBehaviourPunCallbacks
 {
-    public GameObject shooter;
+    public Transform shooter;
 
     [HideInInspector] public ShotMode Shooting;
     [HideInInspector] public int index;
 
     public float speed = 1f;
     public float maxRange = 10f;
+    public float force = 10f;
 
     float distanceTraveled;
     Vector3 lastPosition;
@@ -52,16 +53,18 @@ public class Bullet : MonoBehaviourPunCallbacks
 
     public void OnCollisionEnter(Collision collision)
     {
-        if (collision.transform == shooter.transform)
+        if (collision.transform == shooter || collision.transform.name.Contains("Floor") || collision.gameObject.tag == "Bullets")
         {
-            Physics.IgnoreCollision(this.transform.GetComponent<Collider>(), collision.collider, true);
+            Collider tc = this.transform.GetComponent<Collider>();
+            Collider hc = collision.collider;
+            Physics.IgnoreCollision(tc, hc);
         }
         else
         {
             ContactPoint contact = collision.contacts[0];
             if (collision.gameObject != null)
             {
-                shooter.GetComponent<ShootShots>().Damage(collision.gameObject, contact.normal, Shooting, index);
+                shooter.GetComponent<ShootShots>().Damage(collision.gameObject, contact.point, Shooting, index, shooter.gameObject);
             }
             StartCoroutine(Collide(contact.normal));
         }
@@ -71,7 +74,7 @@ public class Bullet : MonoBehaviourPunCallbacks
     {
         active = false;
         this.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
-        this.GetComponent<Rigidbody>().AddForce(-direction * 10, ForceMode.Force);
+        this.GetComponent<Rigidbody>().AddForce(-direction * force, ForceMode.Force);
         this.GetComponent<Rigidbody>().useGravity = true;
         yield return new WaitForSeconds(1.5f);
         PhotonNetwork.Destroy(this.photonView);

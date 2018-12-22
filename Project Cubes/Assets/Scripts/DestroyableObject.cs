@@ -37,11 +37,11 @@ public class DestroyableObject : MonoBehaviourPunCallbacks {
         thisObject.position = new Vector3(0f, 0.5f, 0f);
     }
 
-    public void GetHit(Vector3 point)
+    public void GetHit(Vector3 point, GameObject killer)
     {
         if (photonView != null)
         {
-            PhotonNetwork.RPC(photonView, "PunBreak", RpcTarget.AllBuffered, false, point);
+            PhotonNetwork.RPC(photonView, "PunBreak", RpcTarget.AllBuffered, false, point, killer.GetPhotonView().ViewID);
         } else
         {
             Break(point);
@@ -51,16 +51,17 @@ public class DestroyableObject : MonoBehaviourPunCallbacks {
     public void Break(Vector3 point)
     {
         Explosion(point);
-        Die();
+        Die(null);
     }
 
-    [PunRPC] public void PunBreak(Vector3 point)
+    [PunRPC] public void PunBreak(Vector3 point, int killerID)
     {
+        GameObject killer = PhotonView.Find(killerID).gameObject;
         Explosion(point);
-        Die();
+        Die(killer);
     }
 
-    public void Die()
+    public void Die(GameObject killer)
     {
         if (photonView != null)
         {
@@ -90,8 +91,15 @@ public class DestroyableObject : MonoBehaviourPunCallbacks {
                 }
                 Invoke("Respawn", 5f);
             }
-
             isAlive = false;
+        }
+
+        if (killer != null)
+        {
+            if (killer.transform.GetComponent<PlayerCube>())
+            {
+                killer.transform.GetComponent<PlayerCube>().score += 1f;
+            }
         }
 
         this.gameObject.SetActive(false);
@@ -110,7 +118,7 @@ public class DestroyableObject : MonoBehaviourPunCallbacks {
 
     public void ExplosionPolygons(Vector3 point)
     {
-       
+        
     }
 
     public GameObject[] GetFragments()
@@ -189,8 +197,8 @@ public class DestroyableObject : MonoBehaviourPunCallbacks {
             Piece.GetComponent<Renderer>().sharedMaterial = this.GetComponent<Renderer>().sharedMaterial;
             Piece.GetComponent<Renderer>().sharedMaterial.color = this.GetComponent<Renderer>().sharedMaterial.color;
 
-            Rigid.AddExplosionForce(Rigid.mass * 10f, point, 2f, 0.001f, ForceMode.Impulse);
-            Rigid.AddForce(-point * (Rigid.mass * 10f), ForceMode.Impulse);
+            Rigid.AddExplosionForce(Rigid.mass * 10f, point, 2f, 0.001f, ForceMode.Force);
+            //Rigid.AddForce(-point * (Rigid.mass * 10f), ForceMode.Impulse);
         }     
     }
 

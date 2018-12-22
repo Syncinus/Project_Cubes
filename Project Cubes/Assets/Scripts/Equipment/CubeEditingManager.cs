@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class CubeEditingManager : MonoBehaviour {
 
-    public Transform buttonHolder;
+    public Transform[] buttonHolders;
     CubeEditingButton[] buttons;
 
     public Text info;
@@ -14,12 +14,15 @@ public class CubeEditingManager : MonoBehaviour {
     private void Start()
     {
         UpdateInfo();
-        buttons = buttonHolder.GetComponentsInChildren<CubeEditingButton>();
-        foreach (CubeEditingButton button in buttons)
+        foreach (Transform buttonHolder in buttonHolders)
         {
-            if (CubeSettings.Score > button.RequiredScore)
+            buttons = buttonHolder.GetComponentsInChildren<CubeEditingButton>();
+            foreach (CubeEditingButton button in buttons)
             {
-                button.Unlock();
+                if (CubeSettings.Score > button.RequiredScore)
+                {
+                    button.Unlock();
+                }
             }
         }
     }
@@ -32,15 +35,11 @@ public class CubeEditingManager : MonoBehaviour {
         {   
             w = CubeSettings.weapon.name;
         }
-
-        if (CubeSettings.manipulators.Count > 0) {
-            m = "";
-            foreach (RealityManipulator manipulator in CubeSettings.manipulators)
-            {
-                m = m + manipulator.ToString() + " ";
-            }
+        if (CubeSettings.manipulator != null)
+        {
+            m = CubeSettings.manipulator.name;
         }
-        info.text = "WEAPON: " + w + " " + "MANIPULATORS: " + m;
+        info.text = "WEAPON: " + w + " " + "MANIPULATOR: " + m;
     }
 
     public void Equip(WeaponItem item)
@@ -52,18 +51,16 @@ public class CubeEditingManager : MonoBehaviour {
 
     public void Equip(RealityManipulator manipulator)
     {
-        if (CubeSettings.manipulators.Count < 5)
-        {
-            CubeSettings.manipulators.Add(manipulator);
-            UpdateInfo();
-        }
+        CubeSettings.manipulator = manipulator;
+        UpdateInfo();
+
     }
 
     public void UnequipManipulator(RealityManipulator manipulator)
     {
-        if (CubeSettings.manipulators.Contains(manipulator))
+        if (CubeSettings.manipulator == manipulator)
         {
-            CubeSettings.manipulators.Remove(manipulator);
+            CubeSettings.manipulator = null;
             UpdateInfo();
         }
     }

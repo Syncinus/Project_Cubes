@@ -23,7 +23,7 @@ namespace Com.SwiftGames.ProjectCubes
         /// <summary>
         /// This client's version number. Users are separated from each other by gameVersion (which allows you to make breaking changes).
         /// </summary>
-        public string gameVersion = "rcb-beta2.0e";
+        public string gameVersion = "otb-beta1.0e";
 
         /// <summary>
         /// The maximum number of players per room. When a room is full, it can't be joined by new players, and so new room will be created.
@@ -117,7 +117,6 @@ namespace Com.SwiftGames.ProjectCubes
         {
             Debug.Log("PhotonManager: OnJoinedRoom() called by PUN. Now this client is in a room.");
             PhotonNetwork.Instantiate("PlayerCube", new Vector3(0f, 1f, 0f), Quaternion.identity, 0);
-            AstarPath.active.Scan();
         }
 
         #endregion

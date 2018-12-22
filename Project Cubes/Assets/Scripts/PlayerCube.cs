@@ -4,12 +4,16 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
 using Photon.Pun;
+using Photon.Realtime;
 using Chronos;
 
 public class PlayerCube : MonoBehaviourPunCallbacks {
 	public Rigidbody rigid;
 	public float smooth = 1.0f;
-	public float speed = 5.0f;
+    public float speed = 0.0f;
+    public float maxSpeed = 5.0f;
+    public float acceleration = 2.5f;
+    public float deceleration = 2.5f;
 	public float turnSpeed = 0.05f;
 	public List<float> rotationPoints = new List<float> { 0, 45, 90, 135, 180, 225, 270, 315 };
 	public WeaponItem weapon;
@@ -24,9 +28,11 @@ public class PlayerCube : MonoBehaviourPunCallbacks {
     private Color LastEnergyColor;
     private List<Transform> Energy = new List<Transform>();
 
-    private List<RealityManipulator> manipulators = new List<RealityManipulator>();
-
 	private bool setCamera = false;
+
+    private float originalScore;
+
+    public float score;
     
     public Timeline time
     {
@@ -36,20 +42,28 @@ public class PlayerCube : MonoBehaviourPunCallbacks {
         }
     }
 
+    public void Awake()
+    {
+        if (this.transform.GetComponent<Overtime>() == null)
+        {
+            this.gameObject.AddComponent<Overtime>();
+        }
+        originalScore = CubeSettings.Score;
+    }
+
     public void Start() {
 		if (photonView.IsMine != true) {
 			return;
 		}
 
+        Camera.main.transform.SetParent(this.transform);
+        Camera.main.transform.localPosition = new Vector3(0f, 0.25f, 1f);
+        Camera.main.transform.localRotation = Quaternion.Euler(new Vector3(10f, 0f, 0f));
+
         PhotonNetwork.RPC(photonView, "ChangeEnergyColor", RpcTarget.AllBuffered, false, new Vector3(EnergyColor.r, EnergyColor.g, EnergyColor.b), this.gameObject.GetPhotonView().ViewID);
         LastEnergyColor = EnergyColor;
 
-        //jobsTransform.Add(this.transform);        
-        
-        Camera.main.transform.GetComponent<SmoothCameraAdvanced>().target = this.transform;
-        Camera.main.transform.SetParent(this.transform);
-        Camera.main.transform.GetComponent<SmoothCameraAdvanced>().enabled = true;
-
+        //jobsTransform.Add(this.transform);
         //Camera.main.transform.GetComponent<AlternateCameraScript>().target = this.transform;
 
 		this.transform.position = new Vector3(0f, 0.5f, 0f);
@@ -58,10 +72,6 @@ public class PlayerCube : MonoBehaviourPunCallbacks {
         if (CubeSettings.weapon != null)
         {
             weapon = CubeSettings.weapon;
-        }
-        if (CubeSettings.manipulators.Count > 0)
-        {
-            manipulators = CubeSettings.manipulators;
         }
     }
 
@@ -109,22 +119,24 @@ public class PlayerCube : MonoBehaviourPunCallbacks {
 		return end - start;
 	}
 
-    public enum MovementDirection { Forward, Backward, Left, Right, Up };
+    public enum MovementDirection { Forward, Backward, Up, Left, Right };
 
 
     public void Move(MovementDirection direction)
-    {
+    {   
         float dt = time.fixedDeltaTime;
 
-        if (ableToMove == true)
+        if (ableToMove == true && speed < maxSpeed && speed > -maxSpeed)
         {
             if (direction == MovementDirection.Forward)
             {
-                this.transform.Translate(Vector3.forward * speed * dt, Space.Self);
+                //this.transform.Translate(Vector3.forward * speed * dt, Space.Self);
+                speed = speed + acceleration * time.fixedDeltaTime;
             }
             if (direction == MovementDirection.Backward)
             {
-                this.transform.Translate(Vector3.back * speed * dt, Space.Self);
+                //this.transform.Translate(Vector3.back * speed * dt, Space.Self);
+                speed = speed - acceleration * time.fixedDeltaTime;
             }
         }
 
@@ -137,11 +149,6 @@ public class PlayerCube : MonoBehaviourPunCallbacks {
         {
             this.transform.rotation = Quaternion.Euler(this.transform.rotation.eulerAngles.x, (transform.rotation.eulerAngles.y + 75f * dt * Input.GetAxis("Horizontal")), transform.rotation.eulerAngles.z);
         }
-
-        if (direction == MovementDirection.Up)
-        {
-            time.rigidbody.AddForce(new Vector3(0, 500, 0), ForceMode.Acceleration);
-        }
     }
 
     public void FixedUpdate() {
@@ -153,28 +160,40 @@ public class PlayerCube : MonoBehaviourPunCallbacks {
 			timeScinceLastTimeTakingDamage += Time.deltaTime;
 		}
 
+        CubeSettings.Score = originalScore + score;
 		moving = false;
 		//transform.rotation = Quaternion.Euler (this.transform.rotation.eulerAngles.x, (transform.rotation.eulerAngles.y + 100f * Time.deltaTime * Input.GetAxis ("Horizontal")), transform.rotation.eulerAngles.z);
 		if (Input.GetKey (KeyCode.W)) {
 			Move(MovementDirection.Forward);
 		}
-		if (Input.GetKey (KeyCode.S)) {
+        else if (Input.GetKey (KeyCode.S)) {
 			Move(MovementDirection.Backward);
-		}
-		if (Input.GetKey(KeyCode.A))
-		{
-			Move(MovementDirection.Left);
-		}
-		if (Input.GetKey(KeyCode.D))
-		{
-			Move(MovementDirection.Right);
-		}
-        if(Input.GetKeyDown(KeyCode.E))
+		} else
         {
-            Move(MovementDirection.Up);
+            if (speed > deceleration)
+            {
+                speed = speed - deceleration;
+            } else if (speed < -deceleration)
+            {
+                speed = speed + deceleration;
+            } else
+            {
+                speed = 0;
+            }
         }
 
-		if (moving == false) {
+        if (Input.GetKey(KeyCode.A))
+        {
+            Move(MovementDirection.Left);
+        }
+        else if (Input.GetKey(KeyCode.D))
+        {
+            Move(MovementDirection.Right);
+        }
+
+        this.transform.Translate(Vector3.forward * speed * time.deltaTime, Space.Self);
+
+        if (moving == false) {
 			if (Input.GetKeyDown (KeyCode.X)) {
 				float currentRotation = this.transform.rotation.eulerAngles.y;
 				float closest = rotationPoints.Aggregate ((x, y) => Mathf.Abs (x - currentRotation) < Mathf.Abs (y - currentRotation) ? x : y);
@@ -191,12 +210,7 @@ public class PlayerCube : MonoBehaviourPunCallbacks {
 				StartCoroutine (Rotate (Vector3.down, 45 + valueChange, 0.6f));
 			}
 		}
-	}
-
-
-
-
-		
+	}	
 
 	IEnumerator Rotate(Vector3 axis, float angle, float duration) {
 		Quaternion from = transform.rotation;
@@ -212,6 +226,17 @@ public class PlayerCube : MonoBehaviourPunCallbacks {
 		moving = false;
 		transform.rotation = to;
 	}
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            stream.SendNext(score);
+        } else
+        {
+            score = (float)stream.ReceiveNext();
+        }
+    }
 
 	/*
 	public static Vector4 ToVector4 (this Quaternion quaternion) {

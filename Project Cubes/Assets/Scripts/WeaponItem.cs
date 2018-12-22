@@ -29,6 +29,7 @@ public class FiringPoint
 {
     public string Prefab;
     public float EmmisionScale;
+    public ShotPositioning Positioning;
     public Vector3 EmmisionRandomOffset;
     public Vector3 EmmisionOffset;
     public Vector3 RotationOffset;
@@ -61,5 +62,6 @@ public class FiringPoint
     public float Refresh;
     public float Volume;
 }
-
 #endregion
+
+public enum ShotPositioning { Direct, Weapon1, Weapon2, Split }

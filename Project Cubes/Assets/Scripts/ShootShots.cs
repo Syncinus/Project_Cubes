@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using EZCameraShake;
+using System.Linq;
 using Photon.Pun;
-using Photon.Realtime;
 using Chronos;
 
 public class ShootShots : MonoBehaviourPunCallbacks {
     private List<float> NextTimesToFire = new List<float>();
+    private List<int> SplitFiringSelection = new List<int>();
     private float NextTimeToPlaySound;
     private WeaponItem Weapon;
     private PlayerCube Cube;
@@ -20,6 +20,8 @@ public class ShootShots : MonoBehaviourPunCallbacks {
     private float dt;
     private float fixedDt;
 
+    List<Transform> Weapons = new List<Transform>();
+
     private void Awake()
     {
         if (photonView.IsMine != true)
@@ -27,11 +29,23 @@ public class ShootShots : MonoBehaviourPunCallbacks {
             return;
         }
 
+        foreach (Transform t in this.transform.Find("Model"))
+        {
+            if (t.name == "Firing")
+            {
+                Weapons.Add(t);
+            }
+        }
+
         Cube = this.GetComponent<PlayerCube>();
         Weapon = Cube.weapon;
         foreach (FiringPoint Point in Weapon.Points)
         {
             NextTimesToFire.Add(0);
+        }
+        foreach (FiringPoint Point in Weapon.Points)
+        {
+            SplitFiringSelection.Add(0);
         }
     }
 
@@ -44,7 +58,7 @@ public class ShootShots : MonoBehaviourPunCallbacks {
 
         Outline();
 
-        time = Cube.time; 
+        time = Cube.time;
         dt = time.deltaTime;
         fixedDt = time.fixedDeltaTime;
 
@@ -60,14 +74,14 @@ public class ShootShots : MonoBehaviourPunCallbacks {
             }
         }
 
-        if (Input.GetMouseButtonDown(1))
-        {
-            RightClickCamera();
-        }
-        if (Input.GetMouseButtonUp(1))
-        {
-            UndoRightClickCamera();
-        }
+        //if (Input.GetMouseButtonDown(1))
+        //{
+        //    RightClickCamera();
+        //}
+        //if (Input.GetMouseButtonUp(1))
+        //{
+        //    UndoRightClickCamera();
+        //}
 
         
         foreach (FiringPoint Point in Weapon.Points)
@@ -293,7 +307,6 @@ public class ShootShots : MonoBehaviourPunCallbacks {
         OldCameraPosition = Camera.main.transform.localPosition;
         OldCameraRotation = Camera.main.transform.localRotation;
 
-        Camera.main.transform.GetComponent<SmoothCameraAdvanced>().enabled = false;
         //Camera.main.transform.localPosition = pos.localPosition;
         //Camera.main.transform.localRotation = pos.localRotation;
         this.transform.Find("Laser").gameObject.SetActive(true);
@@ -308,7 +321,6 @@ public class ShootShots : MonoBehaviourPunCallbacks {
         this.transform.Find("Laser").gameObject.SetActive(false);
         StartCoroutine(MoveToPosition(Camera.main.transform, Camera.main.transform.localPosition, OldCameraPosition, 0.5f, true));
         StartCoroutine(RotateToRotation(Camera.main.transform, Camera.main.transform.localRotation, OldCameraRotation, 0.5f, true));
-        Camera.main.transform.GetComponent<SmoothCameraAdvanced>().enabled = true;
 
         this.GetComponent<LineRenderer>().enabled = false;
     }
@@ -368,8 +380,7 @@ public class ShootShots : MonoBehaviourPunCallbacks {
             RaycastHit hit;
             var dir = Quaternion.Euler(Point.Emmision.RotationOffset) * this.transform.forward;
             Ray ray = new Ray(this.transform.position, this.transform.forward);
-            var Layers = 1 << LayerMask.NameToLayer("Player") | 1 << LayerMask.NameToLayer("Pieces") | 1 << LayerMask.NameToLayer("Bullets") | 1 << LayerMask.NameToLayer("Manipulators");
-            Layers = ~Layers;
+            var Layers = ~(1 << LayerMask.NameToLayer("Player") | 1 << LayerMask.NameToLayer("Pieces") | 1 << LayerMask.NameToLayer("Bullets") | 1 << LayerMask.NameToLayer("Manipulators"));
             if (Physics.Raycast(ray, out hit, Point.Shooting.Range, Layers))
             {
                 if (hit.transform != this.transform)
@@ -407,8 +418,32 @@ public class ShootShots : MonoBehaviourPunCallbacks {
         ParticleMode Particles = Point.Particles;
         SoundMode Sound = Point.Sound;
 
-
         Vector3 ShootPosition = this.transform.position + this.transform.TransformDirection(Vector3.forward);
+
+        switch (Emmision.Positioning) {
+            case ShotPositioning.Direct:
+                ShootPosition = this.transform.position + this.transform.forward;
+                break;
+            case ShotPositioning.Weapon1:
+                ShootPosition = Weapons.ElementAt(0).position + this.transform.forward;
+                break;
+            case ShotPositioning.Weapon2:
+                ShootPosition = Weapons.ElementAt(1).position + this.transform.forward;
+                break;
+            case ShotPositioning.Split:
+                int CurrentWeapon = SplitFiringSelection.ElementAt(Index);
+                ShootPosition = Weapons.ElementAt(CurrentWeapon).position + this.transform.forward;
+                switch (CurrentWeapon)
+                {
+                    case 0:
+                        SplitFiringSelection[Index] = 1;
+                        break;
+                    case 1:
+                        SplitFiringSelection[Index] = 0;
+                        break;
+                }
+                break;
+        }
         if (Emmision.EmmisionRandomOffset != Vector3.zero && Emmision.EmmisionRandomOffset != null)
         {
             ShootPosition.x += Random.Range(-Emmision.EmmisionRandomOffset.x, Emmision.EmmisionRandomOffset.x);
@@ -430,9 +465,7 @@ public class ShootShots : MonoBehaviourPunCallbacks {
         if (Sound != null && Time.time > NextTimeToPlaySound)
         {
             AudioSource Source = this.GetComponent<AudioSource>();
-            Source.clip = Sound.Clip;
-            Source.volume = Sound.Volume;
-            Source.Play();
+            Source.PlayOneShot(Sound.Clip, Sound.Volume);
             NextTimeToPlaySound = Time.time + Sound.Refresh;
         }
 
@@ -473,11 +506,12 @@ public class ShootShots : MonoBehaviourPunCallbacks {
             projectile.GetComponent<Renderer>().sharedMaterial.color = Particles.ProjectileColor;
 
             Bullet b = projectile.AddComponent<Bullet>();
-            b.shooter = this.gameObject;
+            b.shooter = this.transform;
             b.Shooting = Shooting;
             b.index = Index;
             b.speed = Shooting.Speed;
             b.maxRange = Shooting.Range;
+            b.force = Shooting.Force;
             b.Fire();
         }
 
@@ -547,7 +581,7 @@ public class ShootShots : MonoBehaviourPunCallbacks {
     }
     */
 
-    public void Damage(GameObject Hit, Vector3 point, ShotMode Shooting, int Index)
+    public void Damage(GameObject Hit, Vector3 point, ShotMode Shooting, int Index, GameObject killer)
     {
         if (Hit.transform.GetComponent<Rigidbody>() != null)
         {
@@ -556,7 +590,7 @@ public class ShootShots : MonoBehaviourPunCallbacks {
 
         if (Hit.transform.GetComponent<DestroyableObject>() != null)
         {
-            Hit.transform.GetComponent<DestroyableObject>().GetHit(point);
+            Hit.transform.GetComponent<DestroyableObject>().GetHit(point, killer);
             //Hit.transform.GetComponent<DestroyableObject>().TakeDamage(Shooting.Damage, Hit.point, this.gameObject);
         }
     }

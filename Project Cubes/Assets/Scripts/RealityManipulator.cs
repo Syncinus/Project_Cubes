@@ -8,6 +8,7 @@ public class RealityManipulator : ScriptableObject {
     [Header("Manipulator Settings")]
     public new string name;
     public AreaType area;
+    public FollowMode follow;
     public Color color;
     public float recharge;
     public float radius;
@@ -24,4 +25,5 @@ public class RealityManipulator : ScriptableObject {
 }
 
 public enum ManipulatorEmmision { Position, Projected }
-public enum AreaType { Sphere, Cube }
+public enum FollowMode { Stay, FollowShooter, FollowEmmisionHit }
+public enum AreaType { Sphere, Cube } 
