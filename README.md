@@ -1,7 +1,7 @@
 # Project Cubes
 
 A three-dimensionial third person shooter game in which you fight enemy cubes, <br>
-power up, and become the strongest cube there is. Currently in active development.
+power up, and become the strongest cube there is.
 <br>
 <br>
 Controls: <br>
